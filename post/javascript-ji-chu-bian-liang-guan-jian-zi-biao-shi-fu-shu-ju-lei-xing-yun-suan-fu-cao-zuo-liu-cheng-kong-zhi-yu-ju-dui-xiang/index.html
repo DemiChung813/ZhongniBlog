@@ -1,0 +1,3309 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>JavaScript基础--变量、关键字、标识符,数据类型,运算符操作,流程控制语句,对象 | ZhongNi Gridea</title>
+<meta name="description" content="温故而知新">
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="https://demichung813.github.io/zhongniblog//favicon.ico?v=1556893715247">
+<link rel="stylesheet" href="https://demichung813.github.io/zhongniblog//styles/main.css">
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
+
+
+  </head>
+  <body>
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="https://demichung813.github.io/zhongniblog/">
+        <img src="https://demichung813.github.io/zhongniblog//images/avatar.png?v=1556893715247" class="site-logo">
+        <h1 class="site-title">ZhongNi Gridea</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
+      
+        
+          <a href="/" class="site-nav">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="site-nav">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="site-nav">
+            标签
+          </a>
+        
+      
+        
+          <a href="/post/about" class="site-nav">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+    <div class="site-description">
+      温故而知新
+    </div>
+    <div class="site-footer">
+      Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">JavaScript基础--变量、关键字、标识符,数据类型,运算符操作,流程控制语句,对象</h2>
+            <div class="post-date">2019-05-03</div>
+            
+            <div class="post-content">
+              <h2 id="什么是javascript">什么是JavaScript?</h2>
+<ul>
+<li>JavaScript是一种脚本语言，其源代码在发往客户端运行之前不需经过<a href="">编译</a>，而是将文本格式的字符代码发送给浏览器由浏览器解释运行。</li>
+</ul>
+<blockquote>
+<p>解释型语言：程序执行之前，不需要编译，直接运行时边解析边执行的语言</p>
+<p>编译型语言：程序执行之前，需要一个专门的编译过程，把程序编译成为机器语言的文件，比如exe文件</p>
+</blockquote>
+<ul>
+<li>
+<p>简单易用</p>
+<p>可以使用任何文本编辑工具编写</p>
+<p>只需要浏览器就可以执行程序</p>
+</li>
+<li>
+<p>解释执行（解释语言）</p>
+<p>事先不编译</p>
+<p>逐行执行</p>
+<p>无需进行严格的变量声明</p>
+</li>
+<li>
+<p>基于对象</p>
+<p>内置大量现成对象，编写少量程序可以完成目标</p>
+</li>
+</ul>
+<h2 id="javascript的组成">JavaScript的组成</h2>
+<ul>
+<li>
+<p>ECMAScript：JavaScript的语法标准</p>
+<ul>
+<li>ECMA是一个组织，即欧洲计算机制造商协会</li>
+<li>ECMAScript是ECMA制定的脚本语言的标准, 规定了一种脚本语言实现应该包含的基本内容</li>
+<li>JavaScript是脚本语言的一种,所以JavaScript也必须遵守ECMAScript标准,包含ECMAScript标准中规定的基本内容</li>
+</ul>
+</li>
+<li>
+<p>DOM：JavaScript操作网页上的元素的API</p>
+</li>
+<li>
+<p>BOM：JavaScript操作浏览器的部分功能的API</p>
+</li>
+</ul>
+<div class="image-package">
+<div class="image-container" style="max-width: 555px; max-height: 403px; background-color: transparent;">
+<div class="image-container-fill" style="padding-bottom: 72.61%;"></div>
+<div class="image-view" data-width="555" data-height="403">![](//upload-images.jianshu.io/upload_images/1268909-cc41e66df57d083b.png)</div>
+</div>
+<div class="image-caption">三足鼎立</div>
+</div>
+<h2 id="javascript的使用场景">JavaScript的使用场景</h2>
+<ul>
+<li>
+<p>随着JavaScript这门语言的完善，我们可以用它来进行前端开发、后端开发和移动端开发。当然，学习这门语言最开始的突破口在于前端开发。我们一起看看在前端领域它能做什么吧！</p>
+<ul>
+<li>客户端数据计算</li>
+<li>客户端表单合法性验证</li>
+<li>浏览器对象的调用</li>
+<li>浏览器事件的触发</li>
+<li>网页特殊显示效果制作</li>
+<li>....</li>
+</ul>
+</li>
+</ul>
+<div class="image-package">
+<div class="image-container" style="max-width: 700px; max-height: 557px; background-color: transparent;">
+<div class="image-container-fill" style="padding-bottom: 69.71000000000001%;"></div>
+<div class="image-view" data-width="799" data-height="557">![](//upload-images.jianshu.io/upload_images/1268909-6f2c9b4c2218df51.png)</div>
+</div>
+<div class="image-caption">JavaScript是无所不能的</div>
+</div>
+<h2 id="javascript和html-css的关系">JavaScript和HTML、CSS的关系</h2>
+<ul>
+<li>Html：是用来制作网页，简单来说就是编写网页结构</li>
+<li>CSS： 美化网页（样式）</li>
+<li>Javascript:   实现网页与客户之间互动的桥梁，让网页具有丰富的生命力</li>
+</ul>
+<div class="image-package">
+<div class="image-container" style="max-width: 700px; max-height: 251px;">
+<div class="image-container-fill" style="padding-bottom: 28.52%;"></div>
+<div class="image-view" data-width="880" data-height="251">![](//upload-images.jianshu.io/upload_images/1268909-f8c77ce847a738d1.png)</div>
+</div>
+<div class="image-caption">对比现实，三者的关系</div>
+</div>
+<h2 id="javascript的语法规范">JavaScript的语法规范</h2>
+<ul>
+<li>
+<p>JavaScript有三种书写格式, 分别是&quot;行内式&quot;、&quot;页内式&quot;、&quot;外链式&quot;</p>
+<ul>
+<li>
+<p>行内式</p>
+<p><span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">onclick</span>=<span class="hljs-string">&quot;alert('今天天气很好！');&quot;</span>&gt;</span>今天天气很好！<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+`</pre></p>
+</li>
+<li>
+<p>页内式</p>
+</li>
+</ul>
+<pre class="hljs xml">` <span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
+      ......
+     <span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text/javascript"</span>&gt;</span><span class="actionscript">
+        alert(<span class="hljs-string">"今天天气很好！"</span>);
+     </span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+ <span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
+`</pre>
+<pre><code>        *   页内式注意点
+
+                *   &amp;lt;script&amp;gt;&amp;lt;/script&amp;gt;标签中的js代码一半写在文档的尾部；
+    *   网页是从上至下加载, 而js代码通常是给标签添加交互(操作元素), 所以需要先加载HTML, 否则如果执行js代码时HTML还未被加载, 那么js代码将无法添加交互(操作元素);
+    *   HTML页面中出现&amp;lt;script&amp;gt;标签后，就会让页面暂停等待脚本的解析和执行。无论当前脚本是内嵌式还是外链式，页面的下载和渲染都必须停下来等待脚本的执行完成才能继续。所以如果把js代码如果写在head中, 那么js代码执行完毕之前后续网页无法被加载。
+</code></pre>
+<ul>
+<li>外链式格式</li>
+</ul>
+<pre class="hljs xml">` <span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text/javascript"</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"01-js书写格式.js"</span>&gt;</span><span class="undefined"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+`</pre>
+<pre><code>        *   外链式注意点
+</code></pre>
+<p>外链式的script代码块中不能编写js代码, 即便写了也不会执行</p>
+<pre class="hljs xml">`      <span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text/javascript"</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"index.js"</span>&gt;</span><span class="actionscript">
+            alert(<span class="hljs-string">"今天天气很好！"</span>); <span class="hljs-comment">// 不会被执行</span>
+       </span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+`</pre>
+<pre><code>        *   由于每次加载外链式的js文件都会发送一次请求, 这样非常消耗性能, 所以在企业开发中推荐将多个JS文件打包成为一个JS文件,以提升网页的性能和加载速度。
+</code></pre>
+<h2 id="javascript-初体验">Javascript 初体验</h2>
+</li>
+<li>
+<p>使用JavaScript在网页中输出一句话</p>
+<pre><code>*   方式一
+</code></pre>
+<p>在网页中弹出显示框，显示信息</p>
+<pre class="hljs xml">`  <span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="actionscript">
+        alert(<span class="hljs-string">"Hello，JavaScript！"</span>);      </span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+`</pre>
+<ul>
+<li>方式二
+在控制台输出消息，一般用来调试程序</li>
+</ul>
+<pre class="hljs xml">`   <span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="javascript">
+         <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"Hello，JavaScript！"</span>);             <span class="hljs-built_in">console</span>.warn(<span class="hljs-string">"警告输出！"</span>);             <span class="hljs-built_in">console</span>.error(<span class="hljs-string">"错误输出！"</span>);       </span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+`</pre>
+<ul>
+<li>方式三
+在网页中弹出输入框，一般用于接收用户输入的信息</li>
+</ul>
+<pre class="hljs xml">`  <span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="actionscript">
+        prompt(<span class="hljs-string">"Hello，JavaScript！"</span>);      </span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+`</pre>
+<ul>
+<li>方式四
+在网页中弹出提示框，显示信息，该方法一般与if判断语句结合使用</li>
+</ul>
+<pre class="hljs xml">` <span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="actionscript">
+       comfirm(<span class="hljs-string">"Hello，JavaScript！"</span>);     </span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+`</pre>
+<ul>
+<li>
+<p>注意事项</p>
+<pre><code>    1.  编写Javascript注意语法规范，一行代码结束后必须在代码最后加上;
+</code></pre>
+</li>
+</ul>
+<p>如果不写分号，浏览器会自动添加，但是会消耗一些系统资源；
+此外，容易加错分号，所以在开发中分号必须要写。
+2.  在JavaScript中是严格区分大小写的</p>
+<pre class="hljs cpp">`   comfirm(<span class="hljs-string">"Hello，JavaScript！"</span>);   <span class="hljs-comment">// 正确</span>
+   COMFIRM(<span class="hljs-string">"Hello，JavaScript！"</span>);   <span class="hljs-comment">// 错误 </span>
+`</pre>
+<pre><code>3.  JavaScript中会忽略多个空格和换行
+</code></pre>
+<pre class="hljs cpp">` console.<span class="hljs-built_in">log</span>
+ (
+     <span class="hljs-string">"Hello，JavaScript！"</span>
+ );    `</pre>
+</li>
+<li>
+<p>JavaScript中注释语法</p>
+<pre><code>*   什么是注释？
+
+        *   注释是就是注解、解释的意思； 在JavaScript中它可以用来解释某一段程序或者某一行代码是什么意思，方便开发者之间的交流；
+*   注释可以是任何文字，包括中文、英文和各种字符；
+*   在开发工具中注释一般是灰色或者绿色
+</code></pre>
+<ul>
+<li>
+<p>为什么要写注释？</p>
+<pre><code>    *   方便自己，方便他人（便于检查代码，排除错误）
+</code></pre>
+</li>
+<li>
+<p>如何写注释？</p>
+<pre><code>    *   单行注释
+</code></pre>
+</li>
+</ul>
+<pre class="hljs javascript">`   <span class="hljs-comment">// 单行注释</span>
+   <span class="hljs-keyword">var</span> name;
+`</pre>
+<blockquote>
+<p>使用范围:任何地方都可以写注释：函数外面、里面，每一条语句后面</p>
+</blockquote>
+</li>
+</ul>
+<blockquote>
+<pre><code>作用范围: 从第二个斜线到这一行末尾
+快捷键:Ctrl+/
+</code></pre>
+</blockquote>
+<pre><code>    *   多行注释
+&lt;pre class=&quot;hljs javascript&quot;&gt;`   &lt;span class=&quot;hljs-comment&quot;&gt;/*多行注释*/&lt;/span&gt;
+   &lt;span class=&quot;hljs-keyword&quot;&gt;var&lt;/span&gt; name;
+
+        &gt; 使用范围:任何地方都可以写注释：函数外面、里面，每一条语句后面
+</code></pre>
+<blockquote>
+<pre><code>        作用范围: 从第一个/_到最近的一个_/ 之间
+</code></pre>
+</blockquote>
+<pre><code>    *   注释使用注意
+
+        *   单行注释可以嵌套单行注释、多行注释
+
+        // 北京
+
+        // 北京 // 南京
+
+        // /* 北京 */
+    *   多行注释可以嵌套单行注释
+
+        /*
+
+        // author：jack
+
+        // intro：It's good
+
+        */
+    *   多行注释不能嵌套多行注释
+
+      &lt;/div&gt;
+</code></pre>
+</hr>
+<h2 id="字面量">字面量</h2>
+<ul>
+<li>一些不可改变的值,  比如: 数字, 字母, ....</li>
+</ul>
+<h2 id="认识变量">认识变量</h2>
+<ul>
+<li>
+<p>在代数中，我们使用字母（比如 x）来保存值（比如 2）</p>
+<p>x = 2；
+y = 3;
+z = x + y;
+`</pre></p>
+<p>通过上面的表达式 z=x+y，我们能够计算出 z 的值为 5。</p>
+<p>在 JavaScript 中，这些字母被称为变量</p>
+</li>
+<li>
+<p>在计算机中数据都是存放在内存中的， 比如：</p>
+<div class="image-package">
+<div class="image-container" style="max-width: 469px; max-height: 316px; background-color: transparent;">
+<div class="image-container-fill" style="padding-bottom: 67.38%;"></div>
+<div class="image-view" data-width="469" data-height="316">![](//upload-images.jianshu.io/upload_images/1268909-1d7b551343c56af8.png)</div>
+</div>
+<div class="image-caption">数据在内存中的存放方式</div>
+</div>
+</li>
+<li>
+<p>变量表示一些可以变化的数据</p>
+<pre><code>*   当一个数据的值需要经常改变或者不确定时，就应该用变量来表示；
+</code></pre>
+<ul>
+<li>例如:超市中的储物格就相当于一个变量, 里面可以存储各种不同的东西, 里面存储的东西也可以经常改变；</li>
+<li>你去超市放东西到储物柜的格子中, 会给你一张纸条，你根据这个纸条才可以拿回自己的东西，储物柜的一格就是变量的内存空间，字条就是变量名，你拿和放就是修改变量名对应内存中的数据。</li>
+</ul>
+</li>
+<li>
+<p>所以, 变量可以用来保存字面量，而且变量的值是可以任意改变的; 在开发中都是通过变量去保存一个字面量</p>
+<h2 id="js中变量的定义">JS中变量的定义</h2>
+</li>
+<li>
+<p>定义变量的目的</p>
+<pre><code>*   在内存中分配一块存储空间给变量，方便以后存储数据。
+</code></pre>
+</li>
+<li>
+<p>如何定义变量?</p>
+<pre><code>*   定义变量(声明变量), 任何变量在使用之前，必须先进行定义
+</code></pre>
+<ul>
+<li>如果定义了多个变量，就会为这多个变量分别分配不同的存储空间。</li>
+<li>var    变量名称;</li>
+</ul>
+<pre class="hljs javascript">` <span class="hljs-keyword">var</span>  name;     <span class="hljs-keyword">var</span> name, age, sex;    `</pre>
+</li>
+<li>
+<p>如何使用变量？</p>
+<pre><code>*   使用变量就是往变量里面放入内容或者取出变量中存储的内容;
+</code></pre>
+<ul>
+<li>往变量中存储内容</li>
+</ul>
+<pre class="hljs javascript">`<span class="hljs-keyword">var</span> name;
+name = <span class="hljs-string">"撩课学院"</span>;
+`</pre>
+<blockquote>
+<p>注意：</p>
+</blockquote>
+</li>
+</ul>
+<blockquote>
+<pre><code>（1）   =   为赋值符号，不是我们理解的数学中的“等号”，它是JavaScript语言中的赋值运算符，作用是将右边的常量“旋之华”赋值给左边的变量name；
+（2） 赋值的时候= 号的左侧必须是变量 (“旋之华” = name; 是错误的写法)；
+（3） =  左右两边各加一个空格
+</code></pre>
+</blockquote>
+<ul>
+<li>
+<p>如何进行变量初始化</p>
+<pre><code>*   变量第一次赋值，可以称为“初始化”
+
+        *   先定义,后初始化
+</code></pre>
+<pre class="hljs javascript">`   <span class="hljs-keyword">var</span> name;
+   name= <span class="hljs-string">"撩课学院"</span>;
+`</pre>
+<pre><code>*   定义的同时进行初始化
+</code></pre>
+<pre class="hljs javascript">`  <span class="hljs-keyword">var</span> name = <span class="hljs-string">"撩课学院"</span>;
+`</pre>
+<pre><code>*   其它表现形式
+</code></pre>
+<pre class="hljs javascript">`    <span class="hljs-comment">// 部分初始化</span>
+   <span class="hljs-keyword">var</span> num1, num2, num3= <span class="hljs-number">100</span>;
+   <span class="hljs-comment">// 完全初始化</span>
+   <span class="hljs-keyword">var</span> num1 = num2 = num3 = <span class="hljs-number">100</span>;
+`</pre>
+<pre><code>*   如果定义后没有初始化
+</code></pre>
+<pre class="hljs javascript">`    <span class="hljs-keyword">var</span> num;
+    <span class="hljs-built_in">console</span>.log(num); <span class="hljs-comment">// undefined</span>
+`</pre>
+</li>
+<li>
+<p>如何查看变量的值?</p>
+<pre class="hljs javascript">` <span class="hljs-keyword">var</span> name  =  <span class="hljs-string">"撩课学院"</span>；
+ <span class="hljs-built_in">console</span>.log(name  );
+`</pre>
+</li>
+<li>
+<p>如何修改变量值?</p>
+<pre><code>*   通过等号(=)重新赋值即可,每次赋值都会覆盖原来的值
+</code></pre>
+<pre class="hljs javascript">`   <span class="hljs-keyword">var</span> name  =  <span class="hljs-string">"撩课学院"</span>；
+   name = <span class="hljs-string">"itlike.com"</span>;
+   <span class="hljs-built_in">console</span>.log(name ); <span class="hljs-comment">// itlike.com</span>
+`</pre>
+</li>
+<li>
+<p>变量之间的值传递</p>
+<pre><code>*   可以将一个变量的值赋值给另一个变量
+</code></pre>
+<pre class="hljs javascript">`  <span class="hljs-keyword">var</span> num1= <span class="hljs-number">100</span>;
+  <span class="hljs-keyword">var</span> num2 = num1;
+  <span class="hljs-built_in">console</span>.log(num2 ); <span class="hljs-comment">// 100</span>
+`</pre>
+<h2 id="关键字和保留字">关键字和保留字</h2>
+</li>
+<li>
+<p>什么是关键字？</p>
+<pre><code>*   JavaScript语言用于程序控制或者执行特定操作的英语单词；
+</code></pre>
+<ul>
+<li>它们是被JavaScript语言赋予了特殊含义的英文单词；</li>
+</ul>
+<blockquote>
+<p>好比现实生活中除夕、中秋、国庆对于我们有特殊含义一样, 在JavaScript也有一些对于JavaScript有特殊含义的单词,这些单词我们称之为关键字。</p>
+</blockquote>
+<ul>
+<li>关键字不能用作变量名、函数名；</li>
+<li>关键字严格区分大小写,  比如：void和Void前者是关键字, 后者不是</li>
+<li>汇总如下：</li>
+<li>
+<div class="image-package">
+</li>
+</ul>
+<div class="image-container" style="max-width: 700px; max-height: 238px;">
+<div class="image-container-fill" style="padding-bottom: 30.630000000000003%;"></div>
+<div class="image-view" data-width="777" data-height="238">![](//upload-images.jianshu.io/upload_images/1268909-da3a59494504582c.jpg)</div>
+</div>
+<div class="image-caption">JavaScript中的关键字</div>
+</div>
+</li>
+<li>
+<p>什么是保留字？</p>
+<pre><code>*   JavaScript预留的关键字，他们虽然现在没有作为关键字，但在以后的升级版本中有可能作为关键字
+</code></pre>
+<ul>
+<li>
+<div class="image-package">
+</li>
+</ul>
+<div class="image-container" style="max-width: 700px; max-height: 238px;">
+<div class="image-container-fill" style="padding-bottom: 30.4%;"></div>
+<div class="image-view" data-width="783" data-height="238">![](//upload-images.jianshu.io/upload_images/1268909-04eed899299c40a5.jpg)</div>
+</div>
+<div class="image-caption">JavaScript中的保留字</div>
+</div>
+<h2 id="标识符">标识符</h2>
+</li>
+<li>
+<p>什么是标识符?</p>
+<pre><code>*   在JS中所有的可以由我们自主命名的都可以称为是标识符
+</code></pre>
+<ul>
+<li>比如变量名、函数名、属性名都属于标识符</li>
+</ul>
+<blockquote>
+<p>例如:  var name; , 这里的name就是标识符</p>
+</blockquote>
+<ul>
+<li>
+<p>命名一个标识符时需要遵守如下的规则：</p>
+<pre><code>    *   标识符中可以含有字母 、数字 、下划线_ 、$符号
+</code></pre>
+<ul>
+<li>标识符不能以数字开头</li>
+<li>标识符不能是ES中的关键字或保留字</li>
+<li>严格区分大小写，比如name和Name是2个不同的标识符</li>
+<li>标识符一般都采用驼峰命名法</li>
+</ul>
+</li>
+</ul>
+<pre class="hljs undefined">`   首字母小写，每个单词的开头字母大写，其余字母小写
+   helloWorld  xxxYyyZzz
+`</pre>
+<pre><code>*   JS底层保存标识符时实际上是采用的Unicode编码 , 所以理论上讲，所有的utf-8中含有的内容都可以作为标识符。
+</code></pre>
+<h2 id="练习题">练习题</h2>
+<pre class="hljs javascript">`<span class="hljs-number">1.</span>下面四个变量声明语句中，哪一个变量的命名是正确的？
+    A．<span class="hljs-keyword">var</span> <span class="hljs-keyword">for</span>               B．<span class="hljs-keyword">var</span> txt_name               
+    C．<span class="hljs-keyword">var</span> myname myval      D．<span class="hljs-keyword">var</span> <span class="hljs-number">2</span>s
+<p><span class="hljs-number">2.</span>下面哪一个语句定义了一个名为Myval的变量并将它的值赋为<span class="hljs-number">2205</span>？
+A．<span class="hljs-keyword">var</span> myval=<span class="hljs-number">2020</span>        B．<span class="hljs-keyword">var</span> MyVal=<span class="hljs-number">2020</span>
+C．<span class="hljs-keyword">var</span> Myval=<span class="hljs-number">2020</span>        D．Myval=<span class="hljs-number">2020</span></p>
+<p><span class="hljs-number">3.</span> 摄氏度和华氏度转化。两者的换算关系是 华氏度 =  <span class="hljs-number">9</span> / <span class="hljs-number">5</span> *  摄氏度 + <span class="hljs-number">32</span>；编写程序，让用户输入摄氏度，向用户提示对应的华氏温度。</p>
+<pre><code>  &lt;/div&gt;
+</code></pre>
+</hr>
+<h2 id="数据">数据</h2>
+</li>
+<li>
+<p>数据是指所有能输入到计算机并被计算机程序处理的符号的介质的总称，是具有一定意义的数字、字母、符号和模拟量等的通称。</p>
+</li>
+</ul>
+<div class="image-package">
+<div class="image-container" style="max-width: 627px; max-height: 343px; background-color: transparent;">
+<div class="image-container-fill" style="padding-bottom: 54.7%;"></div>
+<div class="image-view" data-width="627" data-height="343">![](//upload-images.jianshu.io/upload_images/1268909-3d007cb143166fd1.jpg)</div>
+</div>
+<div class="image-caption">数据以各种形式存在于我们生活中</div>
+</div>
+<h2 id="数据类型">数据类型</h2>
+<ul>
+<li>
+<p>为什么会有数据类型？</p>
+<p><span class="hljs-keyword">var</span>  a = <span class="hljs-number">10</span>;
+<span class="hljs-keyword">var</span>  b = <span class="hljs-string">'10'</span>;
+`</pre></p>
+<blockquote>
+<p>思考：变量名a   和   变量名b   保存的数据是否一样？</p>
+</blockquote>
+</li>
+<li>
+<p>JS中常用的数据类型</p>
+<pre><code>*   程序在运行过程中会产生各种各样的临时数据, 为了方便数据的运算和操作, JavaScript对这些数据进行了分类, 提供了丰富的数据类型；
+</code></pre>
+<ul>
+<li>在JavaScript中一共有六种数据类型：</li>
+<li>
+<div class="image-package">
+</li>
+</ul>
+<div class="image-container" style="max-width: 700px; max-height: 317px; background-color: transparent;">
+<div class="image-container-fill" style="padding-bottom: 37.78%;"></div>
+<div class="image-view" data-width="839" data-height="317">![](//upload-images.jianshu.io/upload_images/1268909-e2ee1a1f5deed642.jpg)</div>
+</div>
+<div class="image-caption">JS的6种数据类型</div>
+</div>
+</li>
+<li>
+<p>JS中如何查看数据类型?</p>
+<pre><code>*   typeof 操作符
+
+        *   会将检查的结果以字符串的形式返回给我们
+</code></pre>
+<pre class="hljs javascript">`<span class="hljs-built_in">console</span>.log(<span class="hljs-keyword">typeof</span>  <span class="hljs-number">100</span>); <span class="hljs-comment">// number</span>
+<span class="hljs-keyword">var</span> name = <span class="hljs-string">"旋之华"</span>;
+<span class="hljs-built_in">console</span>.log(<span class="hljs-keyword">typeof</span> name ); <span class="hljs-comment">// string</span>
+`</pre>
+</li>
+<li>
+<p>数字类型（Number）</p>
+<blockquote>
+<p>1:  最基本的数据类型</p>
+</blockquote>
+</li>
+</ul>
+<blockquote>
+<pre><code>2:  不区分整型数值和浮点型数值
+3:   能表示的最大值是±1.7976931348623157乘以10的308次方
+能表示的最小值是±5 乘以10的-324次方
+4：包含十六进制数据，以 0x开头 0到9之间的数字，a(A)-f(F)之间字母构成。 a-f对应的数字是10-15
+5： 八进制直接以数字0开始，有0-7之间的数字组成。
+</code></pre>
+</blockquote>
+<pre><code>    *   在JS中所有的数值都是Number类型(整数和小数)
+&lt;pre class=&quot;hljs javascript&quot;&gt;` &lt;span class=&quot;hljs-keyword&quot;&gt;var&lt;/span&gt; num1= &lt;span class=&quot;hljs-number&quot;&gt;123&lt;/span&gt;;
+ &lt;span class=&quot;hljs-keyword&quot;&gt;var&lt;/span&gt; num2= &lt;span class=&quot;hljs-number&quot;&gt;3.14&lt;/span&gt;;
+ &lt;span class=&quot;hljs-built_in&quot;&gt;console&lt;/span&gt;.log(&lt;span class=&quot;hljs-keyword&quot;&gt;typeof&lt;/span&gt; num1); &lt;span class=&quot;hljs-comment&quot;&gt;// number&lt;/span&gt;
+ &lt;span class=&quot;hljs-built_in&quot;&gt;console&lt;/span&gt;.log(&lt;span class=&quot;hljs-keyword&quot;&gt;typeof&lt;/span&gt; num2); &lt;span class=&quot;hljs-comment&quot;&gt;// number&lt;/span&gt;
+`&lt;/pre&gt;
+
+    *   由于内存的限制，ECMAScript 并不能保存世界上所有的数值
+&lt;pre class=&quot;hljs javascript&quot;&gt;` &lt;span class=&quot;hljs-comment&quot;&gt;// 最大值：Number.MAX_VALUE&lt;/span&gt;
+ &lt;span class=&quot;hljs-built_in&quot;&gt;console&lt;/span&gt;.log(&lt;span class=&quot;hljs-built_in&quot;&gt;Number&lt;/span&gt;.MAX_VALUE);  &lt;span class=&quot;hljs-comment&quot;&gt;// 1.7976931348623157e+308&lt;/span&gt;
+ &lt;span class=&quot;hljs-comment&quot;&gt;// 最小值：Number.MIN_VALUE&lt;/span&gt;
+ &lt;span class=&quot;hljs-built_in&quot;&gt;console&lt;/span&gt;.log(&lt;span class=&quot;hljs-built_in&quot;&gt;Number&lt;/span&gt;.MIN_VALUE);  &lt;span class=&quot;hljs-comment&quot;&gt;// 5e-324&lt;/span&gt;
+ &lt;span class=&quot;hljs-comment&quot;&gt;// 无穷大：Infinity, 如果超过了最大值就会返回该值&lt;/span&gt;
+ &lt;span class=&quot;hljs-built_in&quot;&gt;console&lt;/span&gt;.log(&lt;span class=&quot;hljs-built_in&quot;&gt;Number&lt;/span&gt;.MAX_VALUE + &lt;span class=&quot;hljs-built_in&quot;&gt;Number&lt;/span&gt;.MAX_VALUE); &lt;span class=&quot;hljs-comment&quot;&gt;// Infinity&lt;/span&gt;
+ &lt;span class=&quot;hljs-comment&quot;&gt;// 无穷小：-Infinity, 如果超过了最小值就会返回该值&lt;/span&gt;
+ &lt;span class=&quot;hljs-built_in&quot;&gt;console&lt;/span&gt;.log(&lt;span class=&quot;hljs-keyword&quot;&gt;typeof&lt;/span&gt; &lt;span class=&quot;hljs-literal&quot;&gt;Infinity&lt;/span&gt;); &lt;span class=&quot;hljs-comment&quot;&gt;// number&lt;/span&gt;
+ &lt;span class=&quot;hljs-built_in&quot;&gt;console&lt;/span&gt;.log(&lt;span class=&quot;hljs-keyword&quot;&gt;typeof&lt;/span&gt; -&lt;span class=&quot;hljs-literal&quot;&gt;Infinity&lt;/span&gt;); &lt;span class=&quot;hljs-comment&quot;&gt;// number&lt;/span&gt;
+`&lt;/pre&gt;
+
+    *   NaN 非法数字（Not A Number）
+JS中当对数值进行计算时没有结果返回，则返回NaN
+&lt;pre class=&quot;hljs javascript&quot;&gt;` &lt;span class=&quot;hljs-keyword&quot;&gt;var&lt;/span&gt; str = &lt;span class=&quot;hljs-literal&quot;&gt;NaN&lt;/span&gt;;
+ &lt;span class=&quot;hljs-built_in&quot;&gt;console&lt;/span&gt;.log(&lt;span class=&quot;hljs-keyword&quot;&gt;typeof&lt;/span&gt; str ); &lt;span class=&quot;hljs-comment&quot;&gt;// number&lt;/span&gt;
+`&lt;/pre&gt;
+
+    *   Number类型注意点
+&lt;pre class=&quot;hljs javascript&quot;&gt;` &lt;span class=&quot;hljs-comment&quot;&gt;//  JS中整数的运算可以保证精确的结果&lt;/span&gt;
+  &lt;span class=&quot;hljs-keyword&quot;&gt;var&lt;/span&gt; counter = &lt;span class=&quot;hljs-number&quot;&gt;120&lt;/span&gt; + &lt;span class=&quot;hljs-number&quot;&gt;20&lt;/span&gt;;
+  &lt;span class=&quot;hljs-built_in&quot;&gt;console&lt;/span&gt;.log(counter ); &lt;span class=&quot;hljs-comment&quot;&gt;// 140&lt;/span&gt;
+ &lt;span class=&quot;hljs-comment&quot;&gt;//  在JS中浮点数的运算可能得到一个不精确的结果&lt;/span&gt;
+  &lt;span class=&quot;hljs-keyword&quot;&gt;var&lt;/span&gt; counter = &lt;span class=&quot;hljs-number&quot;&gt;100.1&lt;/span&gt; + &lt;span class=&quot;hljs-number&quot;&gt;20.1&lt;/span&gt;;
+  &lt;span class=&quot;hljs-built_in&quot;&gt;console&lt;/span&gt;.log(counter ); &lt;span class=&quot;hljs-comment&quot;&gt;// 120.200000000000003&lt;/span&gt;
+`&lt;/pre&gt;
+</code></pre>
+<ul>
+<li>
+<p>字符串类型（string）</p>
+<pre><code>*   字符串由单引号或双引号括起
+</code></pre>
+<ul>
+<li>例如单独一个字母也被称为字符串（例如：‘a’）</li>
+<li>&quot;  '</li>
+<li>使用字符串注意事项</li>
+</ul>
+<pre class="hljs javascript">`<span class="hljs-comment">//  正常的情况</span>
+<span class="hljs-keyword">var</span> str1 = <span class="hljs-string">"hello"</span>;
+<span class="hljs-keyword">var</span> str2 = <span class="hljs-string">`world`</span>;
+<span class="hljs-built_in">console</span>.log(<span class="hljs-keyword">typeof</span> str1 ); <span class="hljs-comment">// string</span>
+<span class="hljs-built_in">console</span>.log(<span class="hljs-keyword">typeof</span> str2); <span class="hljs-comment">// string</span>
+<span class="hljs-comment">//  不能一单一双，必须成对出现 </span>
+<span class="hljs-keyword">var</span> str3 = <span class="hljs-string">`hello world"; // 错误
+//  相同引号不能嵌套，不同引号可以嵌套
+var str3 = "hello "world""; // 错误
+var str4 = `</span>hello <span class="hljs-string">`world`</span><span class="hljs-string">`; // 错误
+var str5 = "hello 'world'"; // 正确
+var str6 = `</span>hello <span class="hljs-string">"world"</span><span class="hljs-string">`; // 正确
+</span>`</pre>
+</li>
+<li>
+<p>布尔类型（Boolean）</p>
+<pre><code>*   布尔型也被称为逻辑值类型或者真假值类型
+</code></pre>
+<ul>
+<li>布尔型只能够取真（true）和假（false）两种数值, 也代表1和0，实际运算中true=1,false=0</li>
+</ul>
+<pre class="hljs javascript">`<span class="hljs-keyword">var</span> bool1 = <span class="hljs-literal">true</span>;
+<span class="hljs-keyword">var</span> bool2 = <span class="hljs-literal">false</span>;
+<span class="hljs-built_in">console</span>.log(<span class="hljs-keyword">typeof</span> bool1); <span class="hljs-comment">// boolean</span>
+<span class="hljs-built_in">console</span>.log(<span class="hljs-keyword">typeof</span> bool2); <span class="hljs-comment">// boolean</span>
+`</pre>
+<pre><code>*   虽然Boolean 类型的字面值只有两个，但 ECMAScript 中所有类型的值都有与这两个 Boolean 值等价的值
+</code></pre>
+<blockquote>
+<p>任何非零数值都是true, 包括正负无穷大, 只有0和NaN是false</p>
+</blockquote>
+</li>
+</ul>
+<blockquote>
+<pre><code>任何非空字符串都是true, 只有空字符串是false
+任何对象都是true, 只有null和undefined是false
+</code></pre>
+</blockquote>
+<pre><code>&lt;pre class=&quot;hljs javascript&quot;&gt;` &lt;span class=&quot;hljs-keyword&quot;&gt;var&lt;/span&gt; bool = &lt;span class=&quot;hljs-built_in&quot;&gt;Boolean&lt;/span&gt;(&lt;span class=&quot;hljs-number&quot;&gt;0&lt;/span&gt;);
+ &lt;span class=&quot;hljs-built_in&quot;&gt;console&lt;/span&gt;.log(bool ); &lt;span class=&quot;hljs-comment&quot;&gt;// false&lt;/span&gt;
+&lt;span class=&quot;hljs-keyword&quot;&gt;var&lt;/span&gt; bool = &lt;span class=&quot;hljs-built_in&quot;&gt;Boolean&lt;/span&gt;(&lt;span class=&quot;hljs-number&quot;&gt;1&lt;/span&gt;);
+&lt;span class=&quot;hljs-built_in&quot;&gt;console&lt;/span&gt;.log(bool ); &lt;span class=&quot;hljs-comment&quot;&gt;// true&lt;/span&gt;
+&lt;span class=&quot;hljs-keyword&quot;&gt;var&lt;/span&gt; bool = &lt;span class=&quot;hljs-built_in&quot;&gt;Boolean&lt;/span&gt;(&lt;span class=&quot;hljs-number&quot;&gt;-1&lt;/span&gt;);
+&lt;span class=&quot;hljs-built_in&quot;&gt;console&lt;/span&gt;.log(bool ); &lt;span class=&quot;hljs-comment&quot;&gt;// true&lt;/span&gt;
+&lt;span class=&quot;hljs-keyword&quot;&gt;var&lt;/span&gt; bool = &lt;span class=&quot;hljs-built_in&quot;&gt;Boolean&lt;/span&gt;(&lt;span class=&quot;hljs-string&quot;&gt;&quot;hello&quot;&lt;/span&gt;);
+&lt;span class=&quot;hljs-built_in&quot;&gt;console&lt;/span&gt;.log(bool); &lt;span class=&quot;hljs-comment&quot;&gt;// true&lt;/span&gt;
+&lt;span class=&quot;hljs-keyword&quot;&gt;var&lt;/span&gt; bool = &lt;span class=&quot;hljs-built_in&quot;&gt;Boolean&lt;/span&gt;(&lt;span class=&quot;hljs-string&quot;&gt;&quot;&quot;&lt;/span&gt;);
+&lt;span class=&quot;hljs-built_in&quot;&gt;console&lt;/span&gt;.log(bool ); &lt;span class=&quot;hljs-comment&quot;&gt;// false&lt;/span&gt;
+&lt;span class=&quot;hljs-keyword&quot;&gt;var&lt;/span&gt; bool = &lt;span class=&quot;hljs-built_in&quot;&gt;Boolean&lt;/span&gt;(&lt;span class=&quot;hljs-literal&quot;&gt;undefined&lt;/span&gt;);
+&lt;span class=&quot;hljs-built_in&quot;&gt;console&lt;/span&gt;.log(bool ); &lt;span class=&quot;hljs-comment&quot;&gt;// false&lt;/span&gt;
+&lt;span class=&quot;hljs-keyword&quot;&gt;var&lt;/span&gt; bool = &lt;span class=&quot;hljs-built_in&quot;&gt;Boolean&lt;/span&gt;(&lt;span class=&quot;hljs-literal&quot;&gt;null&lt;/span&gt;);
+&lt;span class=&quot;hljs-built_in&quot;&gt;console&lt;/span&gt;.log(bool8); &lt;span class=&quot;hljs-comment&quot;&gt;// bool &lt;/span&gt;
+`&lt;/pre&gt;
+</code></pre>
+<ul>
+<li>
+<p>Null和Undefined</p>
+<pre><code>*   Undefined这是一种比较特殊的类型，表示变量未赋值，这种类型只有一种值就是undefined
+</code></pre>
+<pre class="hljs javascript">`  <span class="hljs-keyword">var</span> num;
+  <span class="hljs-built_in">console</span>.log(num);  <span class="hljs-comment">//结果是undefined</span>
+`</pre>
+<pre><code>*   undefined是Undefined类型的字面量
+
+        *   前者undefined和10, &quot;abc&quot;一样是一个常量
+*   后者Undefined和Number,Boolean一样是一个数据类型
+</code></pre>
+<ul>
+<li>需要注意的是typeof对没有初始化和没有声明的变量都会返回undefined。</li>
+</ul>
+<pre class="hljs javascript">` <span class="hljs-keyword">var</span> str1 = <span class="hljs-literal">undefined</span>;
+ <span class="hljs-built_in">console</span>.log(<span class="hljs-keyword">typeof</span> str1 ); <span class="hljs-comment">//结果是undefined</span>
+ <span class="hljs-keyword">var</span> str2;
+ <span class="hljs-built_in">console</span>.log(<span class="hljs-keyword">typeof</span>  str2); <span class="hljs-comment">//结果是undefined</span>
+`</pre>
+<pre><code>*   Null 类型是第二个只有一个值的数据类型，这个特殊的值是 null
+
+        *   从语义上看null表示的是一个空的对象。所以使用typeof检查null会返回一个Object
+</code></pre>
+<pre class="hljs javascript">`  <span class="hljs-keyword">var</span> test1= <span class="hljs-literal">null</span>;
+  <span class="hljs-built_in">console</span>.log(<span class="hljs-keyword">typeof</span> test1);
+`</pre>
+<ul>
+<li>undefined值实际上是由null值衍生出来的，所以如果比较undefined和null是否相等，会返回true</li>
+</ul>
+<pre class="hljs javascript">` <span class="hljs-keyword">var</span> str1 = <span class="hljs-literal">null</span>;
+ <span class="hljs-keyword">var</span> str2 = <span class="hljs-literal">undefined</span>;
+ <span class="hljs-built_in">console</span>.log(str1 == str12);
+ <span class="hljs-built_in">console</span>.log(str1=== str2);
+`</pre>
+<h2 id="数据类型转换">数据类型转换</h2>
+</li>
+<li>
+<p>什么是数据类型转换</p>
+<pre><code>*   将一个数据类型转换为其他的数据类型, 比如: 将String类型转换为Number类型, 将Number类型转换为Boolean类型... ...
+</code></pre>
+</li>
+<li>
+<p>toString()</p>
+<pre><code>*   将其它类型的数据转换为字符串类型
+</code></pre>
+<pre class="hljs javascript">`   <span class="hljs-keyword">var</span> num = <span class="hljs-number">12306</span>;
+   <span class="hljs-keyword">var</span> str= num .toString();
+   <span class="hljs-built_in">console</span>.log(str); <span class="hljs-comment">// 12306</span>
+   <span class="hljs-built_in">console</span>.log(<span class="hljs-keyword">typeof</span> str); <span class="hljs-comment">// string</span>
+   <span class="hljs-keyword">var</span> num1 = <span class="hljs-literal">true</span>;
+   <span class="hljs-keyword">var</span> str1 = num1.toString();
+   <span class="hljs-built_in">console</span>.log(str1 ); <span class="hljs-comment">// true</span>
+   <span class="hljs-built_in">console</span>.log(<span class="hljs-keyword">typeof</span> str1 ); <span class="hljs-comment">// string</span>
+`</pre>
+<ul>
+<li>注意:null和undefined没有toString()方法，如果强行调用,则会报错</li>
+</ul>
+<pre class="hljs javascript">` <span class="hljs-keyword">var</span> num2 = <span class="hljs-literal">undefined</span>;
+ <span class="hljs-keyword">var</span> str2 = num2.toString(); <span class="hljs-comment">// 报错</span>
+ <span class="hljs-built_in">console</span>.log(str2 );
+ <span class="hljs-keyword">var</span> num3 = <span class="hljs-literal">null</span>;
+ <span class="hljs-keyword">var</span> str3= num3.toString(); <span class="hljs-comment">// 报错</span>
+ <span class="hljs-built_in">console</span>.log(res4);
+ <span class="hljs-keyword">var</span> num4 = <span class="hljs-literal">NaN</span>;
+ <span class="hljs-keyword">var</span> str4 = num4.toString();
+ <span class="hljs-built_in">console</span>.log(str4); <span class="hljs-comment">// NaN</span>
+ <span class="hljs-built_in">console</span>.log(<span class="hljs-keyword">typeof</span> str4); <span class="hljs-comment">// String</span>
+`</pre>
+<ul>
+<li>toString()不会影响到原变量，它会将转换的结果返回</li>
+</ul>
+<pre class="hljs javascript">` <span class="hljs-keyword">var</span> num5 = <span class="hljs-number">10</span>;
+ <span class="hljs-keyword">var</span> str5 = str5.toString();
+ <span class="hljs-built_in">console</span>.log(<span class="hljs-keyword">typeof</span> num5 ); <span class="hljs-comment">// number</span>
+ <span class="hljs-built_in">console</span>.log(<span class="hljs-keyword">typeof</span> str5 ); <span class="hljs-comment">// string</span>
+`</pre>
+</li>
+<li>
+<p>String()函数</p>
+<pre><code>*   有的时候, 某些值并没有toString()方法，这个时候可以使用String()。比如：undefined和null
+
+        *   Number和Boolean的数据就是调用的toString()方法
+*   对于null和undefined，就不会调用toString()方法, 因为没有这个方法, 会在内部生成一个新的字符串
+</code></pre>
+</li>
+<li>
+<ul>
+<li></li>
+</ul>
+<pre><code>*   任何数据和 + 连接到一起都会转换为字符串
+</code></pre>
+<p>, 其内部实现原理和String()函数一样</p>
+<pre class="hljs javascript">`   <span class="hljs-keyword">var</span> num1 = <span class="hljs-number">100</span>;
+   <span class="hljs-keyword">var</span> res1 = num1 + <span class="hljs-string">""</span>;
+   <span class="hljs-built_in">console</span>.log(res1); <span class="hljs-comment">// 100</span>
+   <span class="hljs-built_in">console</span>.log(<span class="hljs-keyword">typeof</span> res1); <span class="hljs-comment">// string</span>
+   <span class="hljs-keyword">var</span> num2 = <span class="hljs-literal">true</span>;
+   <span class="hljs-keyword">var</span> res2 = num2 + <span class="hljs-string">""</span>;
+   <span class="hljs-built_in">console</span>.log(res2); <span class="hljs-comment">// true</span>
+   <span class="hljs-built_in">console</span>.log(<span class="hljs-keyword">typeof</span> res2); <span class="hljs-comment">// string</span>
+   <span class="hljs-keyword">var</span> num3 = <span class="hljs-literal">undefined</span>;
+   <span class="hljs-keyword">var</span> res3 = num3 + <span class="hljs-string">""</span>;
+   <span class="hljs-built_in">console</span>.log(res3); <span class="hljs-comment">// undefined</span>
+   <span class="hljs-built_in">console</span>.log(<span class="hljs-keyword">typeof</span> res3); <span class="hljs-comment">// string</span>
+   <span class="hljs-keyword">var</span> num4 = <span class="hljs-literal">null</span>;
+   <span class="hljs-keyword">var</span> res4 = num4 + <span class="hljs-string">""</span>;
+   <span class="hljs-built_in">console</span>.log(res4); <span class="hljs-comment">// null</span>
+   <span class="hljs-built_in">console</span>.log(<span class="hljs-keyword">typeof</span> res4); <span class="hljs-comment">// string</span>
+`</pre>
+</li>
+<li>
+<p>Number()函数</p>
+<pre><code>*   字符串 转 数字
+
+        *   如果是纯数字的字符串，则直接将其转换为数字
+</code></pre>
+<pre class="hljs javascript">`<span class="hljs-keyword">var</span> str1 = <span class="hljs-string">"666"</span>;
+<span class="hljs-keyword">var</span> res1 = <span class="hljs-built_in">Number</span>(str1);
+<span class="hljs-built_in">console</span>.log(res1); <span class="hljs-comment">// 666</span>
+<span class="hljs-built_in">console</span>.log(<span class="hljs-keyword">typeof</span>  res1); <span class="hljs-comment">// number</span>
+`</pre>
+<pre><code>        *   如果字符串中有非数字的内容，则转换为NaN
+</code></pre>
+<pre class="hljs javascript">`<span class="hljs-keyword">var</span> str2 = <span class="hljs-string">"itlike123"</span>;
+<span class="hljs-keyword">var</span> res2 = <span class="hljs-built_in">Number</span>(str2);
+<span class="hljs-built_in">console</span>.log(res2); <span class="hljs-comment">// NaN</span>
+`</pre>
+<pre><code>        *   如果字符串是一个空串或者是一个全是空格的字符串，则转换为0
+</code></pre>
+<pre class="hljs javascript">`<span class="hljs-keyword">var</span> str3 = <span class="hljs-string">""</span>;
+<span class="hljs-keyword">var</span> res3 = <span class="hljs-built_in">Number</span>(str3);
+<span class="hljs-built_in">console</span>.log(res3); <span class="hljs-comment">// 0</span>
+<span class="hljs-keyword">var</span> str4 = <span class="hljs-string">"    "</span>;
+<span class="hljs-keyword">var</span> res4 = <span class="hljs-built_in">Number</span>(str4);
+<span class="hljs-built_in">console</span>.log(res4); <span class="hljs-comment">// 0</span>
+`</pre>
+<ul>
+<li>undefined 转 数字</li>
+</ul>
+<pre class="hljs javascript">`<span class="hljs-keyword">var</span> str6 = <span class="hljs-literal">undefined</span>;
+<span class="hljs-keyword">var</span> res8 = <span class="hljs-built_in">Number</span>(str6);
+<span class="hljs-built_in">console</span>.log(res8); <span class="hljs-comment">// NaN</span>
+`</pre>
+<ul>
+<li>null 转 数字</li>
+</ul>
+<pre class="hljs javascript">`<span class="hljs-keyword">var</span> str5 = <span class="hljs-literal">null</span>;
+<span class="hljs-keyword">var</span> res7 = <span class="hljs-built_in">Number</span>(str5);
+<span class="hljs-built_in">console</span>.log(res7); <span class="hljs-comment">// 0</span>
+`</pre>
+<ul>
+<li>
+<p>布尔 转 数字</p>
+<pre><code>    *   true 转成 1, false 转成 0
+</code></pre>
+</li>
+</ul>
+<pre class="hljs javascript">`   <span class="hljs-keyword">var</span> bool1 = <span class="hljs-literal">true</span>;
+  <span class="hljs-keyword">var</span> res5 = <span class="hljs-built_in">Number</span>(bool1);
+  <span class="hljs-built_in">console</span>.log(res5); <span class="hljs-comment">// 1</span>
+  <span class="hljs-keyword">var</span> bool2 = <span class="hljs-literal">false</span>;
+  <span class="hljs-keyword">var</span> res6 = <span class="hljs-built_in">Number</span>(bool2);
+  <span class="hljs-built_in">console</span>.log(res6); <span class="hljs-comment">// 0</span>
+`</pre>
+</li>
+<li>
+<p>parseInt()函数和parseFloat()函数</p>
+<pre><code>*   Number()函数中无论混合字符串是否存在有效整数都会返回NaN, 利用parseInt()/parseFloat()可以提取字符串中的有效整数
+</code></pre>
+<ul>
+<li>
+<p>parseInt()和parseFloat()的区别是前者只能提取整数,后者可以提取小数</p>
+</li>
+<li>
+<p>parseInt()提取字符串中的整数</p>
+<pre><code>    *   从第一位有效数字开始, 直到遇到无效数字
+</code></pre>
+</li>
+</ul>
+<p>如果第一位不是有效数字, 什么都提取不到, 会返回NaN
+*   第一个参数是要转换的字符串，第二个参数是要转换的进制</p>
+<pre class="hljs javascript">` <span class="hljs-keyword">var</span> str7 = <span class="hljs-string">"300px"</span>;
+ <span class="hljs-keyword">var</span> res9 = <span class="hljs-built_in">parseInt</span>(str7);
+ <span class="hljs-built_in">console</span>.log(res9); <span class="hljs-comment">// 300</span>
+ <span class="hljs-keyword">var</span> str8 = <span class="hljs-string">"300px250"</span>;
+ <span class="hljs-keyword">var</span> res10 = <span class="hljs-built_in">parseInt</span>(str8);
+ <span class="hljs-built_in">console</span>.log(res10); <span class="hljs-comment">// 300</span>
+ <span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">parseInt</span>(<span class="hljs-string">"abc123"</span>));  <span class="hljs-comment">//返回NaN，如果第一个字符不是数字或者符号就返回NaN</span>
+<span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">parseInt</span>(<span class="hljs-string">""</span>));        <span class="hljs-comment">//空字符串返回NaN，Number("")返回0 </span>
+`</pre>
+<ul>
+<li>
+<p>parseFloat提取字符串中的小数</p>
+<pre><code>    *   会解析第一个. 遇到第二个.或者非数字结束
+</code></pre>
+<ul>
+<li>如果第一位不是有效数字, 什么都提取不到</li>
+<li>不支持第二个参数，只能解析10进制数</li>
+<li>如果解析的内容里只有整数，解析成整数</li>
+</ul>
+</li>
+</ul>
+<pre class="hljs javascript">`<span class="hljs-keyword">var</span> str9 = <span class="hljs-string">"20.5px"</span>;
+<span class="hljs-keyword">var</span> res11 = <span class="hljs-built_in">parseInt</span>(str9);
+<span class="hljs-built_in">console</span>.log(res11); <span class="hljs-comment">// 20</span>
+<span class="hljs-keyword">var</span> str10 = <span class="hljs-string">"20.5.5.5px"</span>;
+<span class="hljs-keyword">var</span> res12 = <span class="hljs-built_in">parseFloat</span>(str10);
+<span class="hljs-built_in">console</span>.log(res12); <span class="hljs-comment">// 20.5</span>
+`</pre>
+</li>
+<li>
+<p>对非String使用parseInt()或parseFloat(), 会先将其转换为String然后在操作</p>
+<pre class="hljs javascript">`   <span class="hljs-keyword">var</span> str11 = <span class="hljs-literal">true</span>;
+   <span class="hljs-keyword">var</span> res13 = <span class="hljs-built_in">parseInt</span>(str11); <span class="hljs-comment">// 这里相当于parseInt("true");</span>
+   <span class="hljs-built_in">console</span>.log(res13); <span class="hljs-comment">// NaN</span>
+   <span class="hljs-keyword">var</span> res14 = <span class="hljs-built_in">Number</span>(str11);
+   <span class="hljs-built_in">console</span>.log(res14); <span class="hljs-comment">// 1</span>
+<pre><code>  &lt;/div&gt;
+</code></pre>
+</hr>
+<h2 id="进制表示">进制表示</h2>
+</li>
+<li>
+<p>在JS中可以表示不同进制的数字(得看浏览器支持):</p>
+<ul>
+<li>
+<p>16进制的数字，则需要以0x开头</p>
+<p>num = 0x18;
+num = 0xcf;
+num = 0xAacf;
+`</pre></p>
+</li>
+<li>
+<p>8进制的数字，则需要以0开头</p>
+</li>
+</ul>
+<pre class="hljs undefined">`num = 016;
+`</pre>
+<ul>
+<li>2进制的数字，则需要以0b开头</li>
+</ul>
+<pre class="hljs undefined">`num = 0b1010;
+`</pre>
+</li>
+<li>
+<p>注意:</p>
+<pre><code>*   &quot;010&quot;这种字符串，有些浏览器会当成8进制解析，有些会当成10进制解析
+</code></pre>
+<ul>
+<li>可以在parseInt()或parseFloat中传递一个第二个参数，来指定数字的进制</li>
+</ul>
+<pre class="hljs javascript">`str = <span class="hljs-string">"070"</span>;
+<span class="hljs-comment">// str= parseInt(str,10);</span>
+str = <span class="hljs-built_in">Number</span>(str);    <span class="hljs-built_in">console</span>.log(<span class="hljs-keyword">typeof</span> str);
+<span class="hljs-built_in">console</span>.log(str);
+`</pre>
+<h2 id="运算符">运算符</h2>
+</li>
+<li>
+<p>基本定义</p>
+<pre><code>*   运算符也叫操作符, 通过运算符可以对一个或多个值进行运算,并获取运算结果,  比如：typeof就是运算符，可以来获得一个值的类型, 它会将该值的类型以字符串的形式返回: number string boolean undefined object
+</code></pre>
+</li>
+<li>
+<p>作用</p>
+<pre><code>*   运算符是告诉程序执行特定算术或逻辑操作的符号, 例如告诉程序, 某两个数相加, 相减等
+</code></pre>
+</li>
+<li>
+<p>分类</p>
+<pre><code>*   按照功能划分: 算术运算符, 位运算符, 关系运算符, 逻辑运算符
+</code></pre>
+<ul>
+<li>按照操作数个数划分:
+单目运算(只有一个操作数 如 : i++ !),
+双目运算(有两个操作数 如 : a+b;),
+三目运算(三目运算也称为问号表达式 a&gt;b ? 1 : 0;)</li>
+</ul>
+</li>
+<li>
+<p>运算符的结合性</p>
+<pre><code>*   JavaScript中各种运算符的结合性分为两种: 左结合性(自左至右) 和 右结合性(自右至左)
+</code></pre>
+<ul>
+<li>自左至右,即先左后右
+例如表达式: x - y + z;
+则y 应先与“-”号结合,执行 x-y 运算,然后再执行+z 的运算。
+这种自左至右的结合 方向就称为“左结合性”。</li>
+<li>自右至左,即先右后左
+例如:如x = y = z = 10
+由于“=”的 右结合性,应先执行z = 10; 再执行y = z 再执行x = y运算。</li>
+</ul>
+<h2 id="算术运算符">算术运算符</h2>
+</li>
+<li>
+<p>加法运算</p>
+<div class="image-package">
+<div class="image-container" style="max-width: 700px; max-height: 494px;">
+<div class="image-container-fill" style="padding-bottom: 45.95%;"></div>
+<div class="image-view" data-width="1075" data-height="494">![](//upload-images.jianshu.io/upload_images/1268909-2645be79e23a4804.png)</div>
+</div>
+<div class="image-caption">加法运算</div>
+</div>
+</li>
+<li>
+<p>减法运算</p>
+<div class="image-package">
+<div class="image-container" style="max-width: 700px; max-height: 355px;">
+<div class="image-container-fill" style="padding-bottom: 40.57%;"></div>
+<div class="image-view" data-width="875" data-height="355">![](//upload-images.jianshu.io/upload_images/1268909-c6dcc904c9a3e46b.png)</div>
+</div>
+<div class="image-caption">减法运算</div>
+</div>
+</li>
+<li>
+<p>乘法运算</p>
+<div class="image-package">
+<div class="image-container" style="max-width: 700px; max-height: 281px;">
+<div class="image-container-fill" style="padding-bottom: 30.349999999999998%;"></div>
+<div class="image-view" data-width="926" data-height="281">![](//upload-images.jianshu.io/upload_images/1268909-5f585d2c53ad9bdd.png)</div>
+</div>
+<div class="image-caption">乘法运算</div>
+</div>
+</li>
+<li>
+<p>除法运算</p>
+<div class="image-package">
+<div class="image-container" style="max-width: 700px; max-height: 289px;">
+<div class="image-container-fill" style="padding-bottom: 29.92%;"></div>
+<div class="image-view" data-width="966" data-height="289">![](//upload-images.jianshu.io/upload_images/1268909-0fc3e088aabc92d7.png)</div>
+</div>
+<div class="image-caption">除法运算</div>
+</div>
+</li>
+<li>
+<p>取余运算</p>
+<div class="image-package">
+<div class="image-container" style="max-width: 700px; max-height: 468px;">
+<div class="image-container-fill" style="padding-bottom: 45.440000000000005%;"></div>
+<div class="image-view" data-width="1030" data-height="468">![](//upload-images.jianshu.io/upload_images/1268909-e1da317eccd8b27f.png)</div>
+</div>
+<div class="image-caption">取余运算</div>
+</div>
+<h2 id="一元运算符">一元运算符</h2>
+</li>
+<li>
+<p>只需要一个操作数</p>
+</li>
+<li>
+<ul>
+<li>正号不会对数字产生任何影响</li>
+</ul>
+<pre class="hljs javascript">`   <span class="hljs-keyword">var</span> num = <span class="hljs-number">123</span>;
+    num = +num;
+   <span class="hljs-built_in">console</span>.log(num); <span class="hljs-comment">// 123</span>
+`</pre>
+<p>对于非Number类型的值,会将先转换为Number，然后再运算</p>
+<pre class="hljs javascript">`   <span class="hljs-keyword">var</span> bool = <span class="hljs-literal">true</span>;
+   <span class="hljs-keyword">var</span> res = +bool;
+   <span class="hljs-built_in">console</span>.log(res); <span class="hljs-comment">// 1</span>
+   <span class="hljs-keyword">var</span> str = <span class="hljs-string">"123"</span>;
+   res = +str;
+   <span class="hljs-built_in">console</span>.log(res); <span class="hljs-comment">// 123</span>
+   <span class="hljs-keyword">var</span> str2 = <span class="hljs-string">"123abc"</span>;
+   res = +str2;
+   <span class="hljs-built_in">console</span>.log(res); <span class="hljs-comment">// NaN, 所以内部不是调用parseInt, 而是Number()函数</span>
+   <span class="hljs-keyword">var</span> temp = <span class="hljs-literal">null</span>;
+   res = +temp;
+   <span class="hljs-built_in">console</span>.log(res); <span class="hljs-comment">// 0  </span>
+`</pre>
+</li>
+<li>
+<ul>
+<li>负号可以对数字进行负号的取反</li>
+</ul>
+<pre class="hljs javascript">`  <span class="hljs-keyword">var</span> num = <span class="hljs-number">456</span>;
+  num = -num;
+  <span class="hljs-built_in">console</span>.log(num); <span class="hljs-comment">// -456</span>
+<p><span class="hljs-keyword">var</span> result = <span class="hljs-number">1</span> + -<span class="hljs-string">&quot;2&quot;</span> + <span class="hljs-number">3</span>;
+<span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;result = &quot;</span>+result);
+`</pre></p>
+<h2 id="赋值运算符">赋值运算符</h2>
+</li>
+<li>
+<p>简单赋值运算符 =</p>
+<pre><code>*   格式: 变量 = 数据
+</code></pre>
+<pre class="hljs javascript">`<span class="hljs-comment">// 将等号右边的常量100赋值给左边的变量num</span>
+<span class="hljs-keyword">var</span> num = <span class="hljs-number">100</span>;
+<span class="hljs-comment">// 将等号右边的变量num中存储的值赋值给左边的变量value</span>
+<span class="hljs-keyword">var</span> value = num;    `</pre>
+<pre><code>*   赋值运算符左边只能是变量
+</code></pre>
+<pre class="hljs javascript">`<span class="hljs-number">110</span> = <span class="hljs-number">220</span>; <span class="hljs-comment">// 错误写法</span>
+<span class="hljs-keyword">var</span> str = <span class="hljs-number">110</span>;
+<span class="hljs-number">220</span> = str; <span class="hljs-comment">// 错误写法</span>
+`</pre>
+<pre><code>*   多个赋值运算符可以组成 赋值表达式, 赋值表达式具备右结合性
+</code></pre>
+<pre class="hljs cpp">`<span class="hljs-comment">// 从右至左计算</span>
+<span class="hljs-comment">//  先将10赋值给变量c, 然后将变量c中存储的值赋值给变量b</span>
+<span class="hljs-comment">// 然后将变量b中存储的值赋值给变量a, 最后a,b,c存储的都是10</span>
+a = b = c = <span class="hljs-number">10</span>;    `</pre>
+</li>
+<li>
+<p>复合赋值运算符</p>
+<pre class="hljs ruby">`  += 加后赋值 变量+=表达式 如<span class="hljs-symbol">:a+</span>=<span class="hljs-number">1</span>;即a=a+<span class="hljs-number">1</span>
+  -= 减后赋值 变量-=表达式 如<span class="hljs-symbol">:a-</span>=<span class="hljs-number">1</span>;即a=a-<span class="hljs-number">1</span>
+  *= 乘后赋值 变量=表达式 如<span class="hljs-symbol">:a=</span><span class="hljs-number">1</span>;即a=a*<span class="hljs-number">1</span>
+  /= 除后赋值 变量/=表达式 如<span class="hljs-symbol">:a/</span>=<span class="hljs-number">1</span>;即a=a/<span class="hljs-number">1</span>
+  %= 取模后赋值 变量%=表达式 如<span class="hljs-symbol">:a%</span>=<span class="hljs-number">1</span>;即a=a%<span class="hljs-number">1</span>
+`</pre>
+</li>
+<li>
+<p>复合赋值表达式运算</p>
+<pre><code>*   格式: 变量 复合赋值运算符 表达式; 如: a *= 1 + 2;
+</code></pre>
+<ul>
+<li>由于赋值运算符是右结合性, 所以会先计算等号右边, 然后再进行复合运算</li>
+</ul>
+<pre class="hljs javascript">`   <span class="hljs-keyword">var</span> value = <span class="hljs-number">5</span>;
+   value *= <span class="hljs-number">2</span> - <span class="hljs-number">2</span>; <span class="hljs-comment">// 等价于  value = 5 * (2 - 2);</span>
+   <span class="hljs-built_in">console</span>.log(value); <span class="hljs-comment">// 0</span>
+`</pre>
+<h1 id="自增自减运算符">自增/自减运算符</h1>
+</li>
+<li>
+<p>自增、自减运算符介绍</p>
+<pre><code>*   在程序设计中,经常遇到“i=i+1”和“i=i-1”这两种极为常用的操作。
+</code></pre>
+<ul>
+<li>JavaScript语言为这种操作提供了两个更为简洁的运算符,即++和--,分别叫做自增运算符和自减运算符。</li>
+</ul>
+</li>
+<li>
+<p>自增、自减运算符求值过程</p>
+<pre><code>*   无论运算符号在前还是在后, 变量在自身基础上都会改变
+</code></pre>
+<pre class="hljs javascript">`   <span class="hljs-keyword">var</span> num = <span class="hljs-number">1</span>;
+   num++; <span class="hljs-comment">// 等价于 num = num + 1;</span>
+   <span class="hljs-built_in">console</span>.log(num); <span class="hljs-comment">// 2</span>
+   num = <span class="hljs-number">1</span>;
+   ++num;
+   <span class="hljs-built_in">console</span>.log(num); <span class="hljs-comment">// 2</span>
+   num = <span class="hljs-number">1</span>;
+   num--; <span class="hljs-comment">// 等价于 num = num - 1;</span>
+   <span class="hljs-built_in">console</span>.log(num); <span class="hljs-comment">// 0</span>
+   num = <span class="hljs-number">1</span>;
+   --num;
+  <span class="hljs-built_in">console</span>.log(num); <span class="hljs-comment">// 0</span>
+`</pre>
+<pre><code>*   后缀表达式:x++, x--; 先用x的当前值作为表达式的值,再进行自增自减1运算。即“先用 后变”,也就是先用变量的值参与运算,变量的值再进行自增自减变化。
+</code></pre>
+<pre class="hljs javascript">`   <span class="hljs-keyword">var</span> a, b;
+   a = <span class="hljs-number">20</span>;
+   b = <span class="hljs-number">30</span>;
+   <span class="hljs-comment">// ++ 在后, 变量先参与其它运算, 然后再自增</span>
+  <span class="hljs-keyword">var</span> res = (a++) + (b++);
+  <span class="hljs-built_in">console</span>.log(res); <span class="hljs-comment">// 50</span>
+   a = <span class="hljs-number">10</span>;
+   b = <span class="hljs-number">20</span>;
+   <span class="hljs-comment">// -- 在后, 变量先参与其它运算, 然后再自减</span>
+   res = (a--) + (b--);
+   <span class="hljs-built_in">console</span>.log(res); <span class="hljs-comment">// 30</span>
+   <span class="hljs-built_in">console</span>.log(a); <span class="hljs-comment">// 9</span>
+   <span class="hljs-built_in">console</span>.log(b); <span class="hljs-comment">// 19</span>
+`</pre>
+<pre><code>*   前缀表达式:++x, --x; 其中x表示变量名,先完成变量的自增自减1运算,再用x的值作为表 达式的值;即“先变后用”,也就是变量的值先变,再用变量的值参与运算。
+</code></pre>
+<pre class="hljs javascript">` <span class="hljs-keyword">var</span> a, b;
+ a = <span class="hljs-number">10</span>;
+ b = <span class="hljs-number">20</span>;
+ <span class="hljs-comment">// ++ 在前, 变量先自增, 然后再参与其它运算</span>
+ res = (++a) + (++b);
+ <span class="hljs-built_in">console</span>.log(res); <span class="hljs-comment">// 32</span>
+ <span class="hljs-built_in">console</span>.log(a); <span class="hljs-comment">// 11</span>
+ <span class="hljs-built_in">console</span>.log(b); <span class="hljs-comment">// 21</span>
+  a = <span class="hljs-number">10</span>;
+  b = <span class="hljs-number">20</span>;
+  <span class="hljs-comment">// ++ 在前, 变量先自增, 然后再参与其它运算</span>
+  res = (--a) + (--b);
+  <span class="hljs-built_in">console</span>.log(res); <span class="hljs-comment">// 28</span>
+  <span class="hljs-built_in">console</span>.log(a); <span class="hljs-comment">// 9</span>
+  <span class="hljs-built_in">console</span>.log(b); <span class="hljs-comment">// 19</span>
+`</pre>
+<h1 id="逻辑运算符">逻辑运算符</h1>
+</li>
+<li>
+<p>使用目的</p>
+<pre><code>*   有时候，我们需要在多个条件同时成立的时候才能执行某段代码
+</code></pre>
+<ul>
+<li>比如：用户只有同时输入了QQ和密码，才能执行登录代码，如果只输入了QQ或者只输入了密码，就不能执行登录代码。这种情况下，我们就要借助于JavaScript提供的逻辑运算符。</li>
+</ul>
+</li>
+<li>
+<p>&amp;&amp;(与运算)</p>
+<pre><code>*   格式: 条件A &amp;amp;&amp;amp; 条件B
+</code></pre>
+<ul>
+<li>
+<p>运算结果
+只有当条件A和条件B都成立时，结果才为true；其余情况的结果都为false。因此，条件A或条件B只要有一个不成立，结果都为false
+口诀:一假则假</p>
+</li>
+<li>
+<p>逻辑与运算过程</p>
+<pre><code>    *   总是先判断条件A是否成立;
+</code></pre>
+<ul>
+<li>如果条件A成立，接着再判断条件B是否成立：如果条件B成立，“条件A &amp;&amp; 条件B”的结果就为true，如果条件B不成立，结果就为false;</li>
+<li>如果条件A不成立，就不会再去判断条件B是否成立：因为条件A已经不成立了，不管条件B如何结果肯定是false;</li>
+<li>如果两个值都是true则返回true;</li>
+</ul>
+</li>
+</ul>
+<pre class="hljs ruby">`var result = <span class="hljs-literal">true</span> &amp;&amp; <span class="hljs-literal">true</span>;
+<span class="hljs-regexp">//</span>只要有一个<span class="hljs-literal">false</span>，就返回<span class="hljs-literal">false</span>
+result = <span class="hljs-literal">true</span> &amp;&amp; <span class="hljs-literal">false</span>;
+result = <span class="hljs-literal">false</span> &amp;&amp; <span class="hljs-literal">true</span>;
+result = <span class="hljs-literal">false</span> &amp;&amp; <span class="hljs-literal">false</span>;
+`</pre>
+<ul>
+<li>短路测试</li>
+</ul>
+<pre class="hljs cpp">`    <span class="hljs-comment">//第一个值为true，会检查第二个值</span>
+   <span class="hljs-function"><span class="hljs-literal">true</span> &amp;&amp; <span class="hljs-title">alert</span><span class="hljs-params">(<span class="hljs-string">"我来了！！"</span>)</span></span>;
+    <span class="hljs-comment">//第一个值为false，不会检查第二个值</span>
+   <span class="hljs-function"><span class="hljs-literal">false</span> &amp;&amp; <span class="hljs-title">alert</span><span class="hljs-params">(<span class="hljs-string">"我没有来！！"</span>)</span></span>;
+`</pre>
+<pre><code>*   注意点
+</code></pre>
+<p>对于非Boolean类型的数值, 逻辑与会自动将其转换为Boolean类型来判断
+如果条件A不成立, 则返回条件A的数值本身
+如果条件A成立, 不管条件B成不成立都返回条件B数值本身</p>
+<pre class="hljs javascript">`      <span class="hljs-keyword">var</span> result =  <span class="hljs-string">"123"</span> &amp;&amp; <span class="hljs-string">"abc"</span>;
+      <span class="hljs-built_in">console</span>.log(result); <span class="hljs-comment">// "abc"</span>
+      result =  <span class="hljs-string">"123"</span> &amp;&amp; <span class="hljs-number">0</span>;
+      <span class="hljs-built_in">console</span>.log(result); <span class="hljs-comment">// 0</span>
+      result =  <span class="hljs-literal">null</span> &amp;&amp; <span class="hljs-number">0</span>;
+      <span class="hljs-built_in">console</span>.log(result); <span class="hljs-comment">// null</span>
+`</pre>
+</li>
+<li>
+<p>||(或运算)</p>
+<div class="image-package">
+<div class="image-container" style="max-width: 700px; max-height: 643px;">
+<div class="image-container-fill" style="padding-bottom: 79.09%;"></div>
+<div class="image-view" data-width="813" data-height="643">![](//upload-images.jianshu.io/upload_images/1268909-24d5be34520a0bcd.png)</div>
+</div>
+<div class="image-caption">或运算</div>
+</div>
+<pre><code>*   注意点
+</code></pre>
+<p>对于非Boolean类型的数值, 逻辑或自动会将其转换为Boolean类型来判断
+如果条件A不成立, 则不管条件B成不成立都返回条件B数值本身
+如果条件A成立, 则返回条件A的数值本身</p>
+<pre class="hljs javascript">`  <span class="hljs-keyword">var</span>  result =  <span class="hljs-literal">null</span> || <span class="hljs-number">0</span>;
+  <span class="hljs-built_in">console</span>.log(result); <span class="hljs-comment">// 0</span>
+  result =  <span class="hljs-string">"123"</span> || <span class="hljs-string">"abc"</span>;
+  <span class="hljs-built_in">console</span>.log(result); <span class="hljs-comment">// "123"</span>
+  result =  <span class="hljs-string">"123"</span> || <span class="hljs-number">0</span>;
+  <span class="hljs-built_in">console</span>.log(result); <span class="hljs-comment">// "123"</span>
+`</pre>
+</li>
+<li>
+<p>!(非运算)</p>
+<div class="image-package">
+<div class="image-container" style="max-width: 700px; max-height: 549px;">
+<div class="image-container-fill" style="padding-bottom: 43.13%;"></div>
+<div class="image-view" data-width="1273" data-height="549">![](//upload-images.jianshu.io/upload_images/1268909-88c62404328f1c67.png)</div>
+</div>
+<div class="image-caption">非运算</div>
+</div>
+<h1 id="关系运算符">关系运算符</h1>
+</li>
+<li>
+<p>关系运算符存在的意义</p>
+<pre><code>*   默认情况下，我们在程序中写的每一句正确代码都会被执行。但很多时候，我们想在某个条件成立的情况下才执行某一段代码
+</code></pre>
+<ul>
+<li>这种情况的话可以使用条件语句来完成，但是学习条件语句之前，我们先来看一些更基础的知识：如何判断一个条件成不成立。</li>
+</ul>
+</li>
+<li>
+<p>JavaScript中的真假性</p>
+<pre><code>*   在JavaScript中，条件成立称为“真”，条件不成立称为“假”，因此，判断条件是否成立就是判断条件的“真假”。
+</code></pre>
+<ul>
+<li>在JavaScript已经给我们定义好了一个Boolean类型的值, 取值是true和false, true代表真, false代表假</li>
+<li>而接下来我们要学习的关系运算符它的返回值正好就是Boolean类型的值, 也就是说关系运算符的返回值要么是true,要么是false</li>
+</ul>
+</li>
+<li>
+<p>图示</p>
+<div class="image-package">
+<div class="image-container" style="max-width: 633px; max-height: 344px;">
+<div class="image-container-fill" style="padding-bottom: 54.339999999999996%;"></div>
+<div class="image-view" data-width="633" data-height="344">![](//upload-images.jianshu.io/upload_images/1268909-96176b626150a353.png)</div>
+</div>
+<div class="image-caption">关系运算符</div>
+</div>
+</li>
+<li>
+<p>示例</p>
+<pre class="hljs javascript">`   <span class="hljs-keyword">var</span> a, b;
+   a = <span class="hljs-number">20</span>;
+   b = <span class="hljs-number">20</span>;
+   <span class="hljs-built_in">console</span>.log(a &gt; b); <span class="hljs-comment">// false</span>
+   <span class="hljs-built_in">console</span>.log(a &lt; b); <span class="hljs-comment">// false</span>
+   <span class="hljs-built_in">console</span>.log(a &gt;= b); <span class="hljs-comment">// true</span>
+   <span class="hljs-built_in">console</span>.log(a &lt;= b); <span class="hljs-comment">// true</span>
+   <span class="hljs-built_in">console</span>.log(a == b); <span class="hljs-comment">// true</span>
+   <span class="hljs-built_in">console</span>.log(a != b); <span class="hljs-comment">// false</span>
+`</pre>
+</li>
+<li>
+<p>对于非数值进行比较时，会将其转换为数值然后在比较</p>
+<pre class="hljs javascript">`<span class="hljs-built_in">console</span>.log(<span class="hljs-number">1</span> &gt; <span class="hljs-literal">true</span>);
+<span class="hljs-built_in">console</span>.log(<span class="hljs-number">1</span> &gt;= <span class="hljs-literal">false</span>);
+<span class="hljs-built_in">console</span>.log(<span class="hljs-number">1</span> &gt; <span class="hljs-string">"0"</span>); 
+<span class="hljs-built_in">console</span>.log(<span class="hljs-number">1</span> &gt; <span class="hljs-literal">null</span>);
+<span class="hljs-built_in">console</span>.log(<span class="hljs-number">1</span> &gt; <span class="hljs-literal">true</span>); <span class="hljs-comment">//false</span>
+<span class="hljs-built_in">console</span>.log(<span class="hljs-number">1</span> &gt;= <span class="hljs-literal">false</span>); <span class="hljs-comment">//true</span>
+<span class="hljs-built_in">console</span>.log(<span class="hljs-number">1</span> &gt; <span class="hljs-string">"0"</span>); <span class="hljs-comment">//true</span>
+<span class="hljs-built_in">console</span>.log(<span class="hljs-number">1</span> &gt; <span class="hljs-literal">null</span>); <span class="hljs-comment">//true</span>
+`</pre>
+</li>
+<li>
+<p>如果符号两侧的值都是字符串时，不会将其转换为数字进行比较, 而会分别比较字符串中字符的Unicode编码</p>
+<pre><code>*   比较字符编码时是一位一位进行比较
+</code></pre>
+<ul>
+<li>如果两位一样，则比较下一位，所以借用它来对英文进行排序</li>
+<li>比较中文时没有意义</li>
+<li>测试</li>
+</ul>
+<pre class="hljs cpp">`console.<span class="hljs-built_in">log</span>(<span class="hljs-string">"a"</span> &lt; <span class="hljs-string">"b"</span>);
+console.<span class="hljs-built_in">log</span>(<span class="hljs-string">"abc"</span> &lt; <span class="hljs-string">"abd"</span>);
+console.<span class="hljs-built_in">log</span>(<span class="hljs-string">"你"</span> &gt; <span class="hljs-string">"我"</span>);    `</pre>
+</li>
+<li>
+<p>null、undefined 、NaN比较</p>
+<pre class="hljs javascript">`<span class="hljs-built_in">console</span>.log(<span class="hljs-literal">null</span> == <span class="hljs-number">0</span>); <span class="hljs-comment">// false</span>
+<span class="hljs-built_in">console</span>.log(<span class="hljs-literal">undefined</span> == <span class="hljs-number">0</span>); <span class="hljs-comment">// false</span>
+<span class="hljs-comment">// 永远不要判断两个NaN是否相等</span>
+<span class="hljs-built_in">console</span>.log(<span class="hljs-literal">NaN</span> == <span class="hljs-literal">NaN</span>); <span class="hljs-comment">// false</span>
+<p><span class="hljs-comment">/*</p>
+<ul>
+<li>可以通过isNaN()函数来判断一个值是否是NaN</li>
+<li>如果该值是NaN则返回true，否则返回false
+*/</span>
+<span class="hljs-keyword">var</span> num = <span class="hljs-literal">NaN</span>;
+<span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">isNaN</span>(num)); <span class="hljs-comment">// true</span></li>
+</ul>
+<p><span class="hljs-comment">// undefined 衍生自 null, 所以返回true</span>
+<span class="hljs-built_in">console</span>.log(<span class="hljs-literal">null</span> == <span class="hljs-literal">undefined</span>); <span class="hljs-comment">// true;</span>
+<span class="hljs-built_in">console</span>.log(<span class="hljs-literal">null</span> === <span class="hljs-literal">undefined</span>); <span class="hljs-comment">// false;</span></p>
+<p><span class="hljs-comment">// == 判断值是否相等</span>
+<span class="hljs-comment">// == 会进行数据类型转换</span>
+<span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;123&quot;</span> == <span class="hljs-number">123</span>); <span class="hljs-comment">// true</span>
+<span class="hljs-comment">// === 判断值和类型时候同时相等</span>
+<span class="hljs-comment">// === 不会进行数据类型转换</span>
+<span class="hljs-built_in">console</span>.log(<span class="hljs-string">&quot;123&quot;</span> === <span class="hljs-number">123</span>); <span class="hljs-comment">// false     </span>
+`</pre></p>
+</li>
+<li>
+<p>注意</p>
+<pre><code>*   比较两个字符串型的数字，可能会得到不可预期的结果
+</code></pre>
+<ul>
+<li>所以, 在比较两个字符串型的数字时，一定要转型</li>
+<li>console.log(&quot;1111123&quot; &lt; &quot;124&quot;);</li>
+</ul>
+<h1 id="逗号运算符">逗号运算符</h1>
+</li>
+<li>
+<p>在JavaScript中逗号“,”也是一种运算符,称为逗号运算符。 其功能是把多个表达式连接起来组成一个表达式, 称为逗号表达式。</p>
+<pre><code>*   一般形式形式:　表达式1，表达式2，… …，表达式n;
+</code></pre>
+<ul>
+<li>例如: a = 1 + 1,b = 3 * 4, c = 10 / 2;</li>
+</ul>
+</li>
+<li>
+<p>求值过程</p>
+<pre><code>*   表达式1，表达式2，… …，表达式n;
+</code></pre>
+<ul>
+<li>逗号表达式的运算过程是：先算表达式1，再算表达式2，依次算到表达式n</li>
+<li>整个逗号表达式的值是最后一个表达式的值</li>
+<li>案例</li>
+</ul>
+<pre class="hljs javascript">`  <span class="hljs-keyword">var</span> a, b, c, d;
+   <span class="hljs-comment">/*
+  1.先计算表达式1, a = 2
+  2.再计算表达式2, b = 12
+ 3.再计算表达式3, c = 5
+  4.将表达式3的结果返回给d
+  */</span>
+ d = (a = <span class="hljs-number">1</span> + <span class="hljs-number">1</span>,b = <span class="hljs-number">3</span> * <span class="hljs-number">4</span>, c = <span class="hljs-number">10</span> / <span class="hljs-number">2</span>);
+ <span class="hljs-built_in">console</span>.log(d); <span class="hljs-comment">// 5</span>
+`</pre>
+</li>
+<li>
+<p>使用注意</p>
+<pre><code>*   程序中使用逗号表达式, 通常是要分别求逗号表达式内各表达式的值,并不一定要求整个逗号表达式的值。
+</code></pre>
+<ul>
+<li>并不是在所有出现逗号的地方都组成逗号表达式,例如在变量说明中,函数参数表中逗号只是用作各变量之间的间隔符。</li>
+</ul>
+<pre class="hljs javascript">`    <span class="hljs-keyword">var</span> a, b, c;  <span class="hljs-comment">//这里的逗号只是分隔符</span>
+    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">sendMessage</span>(<span class="hljs-params">num, content</span>) </span>{ <span class="hljs-comment">//这里的逗号只是分隔符</span>
+           <span class="hljs-built_in">console</span>.log(num, content);
+    }
+    <span class="hljs-string">``</span><span class="hljs-string">`    </span>`</pre>
+<h1 id="三目运算符条件运算符">三目运算符(条件运算符)</h1>
+</li>
+<li>
+<p>格式: 条件表达式 ? 语句1 : 语句2;</p>
+</li>
+<li>
+<p>求值规则</p>
+<pre class="hljs cpp">`如果条件表达式为<span class="hljs-literal">true</span>，则执行语句<span class="hljs-number">1</span>，并返回执行结果
+如果条件表达式为<span class="hljs-literal">false</span>，则执行语句<span class="hljs-number">2</span>，并返回执行结果
+<span class="hljs-comment">// 弹第一个</span>
+<span class="hljs-literal">true</span>?alert(<span class="hljs-string">"语句1"</span>) : alert(<span class="hljs-string">"语句2"</span>);
+<span class="hljs-comment">// 弹第二个</span>
+<span class="hljs-literal">false</span>?alert(<span class="hljs-string">"语句1"</span>) : alert(<span class="hljs-string">"语句2"</span>);
+`</pre>
+</li>
+<li>
+<p>注意点</p>
+<pre><code>*   条件运算符?和:是一对运算符,不能分开单独使用
+</code></pre>
+<ul>
+<li>如果条件的表达式的求值结果是一个非布尔值, 会将其转换为布尔值然后在运算</li>
+</ul>
+<pre class="hljs java">` <span class="hljs-comment">// 弹第二个</span>
+ <span class="hljs-keyword">null</span>?alert(<span class="hljs-string">"语句1"</span>) : alert(<span class="hljs-string">"语句2"</span>);
+ <span class="hljs-comment">// 弹第一个</span>
+ <span class="hljs-string">"abc"</span>?alert(<span class="hljs-string">"语句1"</span>) : alert(<span class="hljs-string">"语句2"</span>);
+`</pre>
+<h1 id="运算符的优先级">运算符的优先级</h1>
+</li>
+<li>
+<p>优先级</p>
+<pre><code>*   JavaScript中,运算符的运算优先级共分为15 级。1 级最高,15 级最低。
+</code></pre>
+<ul>
+<li>在表达式中,优先级较高的先于优先级较低的进行运算。
+先计算优先级高的
+优先级相同则左结合计算
+可以使用()来改变优先级</li>
+</ul>
+</li>
+<li>
+<p>图示</p>
+<div class="image-package">
+<div class="image-container" style="max-width: 630px; max-height: 600px;">
+<div class="image-container-fill" style="padding-bottom: 95.24000000000001%;"></div>
+<div class="image-view" data-width="630" data-height="600">![](//upload-images.jianshu.io/upload_images/1268909-ab5c5def273e1c15.png)</div>
+</div>
+<div class="image-caption">运算符的优先级</div>
+</div>
+<h1 id="练习">练习</h1>
+</li>
+<li>
+<p>用户从键盘输入3个整数, 找到最大值并输出?</p>
+<pre class="hljs javascript">`    <span class="hljs-comment">// 1.定义3个变量, 接收用户输入的值</span>
+    <span class="hljs-keyword">var</span> num1, num2, num3, max;
+<pre><code>&lt;span class=&quot;hljs-comment&quot;&gt;// 2.利用prompt()接收用户输入的值&lt;/span&gt;
+num1 = &lt;span class=&quot;hljs-built_in&quot;&gt;Number&lt;/span&gt;(prompt(&lt;span class=&quot;hljs-string&quot;&gt;'请输入第一个数:'&lt;/span&gt;));
+num2 = +(prompt(&lt;span class=&quot;hljs-string&quot;&gt;'请输入第二个数:'&lt;/span&gt;));
+num3 = +(prompt(&lt;span class=&quot;hljs-string&quot;&gt;'请输入第三个数:'&lt;/span&gt;));
+
+&lt;span class=&quot;hljs-comment&quot;&gt;// 3. 定义变量保存最大值&lt;/span&gt;
+&lt;span class=&quot;hljs-comment&quot;&gt;// var max;&lt;/span&gt;
+
+&lt;span class=&quot;hljs-comment&quot;&gt;// 4. 利用三目运算符进行两两比较&lt;/span&gt;
+&lt;span class=&quot;hljs-comment&quot;&gt;/*max = num1 &amp;gt; num2 ? num1 : num2;
+max = max &amp;gt; num3 ? max : num3;*/&lt;/span&gt;
+&lt;span class=&quot;hljs-comment&quot;&gt;// 不推荐&lt;/span&gt;
+max = (num1 &amp;gt; num2 ? num1 : num2) &amp;gt; num3 ? (num1 &amp;gt; num2 ? num1 : num2) : num3;
+
+&lt;span class=&quot;hljs-comment&quot;&gt;// 5. 输出结果&lt;/span&gt;
+alert(max);
+
+  &lt;/div&gt;
+</code></pre>
+</hr>
+<div class="show-content-free">
+        <h2>文章配套视频</h2>
+</li>
+</ul>
+<ul>
+<li><a href="https://study.163.com/course/introduction/1005973001.htm" target="_blank" rel="nofollow">https://study.163.com/course/introduction/1005973001.htm</a></li>
+</ul>
+<h2>1.什么是代码块</h2>
+<p><strong>简介</strong></p>
+<pre class="hljs css"><code class="css">程序是由一条一条语句构成的, 
+语句是按照自上向下的顺序一条一条执行的, 
+在<span class="hljs-selector-tag">JS</span>中可以使用{}来为语句进行分组
+同一个{}中的语句我们称为是一组语句，
+它们要么都执行，要么都不执行。
+</code></pre>
+<p><strong>使用</strong><br>
+JS中的代码块，<br>
+只具有分组的的作用，<br>
+没有其他的用途,<br>
+代码块里面的内容，<br>
+在外部是完全可见的。</p>
+<p><strong>列如:</strong></p>
+<pre class="hljs javascript"><code class="javascript">javascript
+      {
+        <span class="hljs-keyword">var</span> name = <span class="hljs-string">'撩课学院'</span>;  
+        <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"itlike.com"</span>);
+        <span class="hljs-built_in">document</span>.write(<span class="hljs-string">"喜欢IT, 就上撩课!"</span>);
+      }
+javascript
+ <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"name = "</span> + name);
+</code></pre>
+<h2>2. 流程控制语句</h2>
+<p><strong>基本概念</strong><br>
+默认情况下，<br>
+程序的运行流程是这样的：<br>
+运行程序后，<br>
+系统会按书写从上至下顺序<br>
+执行程序中的每一行代码,<br>
+但是这并不能满足<br>
+我们所有的开发需求</p>
+<p>如下图:</p>
+<br>
+<div class="image-package">
+<div class="image-container" style="max-width: 147px; max-height: 254px; background-color: transparent;">
+<div class="image-container-fill" style="padding-bottom: 172.79%;"></div>
+<div class="image-view" data-width="147" data-height="254"><img data-original-src="//upload-images.jianshu.io/upload_images/13437285-7e789c7960777a28.png" data-original-width="147" data-original-height="254" data-original-format="image/png" data-original-filesize="19281" style="cursor: zoom-in;" class="" src="//upload-images.jianshu.io/upload_images/13437285-7e789c7960777a28.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/147/format/webp"></div>
+</div>
+<div class="image-caption"></div>
+</div>
+<p>实际开发中,<br>
+我们需要根据<br>
+不同的条件执行<br>
+不同的代码或者<br>
+重复执行某一段代码</p>
+<div class="image-package">
+<div class="image-container" style="max-width: 441px; max-height: 240px;">
+<div class="image-container-fill" style="padding-bottom: 54.42%;"></div>
+<div class="image-view" data-width="441" data-height="240"><img data-original-src="//upload-images.jianshu.io/upload_images/13437285-d6445c9168c7ee45.png" data-original-width="441" data-original-height="240" data-original-format="image/png" data-original-filesize="41803" style="cursor: zoom-in;" class="image-loading"></div>
+</div>
+<div class="image-caption"></div>
+</div>
+<pre class="hljs undefined"><code>为了方便我们控制程序的运行流程，
+JavaScript提供3种流程结构，
+不同的流程结构可以实现不同的运行流程。
+这3种流程结构分别是
+顺序、选择、循环:
+<p>三种基本控制结构构造.
+顺序结构
+默认的流程结构。按照书写顺序从上至下执行每一条语句
+选择结构
+对给定的条件进行判断，再根据判断结果来决定执行哪一段代码
+循环结构
+在给定条件成立的情况下，反复执行某一段代码
+</code></pre></p>
+<p>if语句<br>
+如果条件表达式为真,执行语句块1,否则不执行<br>
+<code>if(条件表达式) { 语句块1 } 后续语句;</code></p>
+<pre class="hljs javascript"><code class="javascript">  <span class="hljs-keyword">if</span>(age &gt; <span class="hljs-number">18</span>)
+  {
+      <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"可以上网"</span>);
+  }
+  <span class="hljs-string">``</span><span class="hljs-string">``</span>
+</code></pre>
+<p>如果条件表达式为真,则执行语句块1,否则执行语句块2</p>
+<pre class="hljs cpp"><code class="cpp">  <span class="hljs-keyword">if</span>(条件表达式)
+  {
+      语句块<span class="hljs-number">1</span>
+  }<span class="hljs-keyword">else</span>{
+      语句块<span class="hljs-number">2</span>
+  }
+<p><span class="hljs-keyword">if</span>(age &gt; <span class="hljs-number">18</span>)
+{
+console.<span class="hljs-built_in">log</span>(<span class="hljs-string">&quot;可以上网&quot;</span>);
+}<span class="hljs-keyword">else</span>{
+console.<span class="hljs-built_in">log</span>(<span class="hljs-string">&quot;你妈妈喊你吃饭&quot;</span>);
+}
+</code></pre></p>
+<p><strong>特点</strong></p>
+<pre class="hljs bash"><code class="bash"><span class="hljs-keyword">if</span>和<span class="hljs-keyword">else</span>后面的代码块({})只有一个会被执行 
+如果条件表达式1为真,则执行语句块1,
+否则判断条件表达式2,
+如果为真执行语句块2,
+否则再判断条件表达式3,
+如果真执行语句块3, 
+当表达式1、2、3都不满足,会执行最后一个<span class="hljs-keyword">else</span>语句
+</code></pre>
+<pre class="hljs cpp"><code class="cpp"> 代码如下:
+      <span class="hljs-keyword">if</span>(条件表达式<span class="hljs-number">1</span>)
+      {
+          语句块<span class="hljs-number">1</span>
+      }<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(条件表达式<span class="hljs-number">2</span>){
+          语句块<span class="hljs-number">2</span>
+      }<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(条件表达式<span class="hljs-number">3</span>){
+          语句块<span class="hljs-number">3</span>
+      }<span class="hljs-keyword">else</span>{
+          语句块<span class="hljs-number">4</span>
+<pre><code>  &lt;span class=&quot;hljs-keyword&quot;&gt;if&lt;/span&gt;(age&amp;gt;&lt;span class=&quot;hljs-number&quot;&gt;40&lt;/span&gt;)
+  {
+      console.&lt;span class=&quot;hljs-built_in&quot;&gt;log&lt;/span&gt;(&lt;span class=&quot;hljs-string&quot;&gt;&quot;老年人&quot;&lt;/span&gt;);
+  }&lt;span class=&quot;hljs-keyword&quot;&gt;else&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;if&lt;/span&gt;(age&amp;gt;&lt;span class=&quot;hljs-number&quot;&gt;25&lt;/span&gt;){
+      console.&lt;span class=&quot;hljs-built_in&quot;&gt;log&lt;/span&gt;(&lt;span class=&quot;hljs-string&quot;&gt;&quot;中年人&quot;&lt;/span&gt;);
+  }&lt;span class=&quot;hljs-keyword&quot;&gt;else&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;if&lt;/span&gt;(age&amp;gt;&lt;span class=&quot;hljs-number&quot;&gt;18&lt;/span&gt;){
+      console.&lt;span class=&quot;hljs-built_in&quot;&gt;log&lt;/span&gt;(&lt;span class=&quot;hljs-string&quot;&gt;&quot;成年人&quot;&lt;/span&gt;);
+  }&lt;span class=&quot;hljs-keyword&quot;&gt;else&lt;/span&gt;{
+      console.&lt;span class=&quot;hljs-built_in&quot;&gt;log&lt;/span&gt;(&lt;span class=&quot;hljs-string&quot;&gt;&quot;未成年&quot;&lt;/span&gt;);
+  }
+</code></pre>
+<p>特点
+这么多大括号中只有一个大括号中的内容会被执行
+当执行到后面条件的时候证明前面的条件不满足
+<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>可以只有一个, 也可以有多个, 但是都必须添加在<span class="hljs-keyword">if</span>和<span class="hljs-keyword">else</span>之间</p>
+<p>注意事项
+如果只有一条语句时<span class="hljs-keyword">if</span>后面的大括号可以省略
+<span class="hljs-keyword">if</span>(age &gt; <span class="hljs-number">18</span>)
+console.<span class="hljs-built_in">log</span>(<span class="hljs-string">&quot;成年人&quot;</span>);</p>
+<p>注意:受到<span class="hljs-keyword">if</span>管制的只有紧跟其后的那条语句
+开发中尽量不要省略大括号</p>
+<pre><code>    &lt;span class=&quot;hljs-keyword&quot;&gt;if&lt;/span&gt;(&lt;span class=&quot;hljs-literal&quot;&gt;false&lt;/span&gt;)
+        console.&lt;span class=&quot;hljs-built_in&quot;&gt;log&lt;/span&gt;(&lt;span class=&quot;hljs-string&quot;&gt;&quot;语句1&quot;&lt;/span&gt;);
+    console.&lt;span class=&quot;hljs-built_in&quot;&gt;log&lt;/span&gt;(&lt;span class=&quot;hljs-string&quot;&gt;&quot;语句2&quot;&lt;/span&gt;); &lt;span class=&quot;hljs-comment&quot;&gt;// 语句2会被输出&lt;/span&gt;
+</code></pre>
+<p>分号“;”也是一条语句, 空语句
+<span class="hljs-keyword">if</span>(<span class="hljs-number">4</span> &gt; <span class="hljs-number">6</span>);
+{
+console.<span class="hljs-built_in">log</span>(<span class="hljs-string">&quot;4 &gt; 6&quot;</span>);
+}
+<span class="hljs-comment">// 输出结果: 4 &gt; 6, if管制的紧跟其后的那个分号</span>
+<span class="hljs-comment">// {}在JS中仅仅代表告诉系统里面的语句是一个整体, 没有别的用途,不会影响代码的执行</span></p>
+<p><span class="hljs-keyword">if</span> <span class="hljs-keyword">else</span>是一个整体， <span class="hljs-keyword">else</span>匹配<span class="hljs-keyword">if</span>的时候匹配离它最近的一个<span class="hljs-keyword">if</span></p>
+<pre><code>     &lt;span class=&quot;hljs-keyword&quot;&gt;if&lt;/span&gt;(&lt;span class=&quot;hljs-number&quot;&gt;0&lt;/span&gt;)
+          &lt;span class=&quot;hljs-keyword&quot;&gt;if&lt;/span&gt;(&lt;span class=&quot;hljs-number&quot;&gt;1&lt;/span&gt;)
+              console.&lt;span class=&quot;hljs-built_in&quot;&gt;log&lt;/span&gt;(&lt;span class=&quot;hljs-string&quot;&gt;&quot;A&quot;&lt;/span&gt;);
+          &lt;span class=&quot;hljs-keyword&quot;&gt;else&lt;/span&gt; 
+              console.&lt;span class=&quot;hljs-built_in&quot;&gt;log&lt;/span&gt;(&lt;span class=&quot;hljs-string&quot;&gt;&quot;B&quot;&lt;/span&gt;);
+      &lt;span class=&quot;hljs-keyword&quot;&gt;else&lt;/span&gt; 
+          &lt;span class=&quot;hljs-keyword&quot;&gt;if&lt;/span&gt; (&lt;span class=&quot;hljs-number&quot;&gt;1&lt;/span&gt;)
+              console.&lt;span class=&quot;hljs-built_in&quot;&gt;log&lt;/span&gt;(&lt;span class=&quot;hljs-string&quot;&gt;&quot;C&quot;&lt;/span&gt;); 
+          &lt;span class=&quot;hljs-keyword&quot;&gt;else&lt;/span&gt;
+              console.&lt;span class=&quot;hljs-built_in&quot;&gt;log&lt;/span&gt;(&lt;span class=&quot;hljs-string&quot;&gt;&quot;D&quot;&lt;/span&gt;);
+</code></pre>
+<p>对于非Boolean类型的值,会先转换为Boolean类型后再判断</p>
+<pre><code>   &lt;span class=&quot;hljs-keyword&quot;&gt;if&lt;/span&gt; (&lt;span class=&quot;hljs-number&quot;&gt;0&lt;/span&gt;) {
+          console.&lt;span class=&quot;hljs-built_in&quot;&gt;log&lt;/span&gt;(&lt;span class=&quot;hljs-string&quot;&gt;&quot;itlike\n&quot;&lt;/span&gt;); &lt;span class=&quot;hljs-comment&quot;&gt;// 不会被执行&lt;/span&gt;
+      }
+  ```
+</code></pre>
+<p>判断变量与常量问题</p>
+<p>但凡遇到比较一个变量等于或者不等于某一个常量的时候，把常量写在前面</p>
+<pre><code>    &lt;span class=&quot;hljs-comment&quot;&gt;// if(a = 0)  // 错误写法, 但不会报错&lt;/span&gt;
+        &lt;span class=&quot;hljs-keyword&quot;&gt;if&lt;/span&gt; (&lt;span class=&quot;hljs-number&quot;&gt;0&lt;/span&gt; == a) {
+            console.&lt;span class=&quot;hljs-built_in&quot;&gt;log&lt;/span&gt;(&lt;span class=&quot;hljs-string&quot;&gt;&quot;a的值是0\n&quot;&lt;/span&gt;);
+        }&lt;span class=&quot;hljs-keyword&quot;&gt;else&lt;/span&gt;{
+           console.&lt;span class=&quot;hljs-built_in&quot;&gt;log&lt;/span&gt;(&lt;span class=&quot;hljs-string&quot;&gt;&quot;a的值不是0\n&quot;&lt;/span&gt;);
+        }
+
+     &lt;span class=&quot;hljs-comment&quot;&gt;/*
+        本来是先判断变量a存储的值是否等于0,
+        但是如果不小心写成a=0,代表把0存储到a中.
+        为了避免这种问题判断是否相等时把常量写前面,
+        因为等号左边只能是变量, 所以如果少写一个等号会报错
+    */&lt;/span&gt;
+</code></pre>
+<p><span class="hljs-keyword">if</span>语句可以嵌套使用</p>
+<pre><code>   var num = &lt;span class=&quot;hljs-number&quot;&gt;20&lt;/span&gt;;
+      &lt;span class=&quot;hljs-keyword&quot;&gt;if&lt;/span&gt; (num &amp;gt;= &lt;span class=&quot;hljs-number&quot;&gt;10&lt;/span&gt;)
+      {
+          &lt;span class=&quot;hljs-keyword&quot;&gt;if&lt;/span&gt;(num &amp;lt;= &lt;span class=&quot;hljs-number&quot;&gt;30&lt;/span&gt;)
+          {
+              console.&lt;span class=&quot;hljs-built_in&quot;&gt;log&lt;/span&gt;(&lt;span class=&quot;hljs-string&quot;&gt;&quot;一个10~30之间的数&quot;&lt;/span&gt;)
+          }
+      }
+</code></pre>
+<p>习题训练</p>
+<p>从键盘输入一个整数，判断其是否是偶数，如果是偶数就输出YES，否则输出NO</p>
+<pre><code>&lt;span class=&quot;hljs-comment&quot;&gt;//    1.定义一个变量保存用户输入的整数&lt;/span&gt;
+    var temp;
+&lt;span class=&quot;hljs-comment&quot;&gt;//    2.利用window.prompt()接收用户输入数据&lt;/span&gt;
+&lt;span class=&quot;hljs-comment&quot;&gt;//     window.prompt返回给我们的是一个字符串, 需要转换为Number&lt;/span&gt;
+    temp = +(window.prompt(&lt;span class=&quot;hljs-string&quot;&gt;&quot;请输入一个整数&quot;&lt;/span&gt;));
+&lt;span class=&quot;hljs-comment&quot;&gt;//    3.对用户输入的数据进行安全校验&lt;/span&gt;
+    &lt;span class=&quot;hljs-keyword&quot;&gt;if&lt;/span&gt;(isNaN(temp)){
+        alert(&lt;span class=&quot;hljs-string&quot;&gt;&quot;你是SB吗?&quot;&lt;/span&gt;);
+    }&lt;span class=&quot;hljs-keyword&quot;&gt;else&lt;/span&gt;{
+&lt;span class=&quot;hljs-comment&quot;&gt;//    3.判断用户输入的数据是否是偶数, 然后根据判断结果输出YES/NO&lt;/span&gt;
+        &lt;span class=&quot;hljs-comment&quot;&gt;/*
+        if(temp % 2 == 0){
+            alert(&quot;YES&quot;);
+        }else{
+            alert(&quot;NO&quot;);
+        }
+        */&lt;/span&gt;
+        (temp % &lt;span class=&quot;hljs-number&quot;&gt;2&lt;/span&gt; == &lt;span class=&quot;hljs-number&quot;&gt;0&lt;/span&gt;) ? alert(&lt;span class=&quot;hljs-string&quot;&gt;&quot;YES&quot;&lt;/span&gt;) :  alert(&lt;span class=&quot;hljs-string&quot;&gt;&quot;NO&quot;&lt;/span&gt;);
+    }
+</code></pre>
+<p>接收用户输入的<span class="hljs-number">1</span>～<span class="hljs-number">7</span>的整数，根据用户输入的整数，输出对应的星期几?</p>
+<pre><code>&lt;span class=&quot;hljs-comment&quot;&gt;//    1.定义变量保存用户输入的数据&lt;/span&gt;
+    var day;
+&lt;span class=&quot;hljs-comment&quot;&gt;//    2.利用window.prompt()接收用户输入数据&lt;/span&gt;
+    day = +(window.prompt(&lt;span class=&quot;hljs-string&quot;&gt;&quot;输入的1～7的整数&quot;&lt;/span&gt;));
+&lt;span class=&quot;hljs-comment&quot;&gt;//    3.判断当前是星期几&lt;/span&gt;
+    &lt;span class=&quot;hljs-keyword&quot;&gt;if&lt;/span&gt;(day == &lt;span class=&quot;hljs-number&quot;&gt;1&lt;/span&gt;){
+        console.&lt;span class=&quot;hljs-built_in&quot;&gt;log&lt;/span&gt;(&lt;span class=&quot;hljs-string&quot;&gt;&quot;星期一&quot;&lt;/span&gt;);
+    }&lt;span class=&quot;hljs-keyword&quot;&gt;else&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;if&lt;/span&gt;(day == &lt;span class=&quot;hljs-number&quot;&gt;2&lt;/span&gt;){
+        console.&lt;span class=&quot;hljs-built_in&quot;&gt;log&lt;/span&gt;(&lt;span class=&quot;hljs-string&quot;&gt;&quot;星期二&quot;&lt;/span&gt;);
+    }&lt;span class=&quot;hljs-keyword&quot;&gt;else&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;if&lt;/span&gt;(day == &lt;span class=&quot;hljs-number&quot;&gt;3&lt;/span&gt;){
+        console.&lt;span class=&quot;hljs-built_in&quot;&gt;log&lt;/span&gt;(&lt;span class=&quot;hljs-string&quot;&gt;&quot;星三&quot;&lt;/span&gt;);
+    }&lt;span class=&quot;hljs-keyword&quot;&gt;else&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;if&lt;/span&gt;(day == &lt;span class=&quot;hljs-number&quot;&gt;4&lt;/span&gt;){
+        console.&lt;span class=&quot;hljs-built_in&quot;&gt;log&lt;/span&gt;(&lt;span class=&quot;hljs-string&quot;&gt;&quot;星期四&quot;&lt;/span&gt;);
+    }&lt;span class=&quot;hljs-keyword&quot;&gt;else&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;if&lt;/span&gt;(day == &lt;span class=&quot;hljs-number&quot;&gt;5&lt;/span&gt;){
+        console.&lt;span class=&quot;hljs-built_in&quot;&gt;log&lt;/span&gt;(&lt;span class=&quot;hljs-string&quot;&gt;&quot;星期五&quot;&lt;/span&gt;);
+    }&lt;span class=&quot;hljs-keyword&quot;&gt;else&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;if&lt;/span&gt;(day == &lt;span class=&quot;hljs-number&quot;&gt;6&lt;/span&gt;){
+        console.&lt;span class=&quot;hljs-built_in&quot;&gt;log&lt;/span&gt;(&lt;span class=&quot;hljs-string&quot;&gt;&quot;星期六&quot;&lt;/span&gt;);
+    }&lt;span class=&quot;hljs-keyword&quot;&gt;else&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;if&lt;/span&gt;(day == &lt;span class=&quot;hljs-number&quot;&gt;7&lt;/span&gt;){
+        console.&lt;span class=&quot;hljs-built_in&quot;&gt;log&lt;/span&gt;(&lt;span class=&quot;hljs-string&quot;&gt;&quot;星期日&quot;&lt;/span&gt;);
+    }&lt;span class=&quot;hljs-keyword&quot;&gt;else&lt;/span&gt;{
+        console.&lt;span class=&quot;hljs-built_in&quot;&gt;log&lt;/span&gt;(&lt;span class=&quot;hljs-string&quot;&gt;&quot;滚犊子&quot;&lt;/span&gt;);
+    }.
+</code></pre>
+<p>接收用户输入的一个整数month代表月份，根据月份输出对应的季节?
+第一种:</p>
+<pre><code>  &lt;span class=&quot;hljs-comment&quot;&gt;//    1.定义变量保存用户输入的数据&lt;/span&gt;
+      var month;
+  &lt;span class=&quot;hljs-comment&quot;&gt;//    2.利用window.prompt()接收用户输入数据&lt;/span&gt;
+      month = +(window.prompt(&lt;span class=&quot;hljs-string&quot;&gt;&quot;请输入一个1-12的月份&quot;&lt;/span&gt;));
+  &lt;span class=&quot;hljs-comment&quot;&gt;//    3.数据安全校验&lt;/span&gt;
+      &lt;span class=&quot;hljs-keyword&quot;&gt;if&lt;/span&gt;(isNaN(month)){
+          alert(&lt;span class=&quot;hljs-string&quot;&gt;&quot;火星SB?&quot;&lt;/span&gt;);
+      }&lt;span class=&quot;hljs-keyword&quot;&gt;else&lt;/span&gt;{
+  &lt;span class=&quot;hljs-comment&quot;&gt;//    4.根据输入的数据判断输出对应的月份即可&lt;/span&gt;
+          &lt;span class=&quot;hljs-keyword&quot;&gt;if&lt;/span&gt;(month &amp;gt;= &lt;span class=&quot;hljs-number&quot;&gt;3&lt;/span&gt; &amp;amp;&amp;amp; month &amp;lt;= &lt;span class=&quot;hljs-number&quot;&gt;5&lt;/span&gt;){
+              alert(&lt;span class=&quot;hljs-string&quot;&gt;&quot;春季 &quot;&lt;/span&gt;);
+          }&lt;span class=&quot;hljs-keyword&quot;&gt;else&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;if&lt;/span&gt;(month &amp;gt;=&lt;span class=&quot;hljs-number&quot;&gt;6&lt;/span&gt; &amp;amp;&amp;amp; month &amp;lt;= &lt;span class=&quot;hljs-number&quot;&gt;8&lt;/span&gt;){
+              alert(&lt;span class=&quot;hljs-string&quot;&gt;&quot;夏季&quot;&lt;/span&gt;);
+          }&lt;span class=&quot;hljs-keyword&quot;&gt;else&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;if&lt;/span&gt;(month &amp;gt;=&lt;span class=&quot;hljs-number&quot;&gt;9&lt;/span&gt; &amp;amp;&amp;amp; month &amp;lt;= &lt;span class=&quot;hljs-number&quot;&gt;11&lt;/span&gt;){
+              alert(&lt;span class=&quot;hljs-string&quot;&gt;&quot;秋季&quot;&lt;/span&gt;);
+          }&lt;span class=&quot;hljs-keyword&quot;&gt;else&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;if&lt;/span&gt;(month == &lt;span class=&quot;hljs-number&quot;&gt;12&lt;/span&gt; || month == &lt;span class=&quot;hljs-number&quot;&gt;1&lt;/span&gt; || month == &lt;span class=&quot;hljs-number&quot;&gt;2&lt;/span&gt;){
+              alert(&lt;span class=&quot;hljs-string&quot;&gt;&quot;冬季&quot;&lt;/span&gt;);
+          }&lt;span class=&quot;hljs-keyword&quot;&gt;else&lt;/span&gt;{
+              alert(&lt;span class=&quot;hljs-string&quot;&gt;&quot;火星季节&quot;&lt;/span&gt;);
+          }
+    }
+</code></pre>
+<p>第二种:
+<span class="hljs-comment">//    1.定义变量保存用户输入的数据</span>
+var month;
+<span class="hljs-comment">//    2.利用window.prompt()接收用户输入数据</span>
+month = +(window.prompt(<span class="hljs-string">&quot;请输入一个1-12的月份&quot;</span>));
+<span class="hljs-comment">//    3.数据安全校验</span>
+<span class="hljs-keyword">if</span>(isNaN(month)){
+alert(<span class="hljs-string">&quot;火星SB?&quot;</span>);
+}<span class="hljs-keyword">else</span>{
+<span class="hljs-comment">//    4.根据输入的数据判断输出对应的月份即可</span>
+<span class="hljs-keyword">if</span>(month &lt; <span class="hljs-number">1</span> || month &gt; <span class="hljs-number">12</span>){
+alert(<span class="hljs-string">&quot;火星季节&quot;</span>);
+}<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(month &gt;= <span class="hljs-number">3</span> &amp;&amp; month &lt;= <span class="hljs-number">5</span>){
+alert(<span class="hljs-string">&quot;春季 &quot;</span>);
+}<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(month &gt;=<span class="hljs-number">6</span> &amp;&amp; month &lt;= <span class="hljs-number">8</span>){
+alert(<span class="hljs-string">&quot;夏季&quot;</span>);
+}<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(month &gt;=<span class="hljs-number">9</span> &amp;&amp; month &lt;= <span class="hljs-number">11</span>){
+alert(<span class="hljs-string">&quot;秋季&quot;</span>);
+}<span class="hljs-keyword">else</span>{
+alert(<span class="hljs-string">&quot;冬季&quot;</span>);
+}
+}</p>
+<p>第三种:
+<span class="hljs-comment">//    1.定义变量保存用户输入的数据</span>
+var month;
+<span class="hljs-comment">//    2.利用window.prompt()接收用户输入数据</span>
+month = +(window.prompt(<span class="hljs-string">&quot;请输入一个1-12的月份&quot;</span>));
+<span class="hljs-comment">//    3.数据安全校验</span>
+<span class="hljs-keyword">if</span>(isNaN(month)){
+alert(<span class="hljs-string">&quot;火星SB?&quot;</span>);
+}<span class="hljs-keyword">else</span>{
+<span class="hljs-comment">//    4.根据输入的数据判断输出对应的月份即可</span>
+<span class="hljs-keyword">if</span>(month == <span class="hljs-number">12</span> || month == <span class="hljs-number">1</span> || month == <span class="hljs-number">2</span>){
+alert(<span class="hljs-string">&quot;冬季&quot;</span>);  <span class="hljs-comment">// 没有进入, 剩下的必然是3-11</span>
+}<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(month &gt;=<span class="hljs-number">9</span>){
+alert(<span class="hljs-string">&quot;秋季&quot;</span>); <span class="hljs-comment">// 没有进入, 剩下的必然 3-8</span>
+}<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(month &gt;=<span class="hljs-number">6</span>){
+alert(<span class="hljs-string">&quot;夏季&quot;</span>); <span class="hljs-comment">// 没有进入, 剩下的必然 3-5</span>
+}<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(month &gt;= <span class="hljs-number">3</span>){
+alert(<span class="hljs-string">&quot;春季 &quot;</span>);
+}<span class="hljs-keyword">else</span>{ <span class="hljs-comment">// 12 1 2</span>
+alert(<span class="hljs-string">&quot;火星季节&quot;</span>);
+}
+}
+从键盘输入<span class="hljs-number">2</span>个整数，判断大小后输出较大的那个数?</p>
+<pre><code>&lt;span class=&quot;hljs-comment&quot;&gt;//    1.定义变量保存三个整数&lt;/span&gt;
+    var a, b;
+&lt;span class=&quot;hljs-comment&quot;&gt;//    2.利用window.prompt接收用户输入的数据&lt;/span&gt;
+    a =  +(window.prompt(&lt;span class=&quot;hljs-string&quot;&gt;&quot;请输入内容&quot;&lt;/span&gt;)); 
+    b =  +(window.prompt(&lt;span class=&quot;hljs-string&quot;&gt;&quot;请输入内容&quot;&lt;/span&gt;)); 
+&lt;span class=&quot;hljs-comment&quot;&gt;//    3.利用if进行两两比较&lt;/span&gt;
+    &lt;span class=&quot;hljs-keyword&quot;&gt;if&lt;/span&gt;(a &amp;gt; b){
+        console.&lt;span class=&quot;hljs-built_in&quot;&gt;log&lt;/span&gt;(a);
+    }&lt;span class=&quot;hljs-keyword&quot;&gt;else&lt;/span&gt;{
+        console.&lt;span class=&quot;hljs-built_in&quot;&gt;log&lt;/span&gt;(b);
+    }
+    &lt;span class=&quot;hljs-comment&quot;&gt;/*
+    三元运算符好处：可以简化if else代码
+    弊端                  ：因为是一个运算符所以运算完必要要有一个结果。  
+    简单用三元 复杂用if(阅读性好)
+    */&lt;/span&gt;
+    console.&lt;span class=&quot;hljs-built_in&quot;&gt;log&lt;/span&gt;(a &amp;gt; b? a: b);
+</code></pre>
+<p>从键盘输入<span class="hljs-number">3</span>个整数，排序后输出?
+常规写法</p>
+<pre><code>  &lt;span class=&quot;hljs-comment&quot;&gt;//    1.定义变量保存三个整数&lt;/span&gt;
+      var a, b, c;
+  &lt;span class=&quot;hljs-comment&quot;&gt;//    2.利用window.prompt接收用户输入的数据&lt;/span&gt;
+      a =  +(window.prompt(&lt;span class=&quot;hljs-string&quot;&gt;&quot;请输入内容&quot;&lt;/span&gt;));
+      b =  +(window.prompt(&lt;span class=&quot;hljs-string&quot;&gt;&quot;请输入内容&quot;&lt;/span&gt;));
+      c =  +(window.prompt(&lt;span class=&quot;hljs-string&quot;&gt;&quot;请输入内容&quot;&lt;/span&gt;));
+      &lt;span class=&quot;hljs-comment&quot;&gt;//     方式1 写出所有方式&lt;/span&gt;
+      &lt;span class=&quot;hljs-keyword&quot;&gt;if&lt;/span&gt; (a &amp;gt;= b &amp;amp;&amp;amp; b &amp;gt;=c) {
+          console.&lt;span class=&quot;hljs-built_in&quot;&gt;log&lt;/span&gt;(a, b, c);
+      }&lt;span class=&quot;hljs-keyword&quot;&gt;else&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;if&lt;/span&gt; (a &amp;gt;= c &amp;amp;&amp;amp; c &amp;gt;= b) {
+          console.&lt;span class=&quot;hljs-built_in&quot;&gt;log&lt;/span&gt;(a, c, b);
+      }&lt;span class=&quot;hljs-keyword&quot;&gt;else&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;if&lt;/span&gt; (b &amp;gt;= a &amp;amp;&amp;amp; a &amp;gt;= c) {
+          console.&lt;span class=&quot;hljs-built_in&quot;&gt;log&lt;/span&gt;(b, a, c);
+      }&lt;span class=&quot;hljs-keyword&quot;&gt;else&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;if&lt;/span&gt; (b &amp;gt;= c &amp;amp;&amp;amp; c &amp;gt;= a) {
+          console.&lt;span class=&quot;hljs-built_in&quot;&gt;log&lt;/span&gt;(b, c, a);
+      }&lt;span class=&quot;hljs-keyword&quot;&gt;else&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;if&lt;/span&gt; (c &amp;gt;= a &amp;amp;&amp;amp; a &amp;gt;= b) {
+          console.&lt;span class=&quot;hljs-built_in&quot;&gt;log&lt;/span&gt;(c, a, b);
+      }&lt;span class=&quot;hljs-keyword&quot;&gt;else&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;if&lt;/span&gt; (c &amp;gt;= b &amp;amp;&amp;amp; b &amp;gt;= a) {
+          console.&lt;span class=&quot;hljs-built_in&quot;&gt;log&lt;/span&gt;(c, b, a);
+      }
+
+  选择排序
+    &lt;span class=&quot;hljs-comment&quot;&gt;//    1.定义变量保存三个整数&lt;/span&gt;
+        var a, b, c;
+    &lt;span class=&quot;hljs-comment&quot;&gt;//    2.利用window.prompt接收用户输入的数据&lt;/span&gt;
+        a =  +(window.prompt(&lt;span class=&quot;hljs-string&quot;&gt;&quot;请输入内容&quot;&lt;/span&gt;));
+        b =  +(window.prompt(&lt;span class=&quot;hljs-string&quot;&gt;&quot;请输入内容&quot;&lt;/span&gt;));
+        c =  +(window.prompt(&lt;span class=&quot;hljs-string&quot;&gt;&quot;请输入内容&quot;&lt;/span&gt;));
+    &lt;span class=&quot;hljs-comment&quot;&gt;//     方式2 选择排序&lt;/span&gt;
+        var temp;
+        &lt;span class=&quot;hljs-keyword&quot;&gt;if&lt;/span&gt; (a &amp;gt; b) {
+            temp = a;
+            a = b;
+            b = temp;
+        }
+        &lt;span class=&quot;hljs-keyword&quot;&gt;if&lt;/span&gt; (a &amp;gt; c) {
+            temp = a;
+            a = c;
+            c = temp;
+        }
+        &lt;span class=&quot;hljs-keyword&quot;&gt;if&lt;/span&gt; ( b &amp;gt; c) {
+            temp = b;
+            b = c;
+            c = temp;
+        }
+        console.&lt;span class=&quot;hljs-built_in&quot;&gt;log&lt;/span&gt;(a, b, c);
+</code></pre>
+<p>冒泡排序</p>
+<pre><code>      &lt;span class=&quot;hljs-comment&quot;&gt;//    1.定义变量保存三个整数&lt;/span&gt;
+          var a, b, c;
+      &lt;span class=&quot;hljs-comment&quot;&gt;//    2.利用window.prompt接收用户输入的数据&lt;/span&gt;
+          a =  +(window.prompt(&lt;span class=&quot;hljs-string&quot;&gt;&quot;请输入内容&quot;&lt;/span&gt;));
+          b =  +(window.prompt(&lt;span class=&quot;hljs-string&quot;&gt;&quot;请输入内容&quot;&lt;/span&gt;));
+          c =  +(window.prompt(&lt;span class=&quot;hljs-string&quot;&gt;&quot;请输入内容&quot;&lt;/span&gt;));
+      &lt;span class=&quot;hljs-comment&quot;&gt;//     方式3 冒泡排序&lt;/span&gt;
+          var temp;
+          &lt;span class=&quot;hljs-keyword&quot;&gt;if&lt;/span&gt; (a &amp;gt; b) {
+              temp = a;
+              a = b;
+              b = temp;
+          }
+          &lt;span class=&quot;hljs-keyword&quot;&gt;if&lt;/span&gt; (b &amp;gt; c) {
+              temp = b;
+              b = c;
+              c = temp;
+          }
+          &lt;span class=&quot;hljs-keyword&quot;&gt;if&lt;/span&gt; ( a &amp;gt; b) {
+              temp = a;
+              a = b;
+              b = temp;
+          }
+          console.&lt;span class=&quot;hljs-built_in&quot;&gt;log&lt;/span&gt;(a, b, c);
+石头剪子布实现?
+
+&lt;span class=&quot;hljs-comment&quot;&gt;// 定义 0.剪刀 1.石头 2.布&lt;/span&gt;
+    &lt;span class=&quot;hljs-comment&quot;&gt;// 1、定义变量 玩家和电脑&lt;/span&gt;
+    var player,computer = &lt;span class=&quot;hljs-number&quot;&gt;0&lt;/span&gt;;
+    
+    &lt;span class=&quot;hljs-comment&quot;&gt;// 2、让电脑先出拳&lt;/span&gt;
+    var temp = Math.random() * &lt;span class=&quot;hljs-number&quot;&gt;3&lt;/span&gt;;
+    &lt;span class=&quot;hljs-comment&quot;&gt;// 3、用户出拳&lt;/span&gt;
+    var player = window.prompt(&lt;span class=&quot;hljs-string&quot;&gt;&quot;请出拳:0.剪刀 1.石头 2.布&quot;&lt;/span&gt;);
+    &lt;span class=&quot;hljs-comment&quot;&gt;// 数据合法性的校验&lt;/span&gt;
+    &lt;span class=&quot;hljs-keyword&quot;&gt;if&lt;/span&gt; (player&amp;lt;&lt;span class=&quot;hljs-number&quot;&gt;0&lt;/span&gt;||player&amp;gt;&lt;span class=&quot;hljs-number&quot;&gt;2&lt;/span&gt;) {
+        window.prompt(&lt;span class=&quot;hljs-string&quot;&gt;&quot;请重新出拳:0.剪刀 1.石头 2.布&quot;&lt;/span&gt;);
+    }&lt;span class=&quot;hljs-keyword&quot;&gt;else&lt;/span&gt;{
+        &lt;span class=&quot;hljs-comment&quot;&gt;// 4、判断比较 //先判断用户赢的情况&lt;/span&gt;
+        &lt;span class=&quot;hljs-keyword&quot;&gt;if&lt;/span&gt;((player==&lt;span class=&quot;hljs-number&quot;&gt;0&lt;/span&gt;&amp;amp;&amp;amp;computer==&lt;span class=&quot;hljs-number&quot;&gt;2&lt;/span&gt;)||
+                (player==&lt;span class=&quot;hljs-number&quot;&gt;1&lt;/span&gt;&amp;amp;&amp;amp;computer==&lt;span class=&quot;hljs-number&quot;&gt;0&lt;/span&gt;)||
+                (player==&lt;span class=&quot;hljs-number&quot;&gt;2&lt;/span&gt;&amp;amp;&amp;amp;computer==&lt;span class=&quot;hljs-number&quot;&gt;1&lt;/span&gt;)){
+            window.alert(&lt;span class=&quot;hljs-string&quot;&gt;&quot;我靠,你赢了!\n&quot;&lt;/span&gt;);
+
+        }&lt;span class=&quot;hljs-keyword&quot;&gt;else&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;if&lt;/span&gt;((computer==&lt;span class=&quot;hljs-number&quot;&gt;0&lt;/span&gt;&amp;amp;&amp;amp;player==&lt;span class=&quot;hljs-number&quot;&gt;2&lt;/span&gt;)||
+                (computer==&lt;span class=&quot;hljs-number&quot;&gt;1&lt;/span&gt;&amp;amp;&amp;amp;player==&lt;span class=&quot;hljs-number&quot;&gt;0&lt;/span&gt;)||
+                (computer==&lt;span class=&quot;hljs-number&quot;&gt;2&lt;/span&gt;&amp;amp;&amp;amp;player==&lt;span class=&quot;hljs-number&quot;&gt;1&lt;/span&gt;)){
+            window.alert(&lt;span class=&quot;hljs-string&quot;&gt;&quot;很遗憾,你输了!\n&quot;&lt;/span&gt;);
+
+        }&lt;span class=&quot;hljs-keyword&quot;&gt;else&lt;/span&gt;{
+            window.alert(&lt;span class=&quot;hljs-string&quot;&gt;&quot;平局\n&quot;&lt;/span&gt;);
+        }
+    }
+</code></pre>
+<p><span class="hljs-number">3.</span> 循环</p>
+<p>循环结构是程序中一种很重要的结构。其特点是,在给定条件成立时,反复执行某程序段, 直到条件不成立为止。</p>
+<p>给定的条件称为循环条件,反复执行的程序段称为循环体
+循环结构简单来说就是:一次又一次的执行相同的代码块
+</code></pre></p>
+<p>现实生活中的循坏</p>
+<br>
+<div class="image-package">
+<div class="image-container" style="max-width: 439px; max-height: 465px;">
+<div class="image-container-fill" style="padding-bottom: 105.91999999999999%;"></div>
+<div class="image-view" data-width="439" data-height="465"><img data-original-src="//upload-images.jianshu.io/upload_images/13437285-060431e077492633.png" data-original-width="439" data-original-height="465" data-original-format="image/png" data-original-filesize="136345" style="cursor: zoom-in;" class="image-loading"></div>
+</div>
+<div class="image-caption"></div>
+</div>
+<p><strong>JavaScript中的循坏</strong></p>
+<pre class="hljs cpp"><code class="cpp">  <span class="hljs-keyword">while</span>语句
+  <span class="hljs-keyword">do</span>-<span class="hljs-keyword">while</span>语句
+  <span class="hljs-keyword">for</span>语句
+  <span class="hljs-keyword">while</span>循环
+</code></pre>
+<p><strong>格式</strong></p>
+<pre class="hljs bash"><code class="bash"> <span class="hljs-keyword">while</span> ( 条件表达式 ) {
+      语句1;
+      语句2;
+      ....
+  }
+</code></pre>
+<p><strong>执行流程</strong></p>
+<pre class="hljs javascript"><code class="javascript">判断条件表达式是否为真, 如果为真执行后面大括号中的内容
+<p>执行完毕再次判断条件表达式是否还为真,如果为真执行后面大括号中的内容</p>
+<p>重复上述过程,直到条件不成立就结束<span class="hljs-keyword">while</span>循环</p>
+<p><span class="hljs-keyword">var</span> num = <span class="hljs-number">0</span>;
+<span class="hljs-keyword">while</span> (num &lt; <span class="hljs-number">10</span>){
+<span class="hljs-built_in">console</span>.log(num);
+num++;
+}
+</code></pre></p>
+<p><strong>构成循环结构的几个条件</strong></p>
+<pre class="hljs bash"><code class="bash"> 循环控制条件(条件表达式)
+ 循环退出的主要依据,来控制循环到底什么时候退出
+ 循环体(<span class="hljs-keyword">while</span>后面的大括号{})
+ 循环的过程中重复执行的代码段
+ 循环结束语句(递增,递减,<span class="hljs-built_in">break</span>等)
+ 能够让循环条件为假的依据,否则退出循环
+</code></pre>
+<p><strong>while循环特点</strong></p>
+<pre class="hljs javascript"><code class="javascript">如果<span class="hljs-keyword">while</span>中的条件一开始就不成立,那么循环体中的语句永远不会被执行
+  <span class="hljs-keyword">var</span> num = <span class="hljs-number">10</span>;
+  <span class="hljs-keyword">while</span> (num &lt; <span class="hljs-number">10</span>){
+      alert(num); <span class="hljs-comment">// 什么都不弹</span>
+      num++;
+  }
+</code></pre>
+<p><strong>while循坏注意点</strong></p>
+<pre class="hljs bash"><code class="bash">  死循环
+<p>条件表达式永远为真, 循坏永远无法结束,我们称之为死循环</p>
+<pre><code> &lt;span class=&quot;hljs-keyword&quot;&gt;while&lt;/span&gt; (&lt;span class=&quot;hljs-literal&quot;&gt;true&lt;/span&gt;){
+        alert(&lt;span class=&quot;hljs-string&quot;&gt;&quot;itlike.com&quot;&lt;/span&gt;);
+    }
+</code></pre>
+<p></code></pre></p>
+<p><strong>任何值都有真假性</strong></p>
+<pre class="hljs javascript"><code class="javascript"> 对于非<span class="hljs-built_in">Boolean</span>类型的值, 会先转换为<span class="hljs-built_in">Boolean</span>类型再判断
+<p><span class="hljs-keyword">while</span> (<span class="hljs-number">1</span>){ <span class="hljs-comment">// 先把1转换为Boolean, 然后再判断真假</span>
+alert(<span class="hljs-string">&quot;itlike.com&quot;</span>);
+}</p>
+<p><span class="hljs-keyword">while</span> 后如果只有一条语句它可以省略大括号</p>
+<p>如果省略大括号, <span class="hljs-keyword">while</span>只会管制紧跟其后的那条语句</p>
+<pre><code>&lt;span class=&quot;hljs-keyword&quot;&gt;while&lt;/span&gt; (&lt;span class=&quot;hljs-number&quot;&gt;0&lt;/span&gt;)
+   alert(&lt;span class=&quot;hljs-string&quot;&gt;&quot;会执行我么?&quot;&lt;/span&gt;); &lt;span class=&quot;hljs-comment&quot;&gt;// 不会执行&lt;/span&gt;
+alert(&lt;span class=&quot;hljs-string&quot;&gt;&quot;itlike.com&quot;&lt;/span&gt;);
+</code></pre>
+<p></code></pre></p>
+<p><strong>分号问题</strong></p>
+<pre class="hljs ruby"><code class="ruby">   分号(;)也是一条语句, 代表空语句
+<pre><code> &lt;span class=&quot;hljs-keyword&quot;&gt;while&lt;/span&gt; (&lt;span class=&quot;hljs-number&quot;&gt;0&lt;/span&gt;);
+  {
+      alert(&lt;span class=&quot;hljs-string&quot;&gt;&quot;123&quot;&lt;/span&gt;); &lt;span class=&quot;hljs-regexp&quot;&gt;//&lt;/span&gt; 会被执行, 因为&lt;span class=&quot;hljs-keyword&quot;&gt;while&lt;/span&gt;管制的是分号(;)
+  }
+</code></pre>
+<p></code></pre></p>
+<p><strong>最简单的死循环</strong><br>
+开发中慎用死循环, 会导致程序阻塞</p>
+<pre class="hljs bash"><code class="bash">     <span class="hljs-keyword">while</span> (1);
+</code></pre>
+<p>while循坏练习</p>
+<pre class="hljs javascript"><code class="javascript">    提示用户输入一个正整数n， 计算<span class="hljs-number">1</span> + <span class="hljs-number">2</span> + <span class="hljs-number">3</span> + ...n的和
+<pre><code>  &lt;span class=&quot;hljs-comment&quot;&gt;//    1.定义变量保存上一次的和&lt;/span&gt;
+      &lt;span class=&quot;hljs-keyword&quot;&gt;var&lt;/span&gt; sum = &lt;span class=&quot;hljs-number&quot;&gt;0&lt;/span&gt;;
+      &lt;span class=&quot;hljs-comment&quot;&gt;//    2.定义变量保存递增的数&lt;/span&gt;
+      &lt;span class=&quot;hljs-keyword&quot;&gt;var&lt;/span&gt; number = &lt;span class=&quot;hljs-number&quot;&gt;1&lt;/span&gt;;
+      &lt;span class=&quot;hljs-keyword&quot;&gt;while&lt;/span&gt; (number &amp;lt;= &lt;span class=&quot;hljs-number&quot;&gt;5&lt;/span&gt;) {
+          &lt;span class=&quot;hljs-built_in&quot;&gt;console&lt;/span&gt;.log(&lt;span class=&quot;hljs-string&quot;&gt;&quot;sum = &quot;&lt;/span&gt;+ sum +&lt;span class=&quot;hljs-string&quot;&gt;&quot; + number = &quot;&lt;/span&gt;+ number);
+          sum = sum + number;
+          number++;
+      }
+      &lt;span class=&quot;hljs-built_in&quot;&gt;console&lt;/span&gt;.log(&lt;span class=&quot;hljs-string&quot;&gt;&quot;sum = &quot;&lt;/span&gt; + sum);
+
+获取&lt;span class=&quot;hljs-number&quot;&gt;1&lt;/span&gt;～&lt;span class=&quot;hljs-number&quot;&gt;100&lt;/span&gt;之间 &lt;span class=&quot;hljs-number&quot;&gt;7&lt;/span&gt;的倍数的个数并打印，并统计个数
+
+  &lt;span class=&quot;hljs-keyword&quot;&gt;var&lt;/span&gt; count = &lt;span class=&quot;hljs-number&quot;&gt;1&lt;/span&gt;;
+      &lt;span class=&quot;hljs-keyword&quot;&gt;var&lt;/span&gt; num = &lt;span class=&quot;hljs-number&quot;&gt;0&lt;/span&gt;;
+      &lt;span class=&quot;hljs-keyword&quot;&gt;while&lt;/span&gt; (count &amp;lt;= &lt;span class=&quot;hljs-number&quot;&gt;100&lt;/span&gt;) {
+  
+          &lt;span class=&quot;hljs-keyword&quot;&gt;if&lt;/span&gt; (count % &lt;span class=&quot;hljs-number&quot;&gt;7&lt;/span&gt; == &lt;span class=&quot;hljs-number&quot;&gt;0&lt;/span&gt;) {
+  
+              &lt;span class=&quot;hljs-built_in&quot;&gt;console&lt;/span&gt;.log(&lt;span class=&quot;hljs-string&quot;&gt;&quot;count = &quot;&lt;/span&gt; + count);
+              num++;&lt;span class=&quot;hljs-comment&quot;&gt;//计数器&lt;/span&gt;
+          }
+          count++;
+      }
+  
+      &lt;span class=&quot;hljs-built_in&quot;&gt;console&lt;/span&gt;.log(&lt;span class=&quot;hljs-string&quot;&gt;&quot;number = &quot;&lt;/span&gt;+ num);
+</code></pre>
+<p></code></pre></p>
+<p><strong>break关键字</strong><br>
+</p><div class="image-package">
+<div class="image-container" style="max-width: 586px; max-height: 269px;">
+<div class="image-container-fill" style="padding-bottom: 45.9%;"></div>
+<div class="image-view" data-width="586" data-height="269"><img data-original-src="//upload-images.jianshu.io/upload_images/13437285-26b049de349d19f5.png" data-original-width="586" data-original-height="269" data-original-format="image/png" data-original-filesize="102197" style="cursor: zoom-in;" class="image-loading"></div>
+</div>
+<div class="image-caption"></div>
+</div><br>
+<strong>作用</strong><br>
+跳出Switch语句<p></p>
+<pre class="hljs javascript"><code class="javascript">      <span class="hljs-keyword">var</span> num = <span class="hljs-number">1</span>;
+      <span class="hljs-keyword">switch</span>(num){
+          <span class="hljs-keyword">case</span> <span class="hljs-number">1</span>:
+              <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"壹"</span>);<span class="hljs-comment">// 输出壹</span>
+              <span class="hljs-keyword">break</span>; <span class="hljs-comment">// 跳出switch语句, 后面代码不会执行</span>
+          <span class="hljs-keyword">case</span> <span class="hljs-number">2</span>:
+              <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"贰"</span>); 
+              <span class="hljs-keyword">break</span>;
+          <span class="hljs-keyword">default</span>:
+              <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"非法数字"</span>);
+              <span class="hljs-keyword">break</span>;
+      }
+</code></pre>
+<p><strong>跳出循环语句</strong></p>
+<pre class="hljs javascript"><code class="javascript">      <span class="hljs-keyword">var</span> num = <span class="hljs-number">0</span>;
+      <span class="hljs-keyword">while</span>(<span class="hljs-literal">true</span>){ 
+          <span class="hljs-built_in">console</span>.log(num);
+          <span class="hljs-keyword">if</span>(<span class="hljs-number">3</span> == num){
+              <span class="hljs-keyword">break</span>; <span class="hljs-comment">// 当num等于3时跳出循环</span>
+          }
+          num++
+      }
+</code></pre>
+<p><strong>注意点</strong></p>
+<pre class="hljs cpp"><code class="cpp">      <span class="hljs-keyword">break</span>关键字只能用于循环语句和<span class="hljs-keyword">switch</span>语句, 在其它地方没有意义
+<pre><code>    &lt;span class=&quot;hljs-keyword&quot;&gt;break&lt;/span&gt;;  &lt;span class=&quot;hljs-comment&quot;&gt;// 浏览器会报错&lt;/span&gt;
+    alert(&lt;span class=&quot;hljs-string&quot;&gt;&quot;我会输出么?&quot;&lt;/span&gt;);
+
+    &lt;span class=&quot;hljs-keyword&quot;&gt;if&lt;/span&gt;(&lt;span class=&quot;hljs-literal&quot;&gt;true&lt;/span&gt;){
+        &lt;span class=&quot;hljs-keyword&quot;&gt;break&lt;/span&gt;; &lt;span class=&quot;hljs-comment&quot;&gt;// 浏览器会报错&lt;/span&gt;
+        alert(&lt;span class=&quot;hljs-string&quot;&gt;&quot;我会输出么?&quot;&lt;/span&gt;);
+    }
+    ```
+
+  在多层循环中,一个&lt;span class=&quot;hljs-keyword&quot;&gt;break&lt;/span&gt;语句只向外跳一层
+
+   
+    &lt;span class=&quot;hljs-keyword&quot;&gt;while&lt;/span&gt; (&lt;span class=&quot;hljs-number&quot;&gt;1&lt;/span&gt;){
+        &lt;span class=&quot;hljs-keyword&quot;&gt;while&lt;/span&gt; (&lt;span class=&quot;hljs-number&quot;&gt;2&lt;/span&gt;){
+            console.&lt;span class=&quot;hljs-built_in&quot;&gt;log&lt;/span&gt;(&lt;span class=&quot;hljs-string&quot;&gt;&quot;我是while2&quot;&lt;/span&gt;); &lt;span class=&quot;hljs-comment&quot;&gt;// 会被输出多次&lt;/span&gt;
+            &lt;span class=&quot;hljs-keyword&quot;&gt;break&lt;/span&gt;; &lt;span class=&quot;hljs-comment&quot;&gt;// 跳出while2,但是不会跳出while1&lt;/span&gt;
+        }
+        console.&lt;span class=&quot;hljs-built_in&quot;&gt;log&lt;/span&gt;(&lt;span class=&quot;hljs-string&quot;&gt;&quot;我是while1&quot;&lt;/span&gt;);
+    }
+
+
+  &lt;span class=&quot;hljs-keyword&quot;&gt;break&lt;/span&gt;后面的语句永远不会被执行
+
+   
+    &lt;span class=&quot;hljs-keyword&quot;&gt;while&lt;/span&gt; (&lt;span class=&quot;hljs-number&quot;&gt;1&lt;/span&gt;){
+        &lt;span class=&quot;hljs-keyword&quot;&gt;break&lt;/span&gt;;
+        alert(&lt;span class=&quot;hljs-string&quot;&gt;&quot;会弹出来么?&quot;&lt;/span&gt;); &lt;span class=&quot;hljs-comment&quot;&gt;// 不会弹出&lt;/span&gt;
+    }
+</code></pre>
+<p></code></pre></p>
+<p><strong>continue关键字</strong><br>
+</p><div class="image-package">
+<div class="image-container" style="max-width: 494px; max-height: 257px;">
+<div class="image-container-fill" style="padding-bottom: 52.019999999999996%;"></div>
+<div class="image-view" data-width="494" data-height="257"><img data-original-src="//upload-images.jianshu.io/upload_images/13437285-b380979fa736e4de.png" data-original-width="494" data-original-height="257" data-original-format="image/png" data-original-filesize="84366" style="cursor: zoom-in;" class="image-loading"></div>
+</div>
+<div class="image-caption"></div>
+</div><p></p>
+<pre class="hljs javascript"><code class="javascript">  作用
+<p>跳过当前循环体中剩余的语句而继续下一次</p>
+<pre><code>  &lt;span class=&quot;hljs-keyword&quot;&gt;var&lt;/span&gt; num = &lt;span class=&quot;hljs-number&quot;&gt;0&lt;/span&gt;;
+    &lt;span class=&quot;hljs-keyword&quot;&gt;while&lt;/span&gt; (num &amp;lt; &lt;span class=&quot;hljs-number&quot;&gt;10&lt;/span&gt;){
+        num++;
+        &lt;span class=&quot;hljs-keyword&quot;&gt;if&lt;/span&gt;(num % &lt;span class=&quot;hljs-number&quot;&gt;2&lt;/span&gt; == &lt;span class=&quot;hljs-number&quot;&gt;0&lt;/span&gt;){
+            &lt;span class=&quot;hljs-keyword&quot;&gt;continue&lt;/span&gt;;
+        }
+        &lt;span class=&quot;hljs-built_in&quot;&gt;console&lt;/span&gt;.log(num); &lt;span class=&quot;hljs-comment&quot;&gt;// 1, 3, 5, 7, 9&lt;/span&gt;
+    }
+</code></pre>
+<p>注意点</p>
+<p>只能用于循环结构, 在其它地方没有意义</p>
+<p><span class="hljs-keyword">continue</span>后面的语句永远不会被执行</p>
+<pre><code>  &lt;span class=&quot;hljs-keyword&quot;&gt;while&lt;/span&gt; (&lt;span class=&quot;hljs-number&quot;&gt;1&lt;/span&gt;){
+      &lt;span class=&quot;hljs-keyword&quot;&gt;continue&lt;/span&gt;;
+      alert(&lt;span class=&quot;hljs-string&quot;&gt;&quot;会弹出来么?&quot;&lt;/span&gt;); &lt;span class=&quot;hljs-comment&quot;&gt;// 不会弹出&lt;/span&gt;
+  }
+</code></pre>
+<p></code></pre></p>
+<p><strong>do-while循环</strong></p>
+<pre class="hljs bash"><code class="bash">格式
+<p><span class="hljs-keyword">do</span> {
+语句1;
+语句2;
+....
+} <span class="hljs-keyword">while</span> ( 条件 );</p>
+<pre><code>执行流程
+
+首先会执行一次循环体中的语句
+接着判断&lt;span class=&quot;hljs-keyword&quot;&gt;while&lt;/span&gt;中的条件表达式是否为真，如果为真再次执行循环体中的语句
+重复上述过程，直到条件不成立就结束&lt;span class=&quot;hljs-keyword&quot;&gt;while&lt;/span&gt;循环
+</code></pre>
+<p>特点</p>
+<pre><code>不管&lt;span class=&quot;hljs-keyword&quot;&gt;while&lt;/span&gt;中的条件是否成立，循环体中的语句至少会被执行一遍
+</code></pre>
+<p>应用场景</p>
+<pre><code>口令校验
+</code></pre>
+<p></code></pre></p>
+<p><strong>for循环</strong></p>
+<blockquote>
+<p>JavaScript中的for语句使用最为灵活,<br>
+不仅可以用于循环次数已经确定的情况,<br>
+而且可以用于循环次数不确定而只给出循环结束条件的情况,<br>
+它完全可以代替while语句。</p>
+</blockquote>
+<pre class="hljs bash"><code class="bash">格式
+<p><span class="hljs-keyword">for</span>(①初始化表达式；②循环条件表达式；④循环后操作表达式)
+{
+③执行语句；
+}
+</code></pre></p>
+<p><strong>for循环执行流程</strong></p>
+<pre class="hljs bash"><code class="bash">   <span class="hljs-keyword">for</span>循环开始时，会先执行初始化表达式，而且在整个循环过程中只执行一次初始化表达式
+<pre><code>接着判断循环条件表达式是否为真，如果条件为真，就会执行循环体中的语句
+</code></pre>
+<p>循环体执行完毕后，接下来会执行循环后的操作表达式</p>
+<pre><code>执行完循环后操作表达式, 然后再次判断循环条件表达式是否为真，如果条件为真，就会执行循环体中的语句
+
+重复上述过程，直到条件不成立就结束&lt;span class=&quot;hljs-keyword&quot;&gt;for&lt;/span&gt;循环
+</code></pre>
+<p></code></pre></p>
+<pre class="hljs php"><code class="php">        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">var</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">10</span>; i++){
+            alert(i); <span class="hljs-comment">// 输出0-9</span>
+        }
+       
+        <span class="hljs-keyword">for</span>循环和<span class="hljs-keyword">while</span>循环如何选择?
+
+       一般情况下<span class="hljs-keyword">while</span>和<span class="hljs-keyword">for</span>可以互换, 但是如果循环执行完毕之后就不需要使用用于控制循环的增量, 那么用<span class="hljs-keyword">for</span>更好
+
+     注意点
+
+        <span class="hljs-keyword">for</span>循环中初始化表达式,循环条件表达式,
+        循环后操作表达式都可以不写
+        循环条件表达式默认为真
+        <span class="hljs-keyword">for</span>(; ;) 语句相当于<span class="hljs-keyword">while</span>(<span class="hljs-number">1</span>), 都是死循环
+        其它注意点和<span class="hljs-keyword">while</span>一样
+
+      循环嵌套练习
+
+        打印好友列表
+
+          好友列表<span class="hljs-number">1</span>
+          ​          好友<span class="hljs-number">1</span>
+          ​          好友<span class="hljs-number">2</span>
+          ​          好友<span class="hljs-number">3</span>
+             好友列表<span class="hljs-number">2</span>
+          ​          好友<span class="hljs-number">1</span>
+          ​          好友<span class="hljs-number">2</span>
+          ​          好友<span class="hljs-number">3</span>
+
+           
+          <span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> i = <span class="hljs-number">1</span>; i &lt;= <span class="hljs-number">2</span>; i++) {
+                  console.log(<span class="hljs-string">"好友列表"</span>+ i);
+                  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> j = <span class="hljs-number">1</span>; j &lt;= <span class="hljs-number">3</span>; j++) {
+                      console.log(<span class="hljs-string">"    好友"</span>+ j);
+                  }
+              }
+        
+
+       <span class="hljs-keyword">for</span>循环嵌套实现:打印<span class="hljs-number">99</span>乘法表
+
+        
+        &lt;style&gt;
+        
+                span{
+                    display: inline-block;
+                    border: <span class="hljs-number">1</span>px solid <span class="hljs-comment">#000;</span>
+                    padding: <span class="hljs-number">10</span>px;
+                }
+        &lt;/style&gt;
+        &lt;script&gt;
+            <span class="hljs-comment">/*
+              1.观察发现有很多行很多列--》循环嵌套
+              2.尖尖朝上，让内循环条件表达式随着外循环i改变
+              3.输出的结果等于 内循环的变量 * 外循环的变量
+            */</span>
+            <span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> i = <span class="hljs-number">1</span>; i &lt;= <span class="hljs-number">9</span>; i++) {
+                <span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> j = <span class="hljs-number">1</span>; j &lt;= i; j++) {
+                    document.write(<span class="hljs-string">"&lt;span&gt;"</span>+j+<span class="hljs-string">"*"</span>+i+<span class="hljs-string">"="</span>+i*j+<span class="hljs-string">"&lt;/span&gt;"</span>);
+                }
+                window.document.write(<span class="hljs-string">"&lt;br/&gt;"</span>);
+            }
+        &lt;/script&gt;
+      
+</code></pre>
+<pre><code>      &lt;/div&gt;
+				
+				
+&lt;/hr&gt;
+</code></pre>
+<h2 id="1什么是代码块">1.什么是代码块</h2>
+<p><strong>简介</strong></p>
+<pre><code>程序是由一条一条语句构成的, 
+语句是按照自上向下的顺序一条一条执行的, 
+在&lt;span class=&quot;hljs-selector-tag&quot;&gt;JS&lt;/span&gt;中可以使用{}来为语句进行分组
+同一个{}中的语句我们称为是一组语句，
+它们要么都执行，要么都不执行。
+`&lt;/pre&gt;
+
+**使用**
+
+JS中的代码块，
+
+只具有分组的的作用，
+
+没有其他的用途,
+
+代码块里面的内容，
+
+在外部是完全可见的。
+
+**列如:**
+
+&lt;pre class=&quot;hljs javascript&quot;&gt;`javascript
+      {
+        &lt;span class=&quot;hljs-keyword&quot;&gt;var&lt;/span&gt; name = &lt;span class=&quot;hljs-string&quot;&gt;'撩课学院'&lt;/span&gt;;  
+        &lt;span class=&quot;hljs-built_in&quot;&gt;console&lt;/span&gt;.log(&lt;span class=&quot;hljs-string&quot;&gt;&quot;itlike.com&quot;&lt;/span&gt;);
+        &lt;span class=&quot;hljs-built_in&quot;&gt;document&lt;/span&gt;.write(&lt;span class=&quot;hljs-string&quot;&gt;&quot;喜欢IT, 就上撩课!&quot;&lt;/span&gt;);
+      }
+javascript
+ &lt;span class=&quot;hljs-built_in&quot;&gt;console&lt;/span&gt;.log(&lt;span class=&quot;hljs-string&quot;&gt;&quot;name = &quot;&lt;/span&gt; + name);
+`&lt;/pre&gt;
+
+## 2. 流程控制语句
+
+**基本概念**
+
+默认情况下，
+
+程序的运行流程是这样的：
+
+运行程序后，
+
+系统会按书写从上至下顺序
+
+执行程序中的每一行代码,
+
+但是这并不能满足
+
+我们所有的开发需求
+
+如下图:
+
+&lt;div class=&quot;image-package&quot;&gt;
+&lt;div class=&quot;image-container&quot; style=&quot;max-width: 147px; max-height: 254px; background-color: transparent;&quot;&gt;
+&lt;div class=&quot;image-container-fill&quot; style=&quot;padding-bottom: 172.79%;&quot;&gt;&lt;/div&gt;
+&lt;div class=&quot;image-view&quot; data-width=&quot;147&quot; data-height=&quot;254&quot;&gt;![](//upload-images.jianshu.io/upload_images/13437285-7e789c7960777a28.png)&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;image-caption&quot;&gt;&lt;/div&gt;
+&lt;/div&gt;
+
+实际开发中,
+
+我们需要根据
+
+不同的条件执行
+
+不同的代码或者
+
+重复执行某一段代码
+
+&lt;div class=&quot;image-package&quot;&gt;
+&lt;div class=&quot;image-container&quot; style=&quot;max-width: 441px; max-height: 240px;&quot;&gt;
+&lt;div class=&quot;image-container-fill&quot; style=&quot;padding-bottom: 54.42%;&quot;&gt;&lt;/div&gt;
+&lt;div class=&quot;image-view&quot; data-width=&quot;441&quot; data-height=&quot;240&quot;&gt;![](//upload-images.jianshu.io/upload_images/13437285-d6445c9168c7ee45.png)&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;image-caption&quot;&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;pre class=&quot;hljs undefined&quot;&gt;`为了方便我们控制程序的运行流程，
+JavaScript提供3种流程结构，
+不同的流程结构可以实现不同的运行流程。
+这3种流程结构分别是
+顺序、选择、循环:
+
+三种基本控制结构构造.
+顺序结构
+ 默认的流程结构。按照书写顺序从上至下执行每一条语句
+选择结构
+对给定的条件进行判断，再根据判断结果来决定执行哪一段代码
+循环结构
+在给定条件成立的情况下，反复执行某一段代码
+`&lt;/pre&gt;
+
+if语句
+
+如果条件表达式为真,执行语句块1,否则不执行
+
+`if(条件表达式) { 语句块1 } 后续语句;`
+
+&lt;pre class=&quot;hljs javascript&quot;&gt;`  &lt;span class=&quot;hljs-keyword&quot;&gt;if&lt;/span&gt;(age &amp;gt; &lt;span class=&quot;hljs-number&quot;&gt;18&lt;/span&gt;)
+  {
+      &lt;span class=&quot;hljs-built_in&quot;&gt;console&lt;/span&gt;.log(&lt;span class=&quot;hljs-string&quot;&gt;&quot;可以上网&quot;&lt;/span&gt;);
+  }
+  &lt;span class=&quot;hljs-string&quot;&gt;``&lt;/span&gt;&lt;span class=&quot;hljs-string&quot;&gt;``&lt;/span&gt;
+`&lt;/pre&gt;
+
+如果条件表达式为真,则执行语句块1,否则执行语句块2
+
+&lt;pre class=&quot;hljs cpp&quot;&gt;`  &lt;span class=&quot;hljs-keyword&quot;&gt;if&lt;/span&gt;(条件表达式)
+  {
+      语句块&lt;span class=&quot;hljs-number&quot;&gt;1&lt;/span&gt;
+  }&lt;span class=&quot;hljs-keyword&quot;&gt;else&lt;/span&gt;{
+      语句块&lt;span class=&quot;hljs-number&quot;&gt;2&lt;/span&gt;
+  }
+
+  &lt;span class=&quot;hljs-keyword&quot;&gt;if&lt;/span&gt;(age &amp;gt; &lt;span class=&quot;hljs-number&quot;&gt;18&lt;/span&gt;)
+  {
+      console.&lt;span class=&quot;hljs-built_in&quot;&gt;log&lt;/span&gt;(&lt;span class=&quot;hljs-string&quot;&gt;&quot;可以上网&quot;&lt;/span&gt;);
+  }&lt;span class=&quot;hljs-keyword&quot;&gt;else&lt;/span&gt;{
+      console.&lt;span class=&quot;hljs-built_in&quot;&gt;log&lt;/span&gt;(&lt;span class=&quot;hljs-string&quot;&gt;&quot;你妈妈喊你吃饭&quot;&lt;/span&gt;);
+  }
+`&lt;/pre&gt;
+
+**特点**
+
+&lt;pre class=&quot;hljs bash&quot;&gt;`&lt;span class=&quot;hljs-keyword&quot;&gt;if&lt;/span&gt;和&lt;span class=&quot;hljs-keyword&quot;&gt;else&lt;/span&gt;后面的代码块({})只有一个会被执行 
+如果条件表达式1为真,则执行语句块1,
+否则判断条件表达式2,
+如果为真执行语句块2,
+否则再判断条件表达式3,
+如果真执行语句块3, 
+当表达式1、2、3都不满足,会执行最后一个&lt;span class=&quot;hljs-keyword&quot;&gt;else&lt;/span&gt;语句
+`&lt;/pre&gt;
+&lt;pre class=&quot;hljs cpp&quot;&gt;` 代码如下:
+      &lt;span class=&quot;hljs-keyword&quot;&gt;if&lt;/span&gt;(条件表达式&lt;span class=&quot;hljs-number&quot;&gt;1&lt;/span&gt;)
+      {
+          语句块&lt;span class=&quot;hljs-number&quot;&gt;1&lt;/span&gt;
+      }&lt;span class=&quot;hljs-keyword&quot;&gt;else&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;if&lt;/span&gt;(条件表达式&lt;span class=&quot;hljs-number&quot;&gt;2&lt;/span&gt;){
+          语句块&lt;span class=&quot;hljs-number&quot;&gt;2&lt;/span&gt;
+      }&lt;span class=&quot;hljs-keyword&quot;&gt;else&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;if&lt;/span&gt;(条件表达式&lt;span class=&quot;hljs-number&quot;&gt;3&lt;/span&gt;){
+          语句块&lt;span class=&quot;hljs-number&quot;&gt;3&lt;/span&gt;
+      }&lt;span class=&quot;hljs-keyword&quot;&gt;else&lt;/span&gt;{
+          语句块&lt;span class=&quot;hljs-number&quot;&gt;4&lt;/span&gt;
+
+      &lt;span class=&quot;hljs-keyword&quot;&gt;if&lt;/span&gt;(age&amp;gt;&lt;span class=&quot;hljs-number&quot;&gt;40&lt;/span&gt;)
+      {
+          console.&lt;span class=&quot;hljs-built_in&quot;&gt;log&lt;/span&gt;(&lt;span class=&quot;hljs-string&quot;&gt;&quot;老年人&quot;&lt;/span&gt;);
+      }&lt;span class=&quot;hljs-keyword&quot;&gt;else&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;if&lt;/span&gt;(age&amp;gt;&lt;span class=&quot;hljs-number&quot;&gt;25&lt;/span&gt;){
+          console.&lt;span class=&quot;hljs-built_in&quot;&gt;log&lt;/span&gt;(&lt;span class=&quot;hljs-string&quot;&gt;&quot;中年人&quot;&lt;/span&gt;);
+      }&lt;span class=&quot;hljs-keyword&quot;&gt;else&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;if&lt;/span&gt;(age&amp;gt;&lt;span class=&quot;hljs-number&quot;&gt;18&lt;/span&gt;){
+          console.&lt;span class=&quot;hljs-built_in&quot;&gt;log&lt;/span&gt;(&lt;span class=&quot;hljs-string&quot;&gt;&quot;成年人&quot;&lt;/span&gt;);
+      }&lt;span class=&quot;hljs-keyword&quot;&gt;else&lt;/span&gt;{
+          console.&lt;span class=&quot;hljs-built_in&quot;&gt;log&lt;/span&gt;(&lt;span class=&quot;hljs-string&quot;&gt;&quot;未成年&quot;&lt;/span&gt;);
+      }
+
+ 特点
+     这么多大括号中只有一个大括号中的内容会被执行
+     当执行到后面条件的时候证明前面的条件不满足
+     &lt;span class=&quot;hljs-keyword&quot;&gt;else&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;if&lt;/span&gt;可以只有一个, 也可以有多个, 但是都必须添加在&lt;span class=&quot;hljs-keyword&quot;&gt;if&lt;/span&gt;和&lt;span class=&quot;hljs-keyword&quot;&gt;else&lt;/span&gt;之间
+
+ 注意事项
+   如果只有一条语句时&lt;span class=&quot;hljs-keyword&quot;&gt;if&lt;/span&gt;后面的大括号可以省略
+      &lt;span class=&quot;hljs-keyword&quot;&gt;if&lt;/span&gt;(age &amp;gt; &lt;span class=&quot;hljs-number&quot;&gt;18&lt;/span&gt;)
+          console.&lt;span class=&quot;hljs-built_in&quot;&gt;log&lt;/span&gt;(&lt;span class=&quot;hljs-string&quot;&gt;&quot;成年人&quot;&lt;/span&gt;);
+
+   注意:受到&lt;span class=&quot;hljs-keyword&quot;&gt;if&lt;/span&gt;管制的只有紧跟其后的那条语句
+   开发中尽量不要省略大括号
+
+        &lt;span class=&quot;hljs-keyword&quot;&gt;if&lt;/span&gt;(&lt;span class=&quot;hljs-literal&quot;&gt;false&lt;/span&gt;)
+            console.&lt;span class=&quot;hljs-built_in&quot;&gt;log&lt;/span&gt;(&lt;span class=&quot;hljs-string&quot;&gt;&quot;语句1&quot;&lt;/span&gt;);
+        console.&lt;span class=&quot;hljs-built_in&quot;&gt;log&lt;/span&gt;(&lt;span class=&quot;hljs-string&quot;&gt;&quot;语句2&quot;&lt;/span&gt;); &lt;span class=&quot;hljs-comment&quot;&gt;// 语句2会被输出&lt;/span&gt;
+
+  分号“;”也是一条语句, 空语句
+      &lt;span class=&quot;hljs-keyword&quot;&gt;if&lt;/span&gt;(&lt;span class=&quot;hljs-number&quot;&gt;4&lt;/span&gt; &amp;gt; &lt;span class=&quot;hljs-number&quot;&gt;6&lt;/span&gt;);
+      {
+          console.&lt;span class=&quot;hljs-built_in&quot;&gt;log&lt;/span&gt;(&lt;span class=&quot;hljs-string&quot;&gt;&quot;4 &amp;gt; 6&quot;&lt;/span&gt;);
+      }
+      &lt;span class=&quot;hljs-comment&quot;&gt;// 输出结果: 4 &amp;gt; 6, if管制的紧跟其后的那个分号&lt;/span&gt;
+      &lt;span class=&quot;hljs-comment&quot;&gt;// {}在JS中仅仅代表告诉系统里面的语句是一个整体, 没有别的用途,不会影响代码的执行&lt;/span&gt;
+
+   &lt;span class=&quot;hljs-keyword&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;else&lt;/span&gt;是一个整体， &lt;span class=&quot;hljs-keyword&quot;&gt;else&lt;/span&gt;匹配&lt;span class=&quot;hljs-keyword&quot;&gt;if&lt;/span&gt;的时候匹配离它最近的一个&lt;span class=&quot;hljs-keyword&quot;&gt;if&lt;/span&gt;
+
+         &lt;span class=&quot;hljs-keyword&quot;&gt;if&lt;/span&gt;(&lt;span class=&quot;hljs-number&quot;&gt;0&lt;/span&gt;)
+              &lt;span class=&quot;hljs-keyword&quot;&gt;if&lt;/span&gt;(&lt;span class=&quot;hljs-number&quot;&gt;1&lt;/span&gt;)
+                  console.&lt;span class=&quot;hljs-built_in&quot;&gt;log&lt;/span&gt;(&lt;span class=&quot;hljs-string&quot;&gt;&quot;A&quot;&lt;/span&gt;);
+              &lt;span class=&quot;hljs-keyword&quot;&gt;else&lt;/span&gt; 
+                  console.&lt;span class=&quot;hljs-built_in&quot;&gt;log&lt;/span&gt;(&lt;span class=&quot;hljs-string&quot;&gt;&quot;B&quot;&lt;/span&gt;);
+          &lt;span class=&quot;hljs-keyword&quot;&gt;else&lt;/span&gt; 
+              &lt;span class=&quot;hljs-keyword&quot;&gt;if&lt;/span&gt; (&lt;span class=&quot;hljs-number&quot;&gt;1&lt;/span&gt;)
+                  console.&lt;span class=&quot;hljs-built_in&quot;&gt;log&lt;/span&gt;(&lt;span class=&quot;hljs-string&quot;&gt;&quot;C&quot;&lt;/span&gt;); 
+              &lt;span class=&quot;hljs-keyword&quot;&gt;else&lt;/span&gt;
+                  console.&lt;span class=&quot;hljs-built_in&quot;&gt;log&lt;/span&gt;(&lt;span class=&quot;hljs-string&quot;&gt;&quot;D&quot;&lt;/span&gt;);
+
+  对于非Boolean类型的值,会先转换为Boolean类型后再判断
+
+       &lt;span class=&quot;hljs-keyword&quot;&gt;if&lt;/span&gt; (&lt;span class=&quot;hljs-number&quot;&gt;0&lt;/span&gt;) {
+              console.&lt;span class=&quot;hljs-built_in&quot;&gt;log&lt;/span&gt;(&lt;span class=&quot;hljs-string&quot;&gt;&quot;itlike\n&quot;&lt;/span&gt;); &lt;span class=&quot;hljs-comment&quot;&gt;// 不会被执行&lt;/span&gt;
+          }
+      ```
+
+   判断变量与常量问题
+
+   但凡遇到比较一个变量等于或者不等于某一个常量的时候，把常量写在前面
+
+        &lt;span class=&quot;hljs-comment&quot;&gt;// if(a = 0)  // 错误写法, 但不会报错&lt;/span&gt;
+            &lt;span class=&quot;hljs-keyword&quot;&gt;if&lt;/span&gt; (&lt;span class=&quot;hljs-number&quot;&gt;0&lt;/span&gt; == a) {
+                console.&lt;span class=&quot;hljs-built_in&quot;&gt;log&lt;/span&gt;(&lt;span class=&quot;hljs-string&quot;&gt;&quot;a的值是0\n&quot;&lt;/span&gt;);
+            }&lt;span class=&quot;hljs-keyword&quot;&gt;else&lt;/span&gt;{
+               console.&lt;span class=&quot;hljs-built_in&quot;&gt;log&lt;/span&gt;(&lt;span class=&quot;hljs-string&quot;&gt;&quot;a的值不是0\n&quot;&lt;/span&gt;);
+            }
+
+         &lt;span class=&quot;hljs-comment&quot;&gt;/*
+            本来是先判断变量a存储的值是否等于0,
+            但是如果不小心写成a=0,代表把0存储到a中.
+            为了避免这种问题判断是否相等时把常量写前面,
+            因为等号左边只能是变量, 所以如果少写一个等号会报错
+        */&lt;/span&gt;
+
+   &lt;span class=&quot;hljs-keyword&quot;&gt;if&lt;/span&gt;语句可以嵌套使用
+
+       var num = &lt;span class=&quot;hljs-number&quot;&gt;20&lt;/span&gt;;
+          &lt;span class=&quot;hljs-keyword&quot;&gt;if&lt;/span&gt; (num &amp;gt;= &lt;span class=&quot;hljs-number&quot;&gt;10&lt;/span&gt;)
+          {
+              &lt;span class=&quot;hljs-keyword&quot;&gt;if&lt;/span&gt;(num &amp;lt;= &lt;span class=&quot;hljs-number&quot;&gt;30&lt;/span&gt;)
+              {
+                  console.&lt;span class=&quot;hljs-built_in&quot;&gt;log&lt;/span&gt;(&lt;span class=&quot;hljs-string&quot;&gt;&quot;一个10~30之间的数&quot;&lt;/span&gt;)
+              }
+          }
+
+  习题训练
+
+  从键盘输入一个整数，判断其是否是偶数，如果是偶数就输出YES，否则输出NO
+
+    &lt;span class=&quot;hljs-comment&quot;&gt;//    1.定义一个变量保存用户输入的整数&lt;/span&gt;
+        var temp;
+    &lt;span class=&quot;hljs-comment&quot;&gt;//    2.利用window.prompt()接收用户输入数据&lt;/span&gt;
+    &lt;span class=&quot;hljs-comment&quot;&gt;//     window.prompt返回给我们的是一个字符串, 需要转换为Number&lt;/span&gt;
+        temp = +(window.prompt(&lt;span class=&quot;hljs-string&quot;&gt;&quot;请输入一个整数&quot;&lt;/span&gt;));
+    &lt;span class=&quot;hljs-comment&quot;&gt;//    3.对用户输入的数据进行安全校验&lt;/span&gt;
+        &lt;span class=&quot;hljs-keyword&quot;&gt;if&lt;/span&gt;(isNaN(temp)){
+            alert(&lt;span class=&quot;hljs-string&quot;&gt;&quot;你是SB吗?&quot;&lt;/span&gt;);
+        }&lt;span class=&quot;hljs-keyword&quot;&gt;else&lt;/span&gt;{
+    &lt;span class=&quot;hljs-comment&quot;&gt;//    3.判断用户输入的数据是否是偶数, 然后根据判断结果输出YES/NO&lt;/span&gt;
+            &lt;span class=&quot;hljs-comment&quot;&gt;/*
+            if(temp % 2 == 0){
+                alert(&quot;YES&quot;);
+            }else{
+                alert(&quot;NO&quot;);
+            }
+            */&lt;/span&gt;
+            (temp % &lt;span class=&quot;hljs-number&quot;&gt;2&lt;/span&gt; == &lt;span class=&quot;hljs-number&quot;&gt;0&lt;/span&gt;) ? alert(&lt;span class=&quot;hljs-string&quot;&gt;&quot;YES&quot;&lt;/span&gt;) :  alert(&lt;span class=&quot;hljs-string&quot;&gt;&quot;NO&quot;&lt;/span&gt;);
+        }
+  接收用户输入的&lt;span class=&quot;hljs-number&quot;&gt;1&lt;/span&gt;～&lt;span class=&quot;hljs-number&quot;&gt;7&lt;/span&gt;的整数，根据用户输入的整数，输出对应的星期几?
+
+    &lt;span class=&quot;hljs-comment&quot;&gt;//    1.定义变量保存用户输入的数据&lt;/span&gt;
+        var day;
+    &lt;span class=&quot;hljs-comment&quot;&gt;//    2.利用window.prompt()接收用户输入数据&lt;/span&gt;
+        day = +(window.prompt(&lt;span class=&quot;hljs-string&quot;&gt;&quot;输入的1～7的整数&quot;&lt;/span&gt;));
+    &lt;span class=&quot;hljs-comment&quot;&gt;//    3.判断当前是星期几&lt;/span&gt;
+        &lt;span class=&quot;hljs-keyword&quot;&gt;if&lt;/span&gt;(day == &lt;span class=&quot;hljs-number&quot;&gt;1&lt;/span&gt;){
+            console.&lt;span class=&quot;hljs-built_in&quot;&gt;log&lt;/span&gt;(&lt;span class=&quot;hljs-string&quot;&gt;&quot;星期一&quot;&lt;/span&gt;);
+        }&lt;span class=&quot;hljs-keyword&quot;&gt;else&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;if&lt;/span&gt;(day == &lt;span class=&quot;hljs-number&quot;&gt;2&lt;/span&gt;){
+            console.&lt;span class=&quot;hljs-built_in&quot;&gt;log&lt;/span&gt;(&lt;span class=&quot;hljs-string&quot;&gt;&quot;星期二&quot;&lt;/span&gt;);
+        }&lt;span class=&quot;hljs-keyword&quot;&gt;else&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;if&lt;/span&gt;(day == &lt;span class=&quot;hljs-number&quot;&gt;3&lt;/span&gt;){
+            console.&lt;span class=&quot;hljs-built_in&quot;&gt;log&lt;/span&gt;(&lt;span class=&quot;hljs-string&quot;&gt;&quot;星三&quot;&lt;/span&gt;);
+        }&lt;span class=&quot;hljs-keyword&quot;&gt;else&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;if&lt;/span&gt;(day == &lt;span class=&quot;hljs-number&quot;&gt;4&lt;/span&gt;){
+            console.&lt;span class=&quot;hljs-built_in&quot;&gt;log&lt;/span&gt;(&lt;span class=&quot;hljs-string&quot;&gt;&quot;星期四&quot;&lt;/span&gt;);
+        }&lt;span class=&quot;hljs-keyword&quot;&gt;else&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;if&lt;/span&gt;(day == &lt;span class=&quot;hljs-number&quot;&gt;5&lt;/span&gt;){
+            console.&lt;span class=&quot;hljs-built_in&quot;&gt;log&lt;/span&gt;(&lt;span class=&quot;hljs-string&quot;&gt;&quot;星期五&quot;&lt;/span&gt;);
+        }&lt;span class=&quot;hljs-keyword&quot;&gt;else&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;if&lt;/span&gt;(day == &lt;span class=&quot;hljs-number&quot;&gt;6&lt;/span&gt;){
+            console.&lt;span class=&quot;hljs-built_in&quot;&gt;log&lt;/span&gt;(&lt;span class=&quot;hljs-string&quot;&gt;&quot;星期六&quot;&lt;/span&gt;);
+        }&lt;span class=&quot;hljs-keyword&quot;&gt;else&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;if&lt;/span&gt;(day == &lt;span class=&quot;hljs-number&quot;&gt;7&lt;/span&gt;){
+            console.&lt;span class=&quot;hljs-built_in&quot;&gt;log&lt;/span&gt;(&lt;span class=&quot;hljs-string&quot;&gt;&quot;星期日&quot;&lt;/span&gt;);
+        }&lt;span class=&quot;hljs-keyword&quot;&gt;else&lt;/span&gt;{
+            console.&lt;span class=&quot;hljs-built_in&quot;&gt;log&lt;/span&gt;(&lt;span class=&quot;hljs-string&quot;&gt;&quot;滚犊子&quot;&lt;/span&gt;);
+        }.
+
+  接收用户输入的一个整数month代表月份，根据月份输出对应的季节?
+  第一种:
+
+      &lt;span class=&quot;hljs-comment&quot;&gt;//    1.定义变量保存用户输入的数据&lt;/span&gt;
+          var month;
+      &lt;span class=&quot;hljs-comment&quot;&gt;//    2.利用window.prompt()接收用户输入数据&lt;/span&gt;
+          month = +(window.prompt(&lt;span class=&quot;hljs-string&quot;&gt;&quot;请输入一个1-12的月份&quot;&lt;/span&gt;));
+      &lt;span class=&quot;hljs-comment&quot;&gt;//    3.数据安全校验&lt;/span&gt;
+          &lt;span class=&quot;hljs-keyword&quot;&gt;if&lt;/span&gt;(isNaN(month)){
+              alert(&lt;span class=&quot;hljs-string&quot;&gt;&quot;火星SB?&quot;&lt;/span&gt;);
+          }&lt;span class=&quot;hljs-keyword&quot;&gt;else&lt;/span&gt;{
+      &lt;span class=&quot;hljs-comment&quot;&gt;//    4.根据输入的数据判断输出对应的月份即可&lt;/span&gt;
+              &lt;span class=&quot;hljs-keyword&quot;&gt;if&lt;/span&gt;(month &amp;gt;= &lt;span class=&quot;hljs-number&quot;&gt;3&lt;/span&gt; &amp;amp;&amp;amp; month &amp;lt;= &lt;span class=&quot;hljs-number&quot;&gt;5&lt;/span&gt;){
+                  alert(&lt;span class=&quot;hljs-string&quot;&gt;&quot;春季 &quot;&lt;/span&gt;);
+              }&lt;span class=&quot;hljs-keyword&quot;&gt;else&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;if&lt;/span&gt;(month &amp;gt;=&lt;span class=&quot;hljs-number&quot;&gt;6&lt;/span&gt; &amp;amp;&amp;amp; month &amp;lt;= &lt;span class=&quot;hljs-number&quot;&gt;8&lt;/span&gt;){
+                  alert(&lt;span class=&quot;hljs-string&quot;&gt;&quot;夏季&quot;&lt;/span&gt;);
+              }&lt;span class=&quot;hljs-keyword&quot;&gt;else&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;if&lt;/span&gt;(month &amp;gt;=&lt;span class=&quot;hljs-number&quot;&gt;9&lt;/span&gt; &amp;amp;&amp;amp; month &amp;lt;= &lt;span class=&quot;hljs-number&quot;&gt;11&lt;/span&gt;){
+                  alert(&lt;span class=&quot;hljs-string&quot;&gt;&quot;秋季&quot;&lt;/span&gt;);
+              }&lt;span class=&quot;hljs-keyword&quot;&gt;else&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;if&lt;/span&gt;(month == &lt;span class=&quot;hljs-number&quot;&gt;12&lt;/span&gt; || month == &lt;span class=&quot;hljs-number&quot;&gt;1&lt;/span&gt; || month == &lt;span class=&quot;hljs-number&quot;&gt;2&lt;/span&gt;){
+                  alert(&lt;span class=&quot;hljs-string&quot;&gt;&quot;冬季&quot;&lt;/span&gt;);
+              }&lt;span class=&quot;hljs-keyword&quot;&gt;else&lt;/span&gt;{
+                  alert(&lt;span class=&quot;hljs-string&quot;&gt;&quot;火星季节&quot;&lt;/span&gt;);
+              }
+        }
+   第二种:
+      &lt;span class=&quot;hljs-comment&quot;&gt;//    1.定义变量保存用户输入的数据&lt;/span&gt;
+          var month;
+      &lt;span class=&quot;hljs-comment&quot;&gt;//    2.利用window.prompt()接收用户输入数据&lt;/span&gt;
+          month = +(window.prompt(&lt;span class=&quot;hljs-string&quot;&gt;&quot;请输入一个1-12的月份&quot;&lt;/span&gt;));
+      &lt;span class=&quot;hljs-comment&quot;&gt;//    3.数据安全校验&lt;/span&gt;
+          &lt;span class=&quot;hljs-keyword&quot;&gt;if&lt;/span&gt;(isNaN(month)){
+              alert(&lt;span class=&quot;hljs-string&quot;&gt;&quot;火星SB?&quot;&lt;/span&gt;);
+          }&lt;span class=&quot;hljs-keyword&quot;&gt;else&lt;/span&gt;{
+      &lt;span class=&quot;hljs-comment&quot;&gt;//    4.根据输入的数据判断输出对应的月份即可&lt;/span&gt;
+              &lt;span class=&quot;hljs-keyword&quot;&gt;if&lt;/span&gt;(month &amp;lt; &lt;span class=&quot;hljs-number&quot;&gt;1&lt;/span&gt; || month &amp;gt; &lt;span class=&quot;hljs-number&quot;&gt;12&lt;/span&gt;){
+                  alert(&lt;span class=&quot;hljs-string&quot;&gt;&quot;火星季节&quot;&lt;/span&gt;);
+              }&lt;span class=&quot;hljs-keyword&quot;&gt;else&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;if&lt;/span&gt;(month &amp;gt;= &lt;span class=&quot;hljs-number&quot;&gt;3&lt;/span&gt; &amp;amp;&amp;amp; month &amp;lt;= &lt;span class=&quot;hljs-number&quot;&gt;5&lt;/span&gt;){
+                  alert(&lt;span class=&quot;hljs-string&quot;&gt;&quot;春季 &quot;&lt;/span&gt;);
+              }&lt;span class=&quot;hljs-keyword&quot;&gt;else&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;if&lt;/span&gt;(month &amp;gt;=&lt;span class=&quot;hljs-number&quot;&gt;6&lt;/span&gt; &amp;amp;&amp;amp; month &amp;lt;= &lt;span class=&quot;hljs-number&quot;&gt;8&lt;/span&gt;){
+                  alert(&lt;span class=&quot;hljs-string&quot;&gt;&quot;夏季&quot;&lt;/span&gt;);
+              }&lt;span class=&quot;hljs-keyword&quot;&gt;else&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;if&lt;/span&gt;(month &amp;gt;=&lt;span class=&quot;hljs-number&quot;&gt;9&lt;/span&gt; &amp;amp;&amp;amp; month &amp;lt;= &lt;span class=&quot;hljs-number&quot;&gt;11&lt;/span&gt;){
+                  alert(&lt;span class=&quot;hljs-string&quot;&gt;&quot;秋季&quot;&lt;/span&gt;);
+              }&lt;span class=&quot;hljs-keyword&quot;&gt;else&lt;/span&gt;{
+                  alert(&lt;span class=&quot;hljs-string&quot;&gt;&quot;冬季&quot;&lt;/span&gt;);
+              }
+          }
+
+  第三种:
+      &lt;span class=&quot;hljs-comment&quot;&gt;//    1.定义变量保存用户输入的数据&lt;/span&gt;
+          var month;
+      &lt;span class=&quot;hljs-comment&quot;&gt;//    2.利用window.prompt()接收用户输入数据&lt;/span&gt;
+          month = +(window.prompt(&lt;span class=&quot;hljs-string&quot;&gt;&quot;请输入一个1-12的月份&quot;&lt;/span&gt;));
+      &lt;span class=&quot;hljs-comment&quot;&gt;//    3.数据安全校验&lt;/span&gt;
+          &lt;span class=&quot;hljs-keyword&quot;&gt;if&lt;/span&gt;(isNaN(month)){
+              alert(&lt;span class=&quot;hljs-string&quot;&gt;&quot;火星SB?&quot;&lt;/span&gt;);
+          }&lt;span class=&quot;hljs-keyword&quot;&gt;else&lt;/span&gt;{
+      &lt;span class=&quot;hljs-comment&quot;&gt;//    4.根据输入的数据判断输出对应的月份即可&lt;/span&gt;
+              &lt;span class=&quot;hljs-keyword&quot;&gt;if&lt;/span&gt;(month == &lt;span class=&quot;hljs-number&quot;&gt;12&lt;/span&gt; || month == &lt;span class=&quot;hljs-number&quot;&gt;1&lt;/span&gt; || month == &lt;span class=&quot;hljs-number&quot;&gt;2&lt;/span&gt;){
+                  alert(&lt;span class=&quot;hljs-string&quot;&gt;&quot;冬季&quot;&lt;/span&gt;);  &lt;span class=&quot;hljs-comment&quot;&gt;// 没有进入, 剩下的必然是3-11&lt;/span&gt;
+              }&lt;span class=&quot;hljs-keyword&quot;&gt;else&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;if&lt;/span&gt;(month &amp;gt;=&lt;span class=&quot;hljs-number&quot;&gt;9&lt;/span&gt;){ 
+                  alert(&lt;span class=&quot;hljs-string&quot;&gt;&quot;秋季&quot;&lt;/span&gt;); &lt;span class=&quot;hljs-comment&quot;&gt;// 没有进入, 剩下的必然 3-8&lt;/span&gt;
+              }&lt;span class=&quot;hljs-keyword&quot;&gt;else&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;if&lt;/span&gt;(month &amp;gt;=&lt;span class=&quot;hljs-number&quot;&gt;6&lt;/span&gt;){ 
+                  alert(&lt;span class=&quot;hljs-string&quot;&gt;&quot;夏季&quot;&lt;/span&gt;); &lt;span class=&quot;hljs-comment&quot;&gt;// 没有进入, 剩下的必然 3-5&lt;/span&gt;
+              }&lt;span class=&quot;hljs-keyword&quot;&gt;else&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;if&lt;/span&gt;(month &amp;gt;= &lt;span class=&quot;hljs-number&quot;&gt;3&lt;/span&gt;){
+                  alert(&lt;span class=&quot;hljs-string&quot;&gt;&quot;春季 &quot;&lt;/span&gt;);
+              }&lt;span class=&quot;hljs-keyword&quot;&gt;else&lt;/span&gt;{ &lt;span class=&quot;hljs-comment&quot;&gt;// 12 1 2&lt;/span&gt;
+                  alert(&lt;span class=&quot;hljs-string&quot;&gt;&quot;火星季节&quot;&lt;/span&gt;);
+              }
+          }
+  从键盘输入&lt;span class=&quot;hljs-number&quot;&gt;2&lt;/span&gt;个整数，判断大小后输出较大的那个数?
+
+    &lt;span class=&quot;hljs-comment&quot;&gt;//    1.定义变量保存三个整数&lt;/span&gt;
+        var a, b;
+    &lt;span class=&quot;hljs-comment&quot;&gt;//    2.利用window.prompt接收用户输入的数据&lt;/span&gt;
+        a =  +(window.prompt(&lt;span class=&quot;hljs-string&quot;&gt;&quot;请输入内容&quot;&lt;/span&gt;)); 
+        b =  +(window.prompt(&lt;span class=&quot;hljs-string&quot;&gt;&quot;请输入内容&quot;&lt;/span&gt;)); 
+    &lt;span class=&quot;hljs-comment&quot;&gt;//    3.利用if进行两两比较&lt;/span&gt;
+        &lt;span class=&quot;hljs-keyword&quot;&gt;if&lt;/span&gt;(a &amp;gt; b){
+            console.&lt;span class=&quot;hljs-built_in&quot;&gt;log&lt;/span&gt;(a);
+        }&lt;span class=&quot;hljs-keyword&quot;&gt;else&lt;/span&gt;{
+            console.&lt;span class=&quot;hljs-built_in&quot;&gt;log&lt;/span&gt;(b);
+        }
+        &lt;span class=&quot;hljs-comment&quot;&gt;/*
+        三元运算符好处：可以简化if else代码
+        弊端                  ：因为是一个运算符所以运算完必要要有一个结果。  
+        简单用三元 复杂用if(阅读性好)
+        */&lt;/span&gt;
+        console.&lt;span class=&quot;hljs-built_in&quot;&gt;log&lt;/span&gt;(a &amp;gt; b? a: b);
+  从键盘输入&lt;span class=&quot;hljs-number&quot;&gt;3&lt;/span&gt;个整数，排序后输出?
+  常规写法
+
+      &lt;span class=&quot;hljs-comment&quot;&gt;//    1.定义变量保存三个整数&lt;/span&gt;
+          var a, b, c;
+      &lt;span class=&quot;hljs-comment&quot;&gt;//    2.利用window.prompt接收用户输入的数据&lt;/span&gt;
+          a =  +(window.prompt(&lt;span class=&quot;hljs-string&quot;&gt;&quot;请输入内容&quot;&lt;/span&gt;));
+          b =  +(window.prompt(&lt;span class=&quot;hljs-string&quot;&gt;&quot;请输入内容&quot;&lt;/span&gt;));
+          c =  +(window.prompt(&lt;span class=&quot;hljs-string&quot;&gt;&quot;请输入内容&quot;&lt;/span&gt;));
+          &lt;span class=&quot;hljs-comment&quot;&gt;//     方式1 写出所有方式&lt;/span&gt;
+          &lt;span class=&quot;hljs-keyword&quot;&gt;if&lt;/span&gt; (a &amp;gt;= b &amp;amp;&amp;amp; b &amp;gt;=c) {
+              console.&lt;span class=&quot;hljs-built_in&quot;&gt;log&lt;/span&gt;(a, b, c);
+          }&lt;span class=&quot;hljs-keyword&quot;&gt;else&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;if&lt;/span&gt; (a &amp;gt;= c &amp;amp;&amp;amp; c &amp;gt;= b) {
+              console.&lt;span class=&quot;hljs-built_in&quot;&gt;log&lt;/span&gt;(a, c, b);
+          }&lt;span class=&quot;hljs-keyword&quot;&gt;else&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;if&lt;/span&gt; (b &amp;gt;= a &amp;amp;&amp;amp; a &amp;gt;= c) {
+              console.&lt;span class=&quot;hljs-built_in&quot;&gt;log&lt;/span&gt;(b, a, c);
+          }&lt;span class=&quot;hljs-keyword&quot;&gt;else&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;if&lt;/span&gt; (b &amp;gt;= c &amp;amp;&amp;amp; c &amp;gt;= a) {
+              console.&lt;span class=&quot;hljs-built_in&quot;&gt;log&lt;/span&gt;(b, c, a);
+          }&lt;span class=&quot;hljs-keyword&quot;&gt;else&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;if&lt;/span&gt; (c &amp;gt;= a &amp;amp;&amp;amp; a &amp;gt;= b) {
+              console.&lt;span class=&quot;hljs-built_in&quot;&gt;log&lt;/span&gt;(c, a, b);
+          }&lt;span class=&quot;hljs-keyword&quot;&gt;else&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;if&lt;/span&gt; (c &amp;gt;= b &amp;amp;&amp;amp; b &amp;gt;= a) {
+              console.&lt;span class=&quot;hljs-built_in&quot;&gt;log&lt;/span&gt;(c, b, a);
+          }
+
+      选择排序
+        &lt;span class=&quot;hljs-comment&quot;&gt;//    1.定义变量保存三个整数&lt;/span&gt;
+            var a, b, c;
+        &lt;span class=&quot;hljs-comment&quot;&gt;//    2.利用window.prompt接收用户输入的数据&lt;/span&gt;
+            a =  +(window.prompt(&lt;span class=&quot;hljs-string&quot;&gt;&quot;请输入内容&quot;&lt;/span&gt;));
+            b =  +(window.prompt(&lt;span class=&quot;hljs-string&quot;&gt;&quot;请输入内容&quot;&lt;/span&gt;));
+            c =  +(window.prompt(&lt;span class=&quot;hljs-string&quot;&gt;&quot;请输入内容&quot;&lt;/span&gt;));
+        &lt;span class=&quot;hljs-comment&quot;&gt;//     方式2 选择排序&lt;/span&gt;
+            var temp;
+            &lt;span class=&quot;hljs-keyword&quot;&gt;if&lt;/span&gt; (a &amp;gt; b) {
+                temp = a;
+                a = b;
+                b = temp;
+            }
+            &lt;span class=&quot;hljs-keyword&quot;&gt;if&lt;/span&gt; (a &amp;gt; c) {
+                temp = a;
+                a = c;
+                c = temp;
+            }
+            &lt;span class=&quot;hljs-keyword&quot;&gt;if&lt;/span&gt; ( b &amp;gt; c) {
+                temp = b;
+                b = c;
+                c = temp;
+            }
+            console.&lt;span class=&quot;hljs-built_in&quot;&gt;log&lt;/span&gt;(a, b, c);
+  冒泡排序
+
+          &lt;span class=&quot;hljs-comment&quot;&gt;//    1.定义变量保存三个整数&lt;/span&gt;
+              var a, b, c;
+          &lt;span class=&quot;hljs-comment&quot;&gt;//    2.利用window.prompt接收用户输入的数据&lt;/span&gt;
+              a =  +(window.prompt(&lt;span class=&quot;hljs-string&quot;&gt;&quot;请输入内容&quot;&lt;/span&gt;));
+              b =  +(window.prompt(&lt;span class=&quot;hljs-string&quot;&gt;&quot;请输入内容&quot;&lt;/span&gt;));
+              c =  +(window.prompt(&lt;span class=&quot;hljs-string&quot;&gt;&quot;请输入内容&quot;&lt;/span&gt;));
+          &lt;span class=&quot;hljs-comment&quot;&gt;//     方式3 冒泡排序&lt;/span&gt;
+              var temp;
+              &lt;span class=&quot;hljs-keyword&quot;&gt;if&lt;/span&gt; (a &amp;gt; b) {
+                  temp = a;
+                  a = b;
+                  b = temp;
+              }
+              &lt;span class=&quot;hljs-keyword&quot;&gt;if&lt;/span&gt; (b &amp;gt; c) {
+                  temp = b;
+                  b = c;
+                  c = temp;
+              }
+              &lt;span class=&quot;hljs-keyword&quot;&gt;if&lt;/span&gt; ( a &amp;gt; b) {
+                  temp = a;
+                  a = b;
+                  b = temp;
+              }
+              console.&lt;span class=&quot;hljs-built_in&quot;&gt;log&lt;/span&gt;(a, b, c);
+    石头剪子布实现?
+
+    &lt;span class=&quot;hljs-comment&quot;&gt;// 定义 0.剪刀 1.石头 2.布&lt;/span&gt;
+        &lt;span class=&quot;hljs-comment&quot;&gt;// 1、定义变量 玩家和电脑&lt;/span&gt;
+        var player,computer = &lt;span class=&quot;hljs-number&quot;&gt;0&lt;/span&gt;;
+
+        &lt;span class=&quot;hljs-comment&quot;&gt;// 2、让电脑先出拳&lt;/span&gt;
+        var temp = Math.random() * &lt;span class=&quot;hljs-number&quot;&gt;3&lt;/span&gt;;
+        &lt;span class=&quot;hljs-comment&quot;&gt;// 3、用户出拳&lt;/span&gt;
+        var player = window.prompt(&lt;span class=&quot;hljs-string&quot;&gt;&quot;请出拳:0.剪刀 1.石头 2.布&quot;&lt;/span&gt;);
+        &lt;span class=&quot;hljs-comment&quot;&gt;// 数据合法性的校验&lt;/span&gt;
+        &lt;span class=&quot;hljs-keyword&quot;&gt;if&lt;/span&gt; (player&amp;lt;&lt;span class=&quot;hljs-number&quot;&gt;0&lt;/span&gt;||player&amp;gt;&lt;span class=&quot;hljs-number&quot;&gt;2&lt;/span&gt;) {
+            window.prompt(&lt;span class=&quot;hljs-string&quot;&gt;&quot;请重新出拳:0.剪刀 1.石头 2.布&quot;&lt;/span&gt;);
+        }&lt;span class=&quot;hljs-keyword&quot;&gt;else&lt;/span&gt;{
+            &lt;span class=&quot;hljs-comment&quot;&gt;// 4、判断比较 //先判断用户赢的情况&lt;/span&gt;
+            &lt;span class=&quot;hljs-keyword&quot;&gt;if&lt;/span&gt;((player==&lt;span class=&quot;hljs-number&quot;&gt;0&lt;/span&gt;&amp;amp;&amp;amp;computer==&lt;span class=&quot;hljs-number&quot;&gt;2&lt;/span&gt;)||
+                    (player==&lt;span class=&quot;hljs-number&quot;&gt;1&lt;/span&gt;&amp;amp;&amp;amp;computer==&lt;span class=&quot;hljs-number&quot;&gt;0&lt;/span&gt;)||
+                    (player==&lt;span class=&quot;hljs-number&quot;&gt;2&lt;/span&gt;&amp;amp;&amp;amp;computer==&lt;span class=&quot;hljs-number&quot;&gt;1&lt;/span&gt;)){
+                window.alert(&lt;span class=&quot;hljs-string&quot;&gt;&quot;我靠,你赢了!\n&quot;&lt;/span&gt;);
+
+            }&lt;span class=&quot;hljs-keyword&quot;&gt;else&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;if&lt;/span&gt;((computer==&lt;span class=&quot;hljs-number&quot;&gt;0&lt;/span&gt;&amp;amp;&amp;amp;player==&lt;span class=&quot;hljs-number&quot;&gt;2&lt;/span&gt;)||
+                    (computer==&lt;span class=&quot;hljs-number&quot;&gt;1&lt;/span&gt;&amp;amp;&amp;amp;player==&lt;span class=&quot;hljs-number&quot;&gt;0&lt;/span&gt;)||
+                    (computer==&lt;span class=&quot;hljs-number&quot;&gt;2&lt;/span&gt;&amp;amp;&amp;amp;player==&lt;span class=&quot;hljs-number&quot;&gt;1&lt;/span&gt;)){
+                window.alert(&lt;span class=&quot;hljs-string&quot;&gt;&quot;很遗憾,你输了!\n&quot;&lt;/span&gt;);
+
+            }&lt;span class=&quot;hljs-keyword&quot;&gt;else&lt;/span&gt;{
+                window.alert(&lt;span class=&quot;hljs-string&quot;&gt;&quot;平局\n&quot;&lt;/span&gt;);
+            }
+        }
+
+&lt;span class=&quot;hljs-number&quot;&gt;3.&lt;/span&gt; 循环
+
+循环结构是程序中一种很重要的结构。其特点是,在给定条件成立时,反复执行某程序段, 直到条件不成立为止。
+
+给定的条件称为循环条件,反复执行的程序段称为循环体
+循环结构简单来说就是:一次又一次的执行相同的代码块
+`&lt;/pre&gt;
+
+现实生活中的循坏
+
+&lt;div class=&quot;image-package&quot;&gt;
+&lt;div class=&quot;image-container&quot; style=&quot;max-width: 439px; max-height: 465px;&quot;&gt;
+&lt;div class=&quot;image-container-fill&quot; style=&quot;padding-bottom: 105.91999999999999%;&quot;&gt;&lt;/div&gt;
+&lt;div class=&quot;image-view&quot; data-width=&quot;439&quot; data-height=&quot;465&quot;&gt;![](//upload-images.jianshu.io/upload_images/13437285-060431e077492633.png)&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;image-caption&quot;&gt;&lt;/div&gt;
+&lt;/div&gt;
+
+**JavaScript中的循坏**
+
+&lt;pre class=&quot;hljs cpp&quot;&gt;`  &lt;span class=&quot;hljs-keyword&quot;&gt;while&lt;/span&gt;语句
+  &lt;span class=&quot;hljs-keyword&quot;&gt;do&lt;/span&gt;-&lt;span class=&quot;hljs-keyword&quot;&gt;while&lt;/span&gt;语句
+  &lt;span class=&quot;hljs-keyword&quot;&gt;for&lt;/span&gt;语句
+  &lt;span class=&quot;hljs-keyword&quot;&gt;while&lt;/span&gt;循环
+`&lt;/pre&gt;
+
+**格式**
+
+&lt;pre class=&quot;hljs bash&quot;&gt;` &lt;span class=&quot;hljs-keyword&quot;&gt;while&lt;/span&gt; ( 条件表达式 ) {
+      语句1;
+      语句2;
+      ....
+  }
+`&lt;/pre&gt;
+
+**执行流程**
+
+&lt;pre class=&quot;hljs javascript&quot;&gt;`判断条件表达式是否为真, 如果为真执行后面大括号中的内容
+
+执行完毕再次判断条件表达式是否还为真,如果为真执行后面大括号中的内容
+
+ 重复上述过程,直到条件不成立就结束&lt;span class=&quot;hljs-keyword&quot;&gt;while&lt;/span&gt;循环
+
+  &lt;span class=&quot;hljs-keyword&quot;&gt;var&lt;/span&gt; num = &lt;span class=&quot;hljs-number&quot;&gt;0&lt;/span&gt;;
+  &lt;span class=&quot;hljs-keyword&quot;&gt;while&lt;/span&gt; (num &amp;lt; &lt;span class=&quot;hljs-number&quot;&gt;10&lt;/span&gt;){
+    &lt;span class=&quot;hljs-built_in&quot;&gt;console&lt;/span&gt;.log(num); 
+    num++;
+  }
+`&lt;/pre&gt;
+
+**构成循环结构的几个条件**
+
+&lt;pre class=&quot;hljs bash&quot;&gt;` 循环控制条件(条件表达式)
+ 循环退出的主要依据,来控制循环到底什么时候退出
+ 循环体(&lt;span class=&quot;hljs-keyword&quot;&gt;while&lt;/span&gt;后面的大括号{})
+ 循环的过程中重复执行的代码段
+ 循环结束语句(递增,递减,&lt;span class=&quot;hljs-built_in&quot;&gt;break&lt;/span&gt;等)
+ 能够让循环条件为假的依据,否则退出循环
+`&lt;/pre&gt;
+
+**while循环特点**
+
+&lt;pre class=&quot;hljs javascript&quot;&gt;`如果&lt;span class=&quot;hljs-keyword&quot;&gt;while&lt;/span&gt;中的条件一开始就不成立,那么循环体中的语句永远不会被执行
+  &lt;span class=&quot;hljs-keyword&quot;&gt;var&lt;/span&gt; num = &lt;span class=&quot;hljs-number&quot;&gt;10&lt;/span&gt;;
+  &lt;span class=&quot;hljs-keyword&quot;&gt;while&lt;/span&gt; (num &amp;lt; &lt;span class=&quot;hljs-number&quot;&gt;10&lt;/span&gt;){
+      alert(num); &lt;span class=&quot;hljs-comment&quot;&gt;// 什么都不弹&lt;/span&gt;
+      num++;
+  }
+`&lt;/pre&gt;
+
+**while循坏注意点**
+
+&lt;pre class=&quot;hljs bash&quot;&gt;`  死循环
+
+  条件表达式永远为真, 循坏永远无法结束,我们称之为死循环
+
+     &lt;span class=&quot;hljs-keyword&quot;&gt;while&lt;/span&gt; (&lt;span class=&quot;hljs-literal&quot;&gt;true&lt;/span&gt;){
+            alert(&lt;span class=&quot;hljs-string&quot;&gt;&quot;itlike.com&quot;&lt;/span&gt;);
+        }
+`&lt;/pre&gt;
+
+**任何值都有真假性**
+
+&lt;pre class=&quot;hljs javascript&quot;&gt;` 对于非&lt;span class=&quot;hljs-built_in&quot;&gt;Boolean&lt;/span&gt;类型的值, 会先转换为&lt;span class=&quot;hljs-built_in&quot;&gt;Boolean&lt;/span&gt;类型再判断
+
+ &lt;span class=&quot;hljs-keyword&quot;&gt;while&lt;/span&gt; (&lt;span class=&quot;hljs-number&quot;&gt;1&lt;/span&gt;){ &lt;span class=&quot;hljs-comment&quot;&gt;// 先把1转换为Boolean, 然后再判断真假&lt;/span&gt;
+            alert(&lt;span class=&quot;hljs-string&quot;&gt;&quot;itlike.com&quot;&lt;/span&gt;);
+        }
+
+ &lt;span class=&quot;hljs-keyword&quot;&gt;while&lt;/span&gt; 后如果只有一条语句它可以省略大括号
+
+ 如果省略大括号, &lt;span class=&quot;hljs-keyword&quot;&gt;while&lt;/span&gt;只会管制紧跟其后的那条语句
+
+    &lt;span class=&quot;hljs-keyword&quot;&gt;while&lt;/span&gt; (&lt;span class=&quot;hljs-number&quot;&gt;0&lt;/span&gt;)
+       alert(&lt;span class=&quot;hljs-string&quot;&gt;&quot;会执行我么?&quot;&lt;/span&gt;); &lt;span class=&quot;hljs-comment&quot;&gt;// 不会执行&lt;/span&gt;
+    alert(&lt;span class=&quot;hljs-string&quot;&gt;&quot;itlike.com&quot;&lt;/span&gt;);
+`&lt;/pre&gt;
+
+**分号问题**
+
+&lt;pre class=&quot;hljs ruby&quot;&gt;`   分号(;)也是一条语句, 代表空语句
+
+     &lt;span class=&quot;hljs-keyword&quot;&gt;while&lt;/span&gt; (&lt;span class=&quot;hljs-number&quot;&gt;0&lt;/span&gt;);
+      {
+          alert(&lt;span class=&quot;hljs-string&quot;&gt;&quot;123&quot;&lt;/span&gt;); &lt;span class=&quot;hljs-regexp&quot;&gt;//&lt;/span&gt; 会被执行, 因为&lt;span class=&quot;hljs-keyword&quot;&gt;while&lt;/span&gt;管制的是分号(;)
+      }
+`&lt;/pre&gt;
+
+**最简单的死循环**
+
+开发中慎用死循环, 会导致程序阻塞
+
+&lt;pre class=&quot;hljs bash&quot;&gt;`     &lt;span class=&quot;hljs-keyword&quot;&gt;while&lt;/span&gt; (1);
+`&lt;/pre&gt;
+
+while循坏练习
+
+&lt;pre class=&quot;hljs javascript&quot;&gt;`    提示用户输入一个正整数n， 计算&lt;span class=&quot;hljs-number&quot;&gt;1&lt;/span&gt; + &lt;span class=&quot;hljs-number&quot;&gt;2&lt;/span&gt; + &lt;span class=&quot;hljs-number&quot;&gt;3&lt;/span&gt; + ...n的和
+
+      &lt;span class=&quot;hljs-comment&quot;&gt;//    1.定义变量保存上一次的和&lt;/span&gt;
+          &lt;span class=&quot;hljs-keyword&quot;&gt;var&lt;/span&gt; sum = &lt;span class=&quot;hljs-number&quot;&gt;0&lt;/span&gt;;
+          &lt;span class=&quot;hljs-comment&quot;&gt;//    2.定义变量保存递增的数&lt;/span&gt;
+          &lt;span class=&quot;hljs-keyword&quot;&gt;var&lt;/span&gt; number = &lt;span class=&quot;hljs-number&quot;&gt;1&lt;/span&gt;;
+          &lt;span class=&quot;hljs-keyword&quot;&gt;while&lt;/span&gt; (number &amp;lt;= &lt;span class=&quot;hljs-number&quot;&gt;5&lt;/span&gt;) {
+              &lt;span class=&quot;hljs-built_in&quot;&gt;console&lt;/span&gt;.log(&lt;span class=&quot;hljs-string&quot;&gt;&quot;sum = &quot;&lt;/span&gt;+ sum +&lt;span class=&quot;hljs-string&quot;&gt;&quot; + number = &quot;&lt;/span&gt;+ number);
+              sum = sum + number;
+              number++;
+          }
+          &lt;span class=&quot;hljs-built_in&quot;&gt;console&lt;/span&gt;.log(&lt;span class=&quot;hljs-string&quot;&gt;&quot;sum = &quot;&lt;/span&gt; + sum);
+
+    获取&lt;span class=&quot;hljs-number&quot;&gt;1&lt;/span&gt;～&lt;span class=&quot;hljs-number&quot;&gt;100&lt;/span&gt;之间 &lt;span class=&quot;hljs-number&quot;&gt;7&lt;/span&gt;的倍数的个数并打印，并统计个数
+
+      &lt;span class=&quot;hljs-keyword&quot;&gt;var&lt;/span&gt; count = &lt;span class=&quot;hljs-number&quot;&gt;1&lt;/span&gt;;
+          &lt;span class=&quot;hljs-keyword&quot;&gt;var&lt;/span&gt; num = &lt;span class=&quot;hljs-number&quot;&gt;0&lt;/span&gt;;
+          &lt;span class=&quot;hljs-keyword&quot;&gt;while&lt;/span&gt; (count &amp;lt;= &lt;span class=&quot;hljs-number&quot;&gt;100&lt;/span&gt;) {
+
+              &lt;span class=&quot;hljs-keyword&quot;&gt;if&lt;/span&gt; (count % &lt;span class=&quot;hljs-number&quot;&gt;7&lt;/span&gt; == &lt;span class=&quot;hljs-number&quot;&gt;0&lt;/span&gt;) {
+
+                  &lt;span class=&quot;hljs-built_in&quot;&gt;console&lt;/span&gt;.log(&lt;span class=&quot;hljs-string&quot;&gt;&quot;count = &quot;&lt;/span&gt; + count);
+                  num++;&lt;span class=&quot;hljs-comment&quot;&gt;//计数器&lt;/span&gt;
+              }
+              count++;
+          }
+
+          &lt;span class=&quot;hljs-built_in&quot;&gt;console&lt;/span&gt;.log(&lt;span class=&quot;hljs-string&quot;&gt;&quot;number = &quot;&lt;/span&gt;+ num);
+
+`&lt;/pre&gt;
+
+**break关键字**
+
+&lt;div class=&quot;image-package&quot;&gt;
+&lt;div class=&quot;image-container&quot; style=&quot;max-width: 586px; max-height: 269px;&quot;&gt;
+&lt;div class=&quot;image-container-fill&quot; style=&quot;padding-bottom: 45.9%;&quot;&gt;&lt;/div&gt;
+&lt;div class=&quot;image-view&quot; data-width=&quot;586&quot; data-height=&quot;269&quot;&gt;![](//upload-images.jianshu.io/upload_images/13437285-26b049de349d19f5.png)&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;image-caption&quot;&gt;&lt;/div&gt;
+&lt;/div&gt;
+
+**作用**
+
+跳出Switch语句
+&lt;pre class=&quot;hljs javascript&quot;&gt;`      &lt;span class=&quot;hljs-keyword&quot;&gt;var&lt;/span&gt; num = &lt;span class=&quot;hljs-number&quot;&gt;1&lt;/span&gt;;
+      &lt;span class=&quot;hljs-keyword&quot;&gt;switch&lt;/span&gt;(num){
+          &lt;span class=&quot;hljs-keyword&quot;&gt;case&lt;/span&gt; &lt;span class=&quot;hljs-number&quot;&gt;1&lt;/span&gt;:
+              &lt;span class=&quot;hljs-built_in&quot;&gt;console&lt;/span&gt;.log(&lt;span class=&quot;hljs-string&quot;&gt;&quot;壹&quot;&lt;/span&gt;);&lt;span class=&quot;hljs-comment&quot;&gt;// 输出壹&lt;/span&gt;
+              &lt;span class=&quot;hljs-keyword&quot;&gt;break&lt;/span&gt;; &lt;span class=&quot;hljs-comment&quot;&gt;// 跳出switch语句, 后面代码不会执行&lt;/span&gt;
+          &lt;span class=&quot;hljs-keyword&quot;&gt;case&lt;/span&gt; &lt;span class=&quot;hljs-number&quot;&gt;2&lt;/span&gt;:
+              &lt;span class=&quot;hljs-built_in&quot;&gt;console&lt;/span&gt;.log(&lt;span class=&quot;hljs-string&quot;&gt;&quot;贰&quot;&lt;/span&gt;); 
+              &lt;span class=&quot;hljs-keyword&quot;&gt;break&lt;/span&gt;;
+          &lt;span class=&quot;hljs-keyword&quot;&gt;default&lt;/span&gt;:
+              &lt;span class=&quot;hljs-built_in&quot;&gt;console&lt;/span&gt;.log(&lt;span class=&quot;hljs-string&quot;&gt;&quot;非法数字&quot;&lt;/span&gt;);
+              &lt;span class=&quot;hljs-keyword&quot;&gt;break&lt;/span&gt;;
+      }
+`&lt;/pre&gt;
+
+**跳出循环语句**
+
+&lt;pre class=&quot;hljs javascript&quot;&gt;`      &lt;span class=&quot;hljs-keyword&quot;&gt;var&lt;/span&gt; num = &lt;span class=&quot;hljs-number&quot;&gt;0&lt;/span&gt;;
+      &lt;span class=&quot;hljs-keyword&quot;&gt;while&lt;/span&gt;(&lt;span class=&quot;hljs-literal&quot;&gt;true&lt;/span&gt;){ 
+          &lt;span class=&quot;hljs-built_in&quot;&gt;console&lt;/span&gt;.log(num);
+          &lt;span class=&quot;hljs-keyword&quot;&gt;if&lt;/span&gt;(&lt;span class=&quot;hljs-number&quot;&gt;3&lt;/span&gt; == num){
+              &lt;span class=&quot;hljs-keyword&quot;&gt;break&lt;/span&gt;; &lt;span class=&quot;hljs-comment&quot;&gt;// 当num等于3时跳出循环&lt;/span&gt;
+          }
+          num++
+      }
+`&lt;/pre&gt;
+
+**注意点**
+
+&lt;pre class=&quot;hljs cpp&quot;&gt;`      &lt;span class=&quot;hljs-keyword&quot;&gt;break&lt;/span&gt;关键字只能用于循环语句和&lt;span class=&quot;hljs-keyword&quot;&gt;switch&lt;/span&gt;语句, 在其它地方没有意义
+
+        &lt;span class=&quot;hljs-keyword&quot;&gt;break&lt;/span&gt;;  &lt;span class=&quot;hljs-comment&quot;&gt;// 浏览器会报错&lt;/span&gt;
+        alert(&lt;span class=&quot;hljs-string&quot;&gt;&quot;我会输出么?&quot;&lt;/span&gt;);
+
+        &lt;span class=&quot;hljs-keyword&quot;&gt;if&lt;/span&gt;(&lt;span class=&quot;hljs-literal&quot;&gt;true&lt;/span&gt;){
+            &lt;span class=&quot;hljs-keyword&quot;&gt;break&lt;/span&gt;; &lt;span class=&quot;hljs-comment&quot;&gt;// 浏览器会报错&lt;/span&gt;
+            alert(&lt;span class=&quot;hljs-string&quot;&gt;&quot;我会输出么?&quot;&lt;/span&gt;);
+        }
+        ```
+
+      在多层循环中,一个&lt;span class=&quot;hljs-keyword&quot;&gt;break&lt;/span&gt;语句只向外跳一层
+
+        &lt;span class=&quot;hljs-keyword&quot;&gt;while&lt;/span&gt; (&lt;span class=&quot;hljs-number&quot;&gt;1&lt;/span&gt;){
+            &lt;span class=&quot;hljs-keyword&quot;&gt;while&lt;/span&gt; (&lt;span class=&quot;hljs-number&quot;&gt;2&lt;/span&gt;){
+                console.&lt;span class=&quot;hljs-built_in&quot;&gt;log&lt;/span&gt;(&lt;span class=&quot;hljs-string&quot;&gt;&quot;我是while2&quot;&lt;/span&gt;); &lt;span class=&quot;hljs-comment&quot;&gt;// 会被输出多次&lt;/span&gt;
+                &lt;span class=&quot;hljs-keyword&quot;&gt;break&lt;/span&gt;; &lt;span class=&quot;hljs-comment&quot;&gt;// 跳出while2,但是不会跳出while1&lt;/span&gt;
+            }
+            console.&lt;span class=&quot;hljs-built_in&quot;&gt;log&lt;/span&gt;(&lt;span class=&quot;hljs-string&quot;&gt;&quot;我是while1&quot;&lt;/span&gt;);
+        }
+
+      &lt;span class=&quot;hljs-keyword&quot;&gt;break&lt;/span&gt;后面的语句永远不会被执行
+
+        &lt;span class=&quot;hljs-keyword&quot;&gt;while&lt;/span&gt; (&lt;span class=&quot;hljs-number&quot;&gt;1&lt;/span&gt;){
+            &lt;span class=&quot;hljs-keyword&quot;&gt;break&lt;/span&gt;;
+            alert(&lt;span class=&quot;hljs-string&quot;&gt;&quot;会弹出来么?&quot;&lt;/span&gt;); &lt;span class=&quot;hljs-comment&quot;&gt;// 不会弹出&lt;/span&gt;
+        }
+`&lt;/pre&gt;
+
+**continue关键字**
+
+&lt;div class=&quot;image-package&quot;&gt;
+&lt;div class=&quot;image-container&quot; style=&quot;max-width: 494px; max-height: 257px;&quot;&gt;
+&lt;div class=&quot;image-container-fill&quot; style=&quot;padding-bottom: 52.019999999999996%;&quot;&gt;&lt;/div&gt;
+&lt;div class=&quot;image-view&quot; data-width=&quot;494&quot; data-height=&quot;257&quot;&gt;![](//upload-images.jianshu.io/upload_images/13437285-b380979fa736e4de.png)&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;image-caption&quot;&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;pre class=&quot;hljs javascript&quot;&gt;`  作用
+
+  跳过当前循环体中剩余的语句而继续下一次
+
+      &lt;span class=&quot;hljs-keyword&quot;&gt;var&lt;/span&gt; num = &lt;span class=&quot;hljs-number&quot;&gt;0&lt;/span&gt;;
+        &lt;span class=&quot;hljs-keyword&quot;&gt;while&lt;/span&gt; (num &amp;lt; &lt;span class=&quot;hljs-number&quot;&gt;10&lt;/span&gt;){
+            num++;
+            &lt;span class=&quot;hljs-keyword&quot;&gt;if&lt;/span&gt;(num % &lt;span class=&quot;hljs-number&quot;&gt;2&lt;/span&gt; == &lt;span class=&quot;hljs-number&quot;&gt;0&lt;/span&gt;){
+                &lt;span class=&quot;hljs-keyword&quot;&gt;continue&lt;/span&gt;;
+            }
+            &lt;span class=&quot;hljs-built_in&quot;&gt;console&lt;/span&gt;.log(num); &lt;span class=&quot;hljs-comment&quot;&gt;// 1, 3, 5, 7, 9&lt;/span&gt;
+        }
+
+注意点
+
+只能用于循环结构, 在其它地方没有意义
+
+&lt;span class=&quot;hljs-keyword&quot;&gt;continue&lt;/span&gt;后面的语句永远不会被执行
+
+      &lt;span class=&quot;hljs-keyword&quot;&gt;while&lt;/span&gt; (&lt;span class=&quot;hljs-number&quot;&gt;1&lt;/span&gt;){
+          &lt;span class=&quot;hljs-keyword&quot;&gt;continue&lt;/span&gt;;
+          alert(&lt;span class=&quot;hljs-string&quot;&gt;&quot;会弹出来么?&quot;&lt;/span&gt;); &lt;span class=&quot;hljs-comment&quot;&gt;// 不会弹出&lt;/span&gt;
+      }
+`&lt;/pre&gt;
+
+**do-while循环**
+
+&lt;pre class=&quot;hljs bash&quot;&gt;`格式
+
+   &lt;span class=&quot;hljs-keyword&quot;&gt;do&lt;/span&gt; {
+       语句1;
+       语句2;
+       ....
+   } &lt;span class=&quot;hljs-keyword&quot;&gt;while&lt;/span&gt; ( 条件 );
+
+    执行流程
+
+    首先会执行一次循环体中的语句
+    接着判断&lt;span class=&quot;hljs-keyword&quot;&gt;while&lt;/span&gt;中的条件表达式是否为真，如果为真再次执行循环体中的语句
+    重复上述过程，直到条件不成立就结束&lt;span class=&quot;hljs-keyword&quot;&gt;while&lt;/span&gt;循环
+
+  特点
+
+    不管&lt;span class=&quot;hljs-keyword&quot;&gt;while&lt;/span&gt;中的条件是否成立，循环体中的语句至少会被执行一遍
+
+  应用场景
+
+    口令校验
+`&lt;/pre&gt;
+
+**for循环**
+
+&gt; JavaScript中的for语句使用最为灵活,
+</code></pre>
+<blockquote>
+<pre><code>不仅可以用于循环次数已经确定的情况,
+
+而且可以用于循环次数不确定而只给出循环结束条件的情况,
+
+它完全可以代替while语句。
+</code></pre>
+</blockquote>
+<pre><code>&lt;pre class=&quot;hljs bash&quot;&gt;`格式
+
+  &lt;span class=&quot;hljs-keyword&quot;&gt;for&lt;/span&gt;(①初始化表达式；②循环条件表达式；④循环后操作表达式)
+  {
+      ③执行语句；
+  }
+`&lt;/pre&gt;
+
+**for循环执行流程**
+
+&lt;pre class=&quot;hljs bash&quot;&gt;`   &lt;span class=&quot;hljs-keyword&quot;&gt;for&lt;/span&gt;循环开始时，会先执行初始化表达式，而且在整个循环过程中只执行一次初始化表达式
+
+    接着判断循环条件表达式是否为真，如果条件为真，就会执行循环体中的语句
+
+   循环体执行完毕后，接下来会执行循环后的操作表达式
+
+    执行完循环后操作表达式, 然后再次判断循环条件表达式是否为真，如果条件为真，就会执行循环体中的语句
+
+    重复上述过程，直到条件不成立就结束&lt;span class=&quot;hljs-keyword&quot;&gt;for&lt;/span&gt;循环
+`&lt;/pre&gt;
+&lt;pre class=&quot;hljs php&quot;&gt;`        &lt;span class=&quot;hljs-keyword&quot;&gt;for&lt;/span&gt;(&lt;span class=&quot;hljs-keyword&quot;&gt;var&lt;/span&gt; i = &lt;span class=&quot;hljs-number&quot;&gt;0&lt;/span&gt;; i &amp;lt; &lt;span class=&quot;hljs-number&quot;&gt;10&lt;/span&gt;; i++){
+            alert(i); &lt;span class=&quot;hljs-comment&quot;&gt;// 输出0-9&lt;/span&gt;
+        }
+
+        &lt;span class=&quot;hljs-keyword&quot;&gt;for&lt;/span&gt;循环和&lt;span class=&quot;hljs-keyword&quot;&gt;while&lt;/span&gt;循环如何选择?
+
+       一般情况下&lt;span class=&quot;hljs-keyword&quot;&gt;while&lt;/span&gt;和&lt;span class=&quot;hljs-keyword&quot;&gt;for&lt;/span&gt;可以互换, 但是如果循环执行完毕之后就不需要使用用于控制循环的增量, 那么用&lt;span class=&quot;hljs-keyword&quot;&gt;for&lt;/span&gt;更好
+
+     注意点
+
+        &lt;span class=&quot;hljs-keyword&quot;&gt;for&lt;/span&gt;循环中初始化表达式,循环条件表达式,
+        循环后操作表达式都可以不写
+        循环条件表达式默认为真
+        &lt;span class=&quot;hljs-keyword&quot;&gt;for&lt;/span&gt;(; ;) 语句相当于&lt;span class=&quot;hljs-keyword&quot;&gt;while&lt;/span&gt;(&lt;span class=&quot;hljs-number&quot;&gt;1&lt;/span&gt;), 都是死循环
+        其它注意点和&lt;span class=&quot;hljs-keyword&quot;&gt;while&lt;/span&gt;一样
+
+      循环嵌套练习
+
+        打印好友列表
+
+          好友列表&lt;span class=&quot;hljs-number&quot;&gt;1&lt;/span&gt;
+          ​          好友&lt;span class=&quot;hljs-number&quot;&gt;1&lt;/span&gt;
+          ​          好友&lt;span class=&quot;hljs-number&quot;&gt;2&lt;/span&gt;
+          ​          好友&lt;span class=&quot;hljs-number&quot;&gt;3&lt;/span&gt;
+             好友列表&lt;span class=&quot;hljs-number&quot;&gt;2&lt;/span&gt;
+          ​          好友&lt;span class=&quot;hljs-number&quot;&gt;1&lt;/span&gt;
+          ​          好友&lt;span class=&quot;hljs-number&quot;&gt;2&lt;/span&gt;
+          ​          好友&lt;span class=&quot;hljs-number&quot;&gt;3&lt;/span&gt;
+
+          &lt;span class=&quot;hljs-keyword&quot;&gt;for&lt;/span&gt; (&lt;span class=&quot;hljs-keyword&quot;&gt;var&lt;/span&gt; i = &lt;span class=&quot;hljs-number&quot;&gt;1&lt;/span&gt;; i &amp;lt;= &lt;span class=&quot;hljs-number&quot;&gt;2&lt;/span&gt;; i++) {
+                  console.log(&lt;span class=&quot;hljs-string&quot;&gt;&quot;好友列表&quot;&lt;/span&gt;+ i);
+                  &lt;span class=&quot;hljs-keyword&quot;&gt;for&lt;/span&gt; (&lt;span class=&quot;hljs-keyword&quot;&gt;var&lt;/span&gt; j = &lt;span class=&quot;hljs-number&quot;&gt;1&lt;/span&gt;; j &amp;lt;= &lt;span class=&quot;hljs-number&quot;&gt;3&lt;/span&gt;; j++) {
+                      console.log(&lt;span class=&quot;hljs-string&quot;&gt;&quot;    好友&quot;&lt;/span&gt;+ j);
+                  }
+              }
+
+       &lt;span class=&quot;hljs-keyword&quot;&gt;for&lt;/span&gt;循环嵌套实现:打印&lt;span class=&quot;hljs-number&quot;&gt;99&lt;/span&gt;乘法表
+
+        &amp;lt;style&amp;gt;
+
+                span{
+                    display: inline-block;
+                    border: &lt;span class=&quot;hljs-number&quot;&gt;1&lt;/span&gt;px solid &lt;span class=&quot;hljs-comment&quot;&gt;#000;&lt;/span&gt;
+                    padding: &lt;span class=&quot;hljs-number&quot;&gt;10&lt;/span&gt;px;
+                }
+        &amp;lt;/style&amp;gt;
+        &amp;lt;script&amp;gt;
+            &lt;span class=&quot;hljs-comment&quot;&gt;/*
+              1.观察发现有很多行很多列--》循环嵌套
+              2.尖尖朝上，让内循环条件表达式随着外循环i改变
+              3.输出的结果等于 内循环的变量 * 外循环的变量
+            */&lt;/span&gt;
+            &lt;span class=&quot;hljs-keyword&quot;&gt;for&lt;/span&gt; (&lt;span class=&quot;hljs-keyword&quot;&gt;var&lt;/span&gt; i = &lt;span class=&quot;hljs-number&quot;&gt;1&lt;/span&gt;; i &amp;lt;= &lt;span class=&quot;hljs-number&quot;&gt;9&lt;/span&gt;; i++) {
+                &lt;span class=&quot;hljs-keyword&quot;&gt;for&lt;/span&gt; (&lt;span class=&quot;hljs-keyword&quot;&gt;var&lt;/span&gt; j = &lt;span class=&quot;hljs-number&quot;&gt;1&lt;/span&gt;; j &amp;lt;= i; j++) {
+                    document.write(&lt;span class=&quot;hljs-string&quot;&gt;&quot;&amp;lt;span&amp;gt;&quot;&lt;/span&gt;+j+&lt;span class=&quot;hljs-string&quot;&gt;&quot;*&quot;&lt;/span&gt;+i+&lt;span class=&quot;hljs-string&quot;&gt;&quot;=&quot;&lt;/span&gt;+i*j+&lt;span class=&quot;hljs-string&quot;&gt;&quot;&amp;lt;/span&amp;gt;&quot;&lt;/span&gt;);
+                }
+                window.document.write(&lt;span class=&quot;hljs-string&quot;&gt;&quot;&amp;lt;br/&amp;gt;&quot;&lt;/span&gt;);
+            }
+        &amp;lt;/script&amp;gt;
+
+      &lt;/div&gt;
+</code></pre>
+</hr>
+<h3 id="辨别js中的对象">辨别JS中的对象</h3>
+<p>除了5种基本的数据类型，其它的全都是对象</p>
+<p>Object就是一个对象</p>
+<h3 id="为什么要使用对象">为什么要使用对象</h3>
+<p>基本数据类型都是单一的值, 比如: &quot;itlike&quot; , 123 , true等, 值和值之间没有任何的联系。</p>
+<blockquote>
+<p>比如想要描述一个人?</p>
+<p>如果使用基本数据类型的数据，我们所创建的变量都是独立，不能成为一个整体。</p>
+</blockquote>
+<pre><code>&lt;span class=&quot;hljs-keyword&quot;&gt;var&lt;/span&gt; name = &lt;span class=&quot;hljs-string&quot;&gt;&quot;撩课学院&quot;&lt;/span&gt;;
+&lt;span class=&quot;hljs-keyword&quot;&gt;var&lt;/span&gt; intro = &lt;span class=&quot;hljs-string&quot;&gt;&quot;喜欢IT, 就上撩课&quot;&lt;/span&gt;;
+&lt;span class=&quot;hljs-keyword&quot;&gt;var&lt;/span&gt; age = &lt;span class=&quot;hljs-number&quot;&gt;108&lt;/span&gt;;
+对象属于一种复合的数据类型，在对象中可以保存多个不同数据类型的属性。
+`&lt;/pre&gt;
+
+### JS中对象的分类
+
+**内置对象**
+
+&lt;pre class=&quot;hljs javascript&quot;&gt;`由ES标准中定义的对象，在任何的ES的实现中都可以使用
+比如：&lt;span class=&quot;hljs-built_in&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;hljs-built_in&quot;&gt;Number&lt;/span&gt; &lt;span class=&quot;hljs-built_in&quot;&gt;Boolean&lt;/span&gt; &lt;span class=&quot;hljs-built_in&quot;&gt;Function&lt;/span&gt; &lt;span class=&quot;hljs-built_in&quot;&gt;Object&lt;/span&gt; &lt;span class=&quot;hljs-built_in&quot;&gt;Math&lt;/span&gt; ....
+`&lt;/pre&gt;
+
+**宿主对象**
+
+&lt;pre class=&quot;hljs undefined&quot;&gt;`由JS的运行环境提供的对象，现在主要指由浏览器提供的对象
+比如: BOM对象, DOM对象
+`&lt;/pre&gt;
+
+**自定义对象**
+
+&lt;pre class=&quot;hljs undefined&quot;&gt;`我们自己创建的对象
+比如: Person, Dog, ....
+`&lt;/pre&gt;
+
+**如何创建对象**
+
+1.构造函数
+
+&lt;pre class=&quot;hljs php&quot;&gt;`构造函数是专门用来创建对象的函数
+使用&lt;span class=&quot;hljs-keyword&quot;&gt;new&lt;/span&gt;关键字调用的函数，可以被称为构造函数(constructor)
+&lt;span class=&quot;hljs-keyword&quot;&gt;var&lt;/span&gt; obj = &lt;span class=&quot;hljs-keyword&quot;&gt;new&lt;/span&gt; Object();
+`&lt;/pre&gt;
+
+2.定义
+
+&lt;pre class=&quot;hljs javascript&quot;&gt;`在对象中保存的值称为属性
+向对象添加属性: 对象.属性名 = 属性值
+读取对象中的属性: 对象.属性名:如果读取对象中没有的属性，不会报错而是会返回&lt;span class=&quot;hljs-literal&quot;&gt;undefined&lt;/span&gt;
+修改对象的属性值: 对象.属性名 = 新值
+删除对象的属性: &lt;span class=&quot;hljs-keyword&quot;&gt;delete&lt;/span&gt; 对象.属性名
+`&lt;/pre&gt;
+
+3.定义一个人
+
+&lt;pre class=&quot;hljs javascript&quot;&gt;`&lt;span class=&quot;hljs-keyword&quot;&gt;var&lt;/span&gt; obj = &lt;span class=&quot;hljs-keyword&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;hljs-built_in&quot;&gt;Object&lt;/span&gt;();
+&lt;span class=&quot;hljs-comment&quot;&gt;//向obj中添加一个name属性&lt;/span&gt;
+obj.name = &lt;span class=&quot;hljs-string&quot;&gt;&quot;谢霆锋&quot;&lt;/span&gt;;
+&lt;span class=&quot;hljs-comment&quot;&gt;//向obj中添加一个gender属性&lt;/span&gt;
+obj.gender = &lt;span class=&quot;hljs-string&quot;&gt;&quot;男&quot;&lt;/span&gt;;
+&lt;span class=&quot;hljs-comment&quot;&gt;//向obj中添加一个age属性&lt;/span&gt;
+obj.age = &lt;span class=&quot;hljs-number&quot;&gt;38&lt;/span&gt;;
+读取  修改   删除
+`&lt;/pre&gt;
+
+**属性名和属性值**
+
+1.属性名
+
+对象的属性名不强制要求遵守标识符的规范, 怎么写都可以, 但还是按照标准来比较好!
+
+&lt;pre class=&quot;hljs javascript&quot;&gt;`&lt;span class=&quot;hljs-keyword&quot;&gt;var&lt;/span&gt; obj = &lt;span class=&quot;hljs-keyword&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;hljs-built_in&quot;&gt;Object&lt;/span&gt;();
+obj.name = &lt;span class=&quot;hljs-string&quot;&gt;&quot;叶建华&quot;&lt;/span&gt;;
+obj.if = &lt;span class=&quot;hljs-string&quot;&gt;&quot;如果&quot;&lt;/span&gt;;
+&lt;span class=&quot;hljs-built_in&quot;&gt;console&lt;/span&gt;.log(obj);
+`&lt;/pre&gt;
+
+注意
+
+&lt;pre class=&quot;hljs javascript&quot;&gt;`如果要使用特殊的属性名，不能采用.的方式来操作, 
+需要使用另一种方式, 
+语法: 对象[&lt;span class=&quot;hljs-string&quot;&gt;&quot;属性名&quot;&lt;/span&gt;] = 属性值, 读取也要用该方式
+
+obj[&lt;span class=&quot;hljs-string&quot;&gt;&quot;666&quot;&lt;/span&gt;] = &lt;span class=&quot;hljs-number&quot;&gt;888&lt;/span&gt;;
+&lt;span class=&quot;hljs-built_in&quot;&gt;console&lt;/span&gt;.log(obj[&lt;span class=&quot;hljs-string&quot;&gt;&quot;666&quot;&lt;/span&gt;]);
+
+&lt;span class=&quot;hljs-keyword&quot;&gt;var&lt;/span&gt; str = &lt;span class=&quot;hljs-string&quot;&gt;'666'&lt;/span&gt;;
+obj[str] = &lt;span class=&quot;hljs-number&quot;&gt;888&lt;/span&gt;;
+&lt;span class=&quot;hljs-built_in&quot;&gt;console&lt;/span&gt;.log(obj[str]);
+`&lt;/pre&gt;
+
+2.属性值
+
+&lt;pre class=&quot;hljs javascript&quot;&gt;`JS对象的属性值，可以是任意的数据类型, 也可以是一个对象
+obj.content = &lt;span class=&quot;hljs-literal&quot;&gt;null&lt;/span&gt;;
+obj.content = &lt;span class=&quot;hljs-literal&quot;&gt;true&lt;/span&gt;;
+obj.content = &lt;span class=&quot;hljs-literal&quot;&gt;undefined&lt;/span&gt;;
+
+调试
+&lt;span class=&quot;hljs-keyword&quot;&gt;var&lt;/span&gt; obj2 = &lt;span class=&quot;hljs-keyword&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;hljs-built_in&quot;&gt;Object&lt;/span&gt;();
+obj2.name = &lt;span class=&quot;hljs-string&quot;&gt;&quot;小花花&quot;&lt;/span&gt;;
+obj.dog = obj2;
+`&lt;/pre&gt;
+
+3.in 运算符
+
+&lt;pre class=&quot;hljs bash&quot;&gt;`定义:通过该运算符可以检查一个对象中是否含有指定的属性, 如果有则返回&lt;span class=&quot;hljs-literal&quot;&gt;true&lt;/span&gt;，没有则返回&lt;span class=&quot;hljs-literal&quot;&gt;false&lt;/span&gt;
+语法:&lt;span class=&quot;hljs-string&quot;&gt;&quot;属性名&quot;&lt;/span&gt; &lt;span class=&quot;hljs-keyword&quot;&gt;in&lt;/span&gt; 对象
+`&lt;/pre&gt;
+
+基本类型和引用类型在堆栈中的表示
+
+1.基本数据类型
+
+&lt;pre class=&quot;hljs javascript&quot;&gt;`&lt;span class=&quot;hljs-built_in&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;hljs-built_in&quot;&gt;Number&lt;/span&gt; &lt;span class=&quot;hljs-built_in&quot;&gt;Boolean&lt;/span&gt; Null Undefined
+`&lt;/pre&gt;
+
+2.引用数据类型
+
+&lt;pre class=&quot;hljs javascript&quot;&gt;`&lt;span class=&quot;hljs-built_in&quot;&gt;Object&lt;/span&gt;
+`&lt;/pre&gt;
+
+3.区别
+
+&lt;pre class=&quot;hljs undefined&quot;&gt;`JS中的变量都是保存到栈内存中的，
+基本数据类型的值直接在栈内存中存储，
+值与值之间是独立存在，
+修改一个变量不会影响其他的变量
+对象是保存到堆内存中的，
+每创建一个新的对象，
+就会在堆内存中开辟出一个新的空间，
+而变量保存的是对象的内存地址（对象的引用），
+如果两个变量保存的是同一个对象引用，
+当一个通过一个变量修改属性时，另一个也会受到影响
+`&lt;/pre&gt;
+
+4.画图分析
+
+5.注意
+
+&lt;pre class=&quot;hljs bash&quot;&gt;`比较两个基本数据类型的值时，就是比较值。
+比较两个引用数据类型时，
+它是比较的对象的内存地址，
+如果两个对象是一摸一样的，但是地址不同，它也会返回&lt;span class=&quot;hljs-literal&quot;&gt;false&lt;/span&gt;
+`&lt;/pre&gt;
+
+**对象字面量**
+
+&lt;pre class=&quot;hljs cpp&quot;&gt;`使用对象字面量，可以在创建对象时，直接指定对象中的属性
+语法:var 对象 = {属性名:属性值,属性名:属性值....};
+对象字面量的属性名可以加引号也可以不加，建议不加, 如果要使用一些特殊的名字，则必须加引号
+格式:属性名和属性值是一组一组的名值对结构，和值之间使用:连接，多个名值对之间使用,隔开
+
+案例:
+var obj = { 
+    name:&lt;span class=&quot;hljs-string&quot;&gt;&quot;刘德华&quot;&lt;/span&gt;,
+    age:&lt;span class=&quot;hljs-number&quot;&gt;50&lt;/span&gt;,
+    gender:&lt;span class=&quot;hljs-string&quot;&gt;&quot;男&quot;&lt;/span&gt;,
+    &lt;span class=&quot;hljs-keyword&quot;&gt;friend&lt;/span&gt;:{name:&lt;span class=&quot;hljs-string&quot;&gt;&quot;洗头发&quot;&lt;/span&gt;}
+    };  
+console.&lt;span class=&quot;hljs-built_in&quot;&gt;log&lt;/span&gt;(obj.&lt;span class=&quot;hljs-keyword&quot;&gt;friend&lt;/span&gt;);
+
+      &lt;/div&gt;</code></pre>
+
+            </div>
+            
+              <div class="tag-container">
+                
+                  <a href="https://demichung813.github.io/zhongniblog//tag/WUwSdvSqE" class="tag">
+                    JavaScript
+                  </a>
+                
+              </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="https://demichung813.github.io/zhongniblog//post/css-ji-chu-he-mo-xing-fu-dong-liu-qing-chu-fu-dong-ding-wei">
+                  <h3 class="post-title">
+                    CSS基础--盒模型,浮动流,清除浮动,定位
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+
+<script type="application/javascript">
+
+AOS.init();
+
+hljs.initHighlightingOnLoad()
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+
+
+  </body>
+</html>

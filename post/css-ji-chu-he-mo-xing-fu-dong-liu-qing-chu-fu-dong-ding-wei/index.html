@@ -1,0 +1,2386 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>CSS基础--盒模型,浮动流,清除浮动,定位 | ZhongNi Gridea</title>
+<meta name="description" content="温故而知新">
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="https://demichung813.github.io/zhongniblog//favicon.ico?v=1556893715247">
+<link rel="stylesheet" href="https://demichung813.github.io/zhongniblog//styles/main.css">
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
+
+
+  </head>
+  <body>
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="https://demichung813.github.io/zhongniblog/">
+        <img src="https://demichung813.github.io/zhongniblog//images/avatar.png?v=1556893715247" class="site-logo">
+        <h1 class="site-title">ZhongNi Gridea</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
+      
+        
+          <a href="/" class="site-nav">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="site-nav">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="site-nav">
+            标签
+          </a>
+        
+      
+        
+          <a href="/post/about" class="site-nav">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+    <div class="site-description">
+      温故而知新
+    </div>
+    <div class="site-footer">
+      Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">CSS基础--盒模型,浮动流,清除浮动,定位</h2>
+            <div class="post-date">2019-05-03</div>
+            
+            <div class="post-content">
+              <p><img src="https://demichung813.github.io/zhongniblog//post-images/1556888914022.png" alt="盒模型"></p>
+<h2 id="盒模型">盒模型</h2>
+<h3 id="边框属性">边框属性</h3>
+<ul>
+<li>
+<p>什么边框?</p>
+</li>
+<li>
+<p>边框就是环绕在标签宽度和高度周围的线条</p>
+</li>
+<li>
+<p>边框属性的格式</p>
+</li>
+<li>
+<p>连写(同时设置四条边)</p>
+</li>
+<li>
+<p>border: 边框的宽度 边框的样式 边框的颜色;</p>
+</li>
+<li>
+<p>示例代码</p>
+<p><span class="hljs-tag">&lt;<span class="hljs-name">style</span>&gt;</span><span class="css">
+<span class="hljs-selector-class">.box</span>{
+<span class="hljs-attribute">width</span>: <span class="hljs-number">100px</span>;
+<span class="hljs-attribute">height</span>: <span class="hljs-number">100px</span>;
+<span class="hljs-attribute">background-color</span>: red;
+<span class="hljs-attribute">border</span>: <span class="hljs-number">5px</span> solid blue;
+<span class="hljs-comment">/<em>border: 5px solid;</em>/</span>
+<span class="hljs-comment">/<em>border: 5px blue;</em>/</span>
+<span class="hljs-comment">/<em>border: solid blue;</em>/</span>
+}
+</span><span class="hljs-tag">&lt;/<span class="hljs-name">style</span>&gt;</span>
+`</pre></p>
+</li>
+<li>
+<p>快捷键:</p>
+</li>
+<li>
+<p>bd+ border: 1px solid #000;</p>
+</li>
+<li>
+<p>注意点:</p>
+</li>
+<li>
+<p>连写格式中颜色属性可以省略, 省略之后默认就是黑色</p>
+</li>
+<li>
+<p>连写格式中样式不能省略, 省略之后就看不到边框了</p>
+</li>
+<li>
+<p>连写格式中宽度可以省略, 省略之后还是可以看到边框</p>
+</li>
+<li>
+<p>按方向连写(分别设置四条边)</p>
+</li>
+<li>
+<p>border-top: 边框的宽度 边框的样式 边框的颜色;</p>
+</li>
+<li>
+<p>border-right: 边框的宽度 边框的样式 边框的颜色;</p>
+</li>
+<li>
+<p>border-bottom: 边框的宽度 边框的样式 边框的颜色;</p>
+</li>
+<li>
+<p>border-left: 边框的宽度 边框的样式 边框的颜色;</p>
+</li>
+<li>
+<p>示例代码</p>
+<pre class="hljs xml">`<span class="hljs-tag">&lt;<span class="hljs-name">style</span>&gt;</span><span class="css">
+        <span class="hljs-selector-class">.box</span>{
+            <span class="hljs-attribute">width</span>: <span class="hljs-number">100px</span>;
+            <span class="hljs-attribute">height</span>: <span class="hljs-number">100px</span>;
+            <span class="hljs-attribute">background-color</span>: red;
+            <span class="hljs-attribute">border-top</span>:<span class="hljs-number">5px</span> solid blue;
+            <span class="hljs-attribute">border-right</span>:<span class="hljs-number">10px</span> dashed green;
+            <span class="hljs-attribute">border-bottom</span>:<span class="hljs-number">15px</span> dotted purple;
+            <span class="hljs-attribute">border-left</span>:<span class="hljs-number">20px</span> double pink;
+        }
+</span><span class="hljs-tag">&lt;/<span class="hljs-name">style</span>&gt;</span>
+`</pre>
+</li>
+<li>
+<p>快捷键:</p>
+</li>
+<li>
+<p>bt+ border-top: 1px solid #000;</p>
+</li>
+<li>
+<p>br+ border-right: 1px solid #000;</p>
+</li>
+<li>
+<p>bb+ border-bottom: 1px solid #000;</p>
+</li>
+<li>
+<p>bl+ border-left: 1px solid #000;</p>
+</li>
+<li>
+<p>按要素连写(分别设置四条边)</p>
+</li>
+<li>
+<p>border-width: 上 右 下 左;</p>
+</li>
+<li>
+<p>border-style: 上 右 下 左;</p>
+</li>
+<li>
+<p>border-color: 上 右 下 左;</p>
+</li>
+<li>
+<p>示例代码</p>
+<pre class="hljs xml">`<span class="hljs-tag">&lt;<span class="hljs-name">style</span>&gt;</span><span class="css">
+        <span class="hljs-selector-class">.box</span>{
+            <span class="hljs-attribute">width</span>: <span class="hljs-number">500px</span>;
+            <span class="hljs-attribute">height</span>: <span class="hljs-number">500px</span>;
+            <span class="hljs-attribute">background-color</span>: red;
+            <span class="hljs-attribute">border-width</span>: <span class="hljs-number">5px</span> <span class="hljs-number">10px</span> <span class="hljs-number">15px</span> <span class="hljs-number">20px</span>;
+            <span class="hljs-attribute">border-style</span>: solid dashed dotted double;
+            <span class="hljs-attribute">border-color</span>: blue green purple pink;
+            <span class="hljs-comment">/*border-color: blue green purple;*/</span>
+            <span class="hljs-comment">/*border-color: blue green;*/</span>
+            <span class="hljs-comment">/*border-color: blue;*/</span>
+        }
+</span><span class="hljs-tag">&lt;/<span class="hljs-name">style</span>&gt;</span>
+`</pre>
+</li>
+<li>
+<p>注意点:</p>
+</li>
+<li>
+<p>这三个属性的取值是按照顺时针来赋值, 也就是按照上右下左来赋值, 而不是按照日常生活中的上下左右</p>
+</li>
+<li>
+<p>这三个属性的取值省略时的规律</p>
+</li>
+<li>
+<p>上 右 下 左 &gt; 上 右 下 &gt; 左边的取值和右边的一样</p>
+</li>
+<li>
+<p>上 右 下 左 &gt; 上 右 &gt; 左边的取值和右边的一样 下边的取值和上边一样</p>
+</li>
+<li>
+<p>上 右 下 左 &gt; 上 &gt; 右下左边取值和上边一样</p>
+</li>
+<li>
+<p>非连写(方向+要素)</p>
+</li>
+<li>
+<p>border-top-width: ;</p>
+</li>
+<li>
+<p>border-top-style:;</p>
+</li>
+<li>
+<p>border-top-color:;</p>
+</li>
+<li>
+<p>border-right-width:;</p>
+</li>
+<li>
+<p>border-right-style:;</p>
+</li>
+<li>
+<p>border-right-color:;</p>
+</li>
+<li>
+<p>border-bottom-width:;</p>
+</li>
+<li>
+<p>border-bottom-style: ;</p>
+</li>
+<li>
+<p>border-bottom-color:;</p>
+</li>
+<li>
+<p>border-left-width:;</p>
+</li>
+<li>
+<p>border-left-style:;</p>
+</li>
+<li>
+<p>border-left-color:;</p>
+</li>
+<li>
+<p>示例代码</p>
+<pre class="hljs xml">`<span class="hljs-tag">&lt;<span class="hljs-name">style</span>&gt;</span><span class="css">
+        <span class="hljs-selector-class">.box</span>{
+            <span class="hljs-attribute">width</span>: <span class="hljs-number">500px</span>;
+            <span class="hljs-attribute">height</span>: <span class="hljs-number">500px</span>;
+            <span class="hljs-attribute">background-color</span>: red;
+<pre><code>        &lt;span class=&quot;hljs-attribute&quot;&gt;border-top-width&lt;/span&gt;: &lt;span class=&quot;hljs-number&quot;&gt;5px&lt;/span&gt;;
+        &lt;span class=&quot;hljs-attribute&quot;&gt;border-top-style&lt;/span&gt;: solid;
+        &lt;span class=&quot;hljs-attribute&quot;&gt;border-top-color&lt;/span&gt;: blue;
+
+        &lt;span class=&quot;hljs-attribute&quot;&gt;border-right-width&lt;/span&gt;: &lt;span class=&quot;hljs-number&quot;&gt;10px&lt;/span&gt;;
+        &lt;span class=&quot;hljs-attribute&quot;&gt;border-right-style&lt;/span&gt;: dashed;
+        &lt;span class=&quot;hljs-attribute&quot;&gt;border-right-color&lt;/span&gt;: green;
+
+        &lt;span class=&quot;hljs-attribute&quot;&gt;border-bottom-width&lt;/span&gt;: &lt;span class=&quot;hljs-number&quot;&gt;15px&lt;/span&gt;;
+        &lt;span class=&quot;hljs-attribute&quot;&gt;border-bottom-style&lt;/span&gt;: dotted;
+        &lt;span class=&quot;hljs-attribute&quot;&gt;border-bottom-color&lt;/span&gt;: purple;
+
+        &lt;span class=&quot;hljs-attribute&quot;&gt;border-left-width&lt;/span&gt;: &lt;span class=&quot;hljs-number&quot;&gt;20px&lt;/span&gt;;
+        &lt;span class=&quot;hljs-attribute&quot;&gt;border-left-style&lt;/span&gt;: double;
+        &lt;span class=&quot;hljs-attribute&quot;&gt;border-left-color&lt;/span&gt;: pink;
+    }
+</code></pre>
+<p></span><span class="hljs-tag">&lt;/<span class="hljs-name">style</span>&gt;</span>
+`</pre></p>
+</li>
+<li>
+<p>注意点:</p>
+<pre><code>*   同一个选择器中如果设置了多个边框属性, 后面的会覆盖前面的
+</code></pre>
+<pre class="hljs css">`<span class="hljs-selector-class">.box3</span>{
+            <span class="hljs-attribute">border</span>: <span class="hljs-number">5px</span> solid red;
+            <span class="hljs-attribute">border-right</span>:<span class="hljs-number">5px</span> dashed red;
+}
+`</pre>
+<h3 id="内边距属性">内边距属性</h3>
+</li>
+<li>
+<p>什么是内边距?
+边框和内容之间的距离就是内边距</p>
+</li>
+<li>
+<p>格式</p>
+</li>
+<li>
+<p>单独设置四条边</p>
+</li>
+<li>
+<p>padding-top: ;</p>
+</li>
+<li>
+<p>padding-right: ;</p>
+</li>
+<li>
+<p>padding-bottom: ;</p>
+</li>
+<li>
+<p>padding-left: ;</p>
+</li>
+<li>
+<p>示例代码</p>
+<pre class="hljs xml">`<span class="hljs-tag">&lt;<span class="hljs-name">style</span>&gt;</span><span class="css">
+        <span class="hljs-selector-tag">div</span>{
+            <span class="hljs-attribute">width</span>: <span class="hljs-number">98px</span>;
+            <span class="hljs-attribute">height</span>: <span class="hljs-number">90px</span>;
+            <span class="hljs-attribute">border</span>: <span class="hljs-number">1px</span> solid <span class="hljs-number">#000</span>;
+            <span class="hljs-attribute">background-color</span>: red;
+        }
+        <span class="hljs-selector-class">.box1</span>{
+            <span class="hljs-attribute">padding-top</span>: <span class="hljs-number">20px</span>;
+            <span class="hljs-attribute">padding-right</span>:<span class="hljs-number">40px</span>;
+            <span class="hljs-attribute">padding-bottom</span>:<span class="hljs-number">80px</span>;
+            <span class="hljs-attribute">padding-left</span>:<span class="hljs-number">160px</span>;
+       }
+</span><span class="hljs-tag">&lt;/<span class="hljs-name">style</span>&gt;</span>
+`</pre>
+</li>
+<li>
+<p>同时设置四条边</p>
+</li>
+<li>
+<p>padding: 上 右 下 左;</p>
+</li>
+<li>
+<p>示例代码</p>
+<pre class="hljs xml">`<span class="hljs-tag">&lt;<span class="hljs-name">style</span>&gt;</span><span class="css">
+        <span class="hljs-selector-tag">div</span>{
+            <span class="hljs-attribute">width</span>: <span class="hljs-number">98px</span>;
+            <span class="hljs-attribute">height</span>: <span class="hljs-number">90px</span>;
+            <span class="hljs-attribute">border</span>: <span class="hljs-number">1px</span> solid <span class="hljs-number">#000</span>;
+            <span class="hljs-attribute">background-color</span>: red;
+        }
+        <span class="hljs-selector-class">.box1</span>{
+            <span class="hljs-comment">/*padding:20px 40px 80px 160px;*/</span>
+            <span class="hljs-comment">/*padding:20px 40px 80px;*/</span>
+            <span class="hljs-comment">/*padding:20px 40px;*/</span>
+            <span class="hljs-attribute">padding</span>:<span class="hljs-number">20px</span>;
+        }
+</span><span class="hljs-tag">&lt;/<span class="hljs-name">style</span>&gt;</span>
+`</pre>
+</li>
+<li>
+<p>注意点:</p>
+</li>
+<li>
+<p>这三个属性的取值省略时的规律</p>
+</li>
+<li>
+<p>上 右 下 左 &gt; 上 右 下 &gt; 左边的取值和右边的一样</p>
+</li>
+<li>
+<p>上 右 下 左 &gt; 上 右 &gt; 左边的取值和右边的一样 下边的取值和上边一样</p>
+</li>
+<li>
+<p>上 右 下 左 &gt; 上 &gt; 右下左边取值和上边一样</p>
+</li>
+<li>
+<p>给标签设置内边距之后, 标签占有的<code>宽度和高度会发生变化</code></p>
+</li>
+<li>
+<p>给标签设置内边距之后, <code>内边距也会有背景颜色</code></p>
+<h3 id="外边距属性">外边距属性</h3>
+</li>
+<li>
+<p>什么是外边距?</p>
+</li>
+<li>
+<p>标签和标签之间的距离就是外边距</p>
+</li>
+<li>
+<p>格式</p>
+</li>
+<li>
+<p>单独设置四条边</p>
+</li>
+<li>
+<p>margin-top: ;</p>
+</li>
+<li>
+<p>margin-right: ;</p>
+</li>
+<li>
+<p>margin-bottom: ;</p>
+</li>
+<li>
+<p>margin-left: ;</p>
+</li>
+<li>
+<p>示例代码</p>
+<pre class="hljs xml">`<span class="hljs-tag">&lt;<span class="hljs-name">style</span>&gt;</span><span class="css">
+  <span class="hljs-selector-class">.box1</span>{
+            <span class="hljs-attribute">margin-top</span>:<span class="hljs-number">20px</span>;
+            <span class="hljs-attribute">margin-right</span>:<span class="hljs-number">40px</span>;
+            <span class="hljs-attribute">margin-bottom</span>:<span class="hljs-number">80px</span>;
+            <span class="hljs-attribute">margin-left</span>:<span class="hljs-number">160px</span>;
+        }
+</span><span class="hljs-tag">&lt;/<span class="hljs-name">style</span>&gt;</span>
+`</pre>
+</li>
+<li>
+<p>同时设置四条边</p>
+</li>
+<li>
+<p>margin: 上 右 下 左;</p>
+</li>
+<li>
+<p>示例代码</p>
+<pre class="hljs xml">`<span class="hljs-tag">&lt;<span class="hljs-name">style</span>&gt;</span><span class="css">
+  <span class="hljs-selector-class">.box1</span>{
+            <span class="hljs-attribute">margin</span>:<span class="hljs-number">20px</span> <span class="hljs-number">40px</span> <span class="hljs-number">80px</span> <span class="hljs-number">160px</span>;
+            <span class="hljs-comment">/*margin:20px 40px 80px;*/</span>
+            <span class="hljs-comment">/*margin:20px 40px;*/</span>
+            <span class="hljs-comment">/*margin:20px;*/</span>
+        }
+</span><span class="hljs-tag">&lt;/<span class="hljs-name">style</span>&gt;</span>
+`</pre>
+</li>
+<li>
+<p>注意点:</p>
+<pre><code>*   这三个属性的取值省略时的规律
+</code></pre>
+<ul>
+<li>上 右 下 左 &gt; 上 右 下 &gt; 左边的取值和右边的一样</li>
+<li>上 右 下 左 &gt; 上 右 &gt; 左边的取值和右边的一样 下边的取值和上边一样</li>
+<li>上 右 下 左 &gt; 上 &gt; 右下左边取值和上边一样</li>
+</ul>
+</li>
+<li>
+<p>外边距的那一部分是没有背景颜色的</p>
+</li>
+<li>
+<p>外边距合并现象</p>
+</li>
+<li>
+<p>默认布局的垂直方向上外边距是不会叠加的, 会出现合并现象, 谁的外边距比较大就听谁的</p>
+</li>
+<li>
+<p>示例代码</p>
+<pre class="hljs xml">`<span class="hljs-meta">&lt;!DOCTYPE html&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">html</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">"en"</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">charset</span>=<span class="hljs-string">"UTF-8"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>外边距合并现象<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">style</span>&gt;</span><span class="css">
+        <span class="hljs-selector-tag">span</span>{
+            <span class="hljs-attribute">display</span>: inline-block;
+            <span class="hljs-attribute">width</span>: <span class="hljs-number">100px</span>;
+            <span class="hljs-attribute">height</span>: <span class="hljs-number">100px</span>;
+            <span class="hljs-attribute">border</span>: <span class="hljs-number">1px</span> solid <span class="hljs-number">#000</span>;
+        }
+        <span class="hljs-selector-tag">div</span>{
+            <span class="hljs-attribute">height</span>: <span class="hljs-number">100px</span>;
+            <span class="hljs-attribute">border</span>: <span class="hljs-number">1px</span> solid <span class="hljs-number">#000</span>;
+        }
+        <span class="hljs-selector-class">.hezi1</span>{
+            <span class="hljs-attribute">margin-right</span>:<span class="hljs-number">50px</span>;
+        }
+        <span class="hljs-selector-class">.hezi2</span>{
+            <span class="hljs-attribute">margin-left</span>:<span class="hljs-number">100px</span>;
+        }
+        <span class="hljs-selector-class">.box1</span>{
+            <span class="hljs-attribute">margin-bottom</span>:<span class="hljs-number">50px</span>;
+        }
+        <span class="hljs-selector-class">.box2</span>{
+            <span class="hljs-attribute">margin-top</span>:<span class="hljs-number">100px</span>;
+        }
+    </span><span class="hljs-tag">&lt;/<span class="hljs-name">style</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"hezi1"</span>&gt;</span>我是span<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"hezi2"</span>&gt;</span>我是span<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"box1"</span>&gt;</span>我是div<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"box2"</span>&gt;</span>我是div<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span>
+`</pre>
+</li>
+<li>
+<p>margin-top问题</p>
+</li>
+<li>
+<p>如果两个盒子是嵌套关系, 那么设置了里面一个盒子顶部的外边距, 外面一个盒子也会被顶下来</p>
+</li>
+<li>
+<p>如果外面的盒子不想被一起定下来,那么可以给外面的盒子添加一个边框属性</p>
+</li>
+<li>
+<p>在企业开发中, 一般情况下如果需要控制嵌套关系盒子之间的距离, 应该首先考虑padding, 其次再考虑margin(margin本质上是用于控制兄弟关系之间的间隙的)</p>
+</li>
+<li>
+<p>示例代码</p>
+<pre class="hljs xml">`<span class="hljs-tag">&lt;<span class="hljs-name">style</span>&gt;</span><span class="css">
+        <span class="hljs-selector-class">.big</span>{
+            <span class="hljs-attribute">width</span>: <span class="hljs-number">500px</span>;
+            <span class="hljs-attribute">height</span>: <span class="hljs-number">500px</span>;
+            <span class="hljs-attribute">background-color</span>: red;
+            <span class="hljs-comment">/*不设置边框, big也会被small的顶部外边距顶下去*/</span>
+            <span class="hljs-attribute">border</span>: <span class="hljs-number">5px</span> solid <span class="hljs-number">#000</span>;
+        }
+        <span class="hljs-selector-class">.small</span>{
+            <span class="hljs-attribute">width</span>: <span class="hljs-number">200px</span>;
+            <span class="hljs-attribute">height</span>: <span class="hljs-number">200px</span>;
+            <span class="hljs-attribute">background-color</span>: blue;
+            <span class="hljs-attribute">margin-top</span>:<span class="hljs-number">150px</span>;
+            <span class="hljs-attribute">margin-left</span>:<span class="hljs-number">150px</span>;
+        }
+    </span><span class="hljs-tag">&lt;/<span class="hljs-name">style</span>&gt;</span>
+`</pre>
+</li>
+<li>
+<p>text-align:center;和margin:0 auto;区别</p>
+</li>
+<li>
+<p>text-align: center; 是设置盒子中存储的文字/图片水平居中</p>
+</li>
+<li>
+<p>margin:0 auto;是让盒子自己水平居中</p>
+</li>
+<li>
+<p>示例代码</p>
+<pre class="hljs xml">`<span class="hljs-meta">&lt;!DOCTYPE html&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">html</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">"en"</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">charset</span>=<span class="hljs-string">"UTF-8"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>53-盒子居中和内容居中<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">style</span>&gt;</span><span class="css">
+        <span class="hljs-selector-class">.father</span>{
+            <span class="hljs-attribute">width</span>: <span class="hljs-number">800px</span>;
+            <span class="hljs-attribute">height</span>: <span class="hljs-number">500px</span>;
+            <span class="hljs-attribute">background-color</span>: red;
+            <span class="hljs-comment">/*文字图片会居中*/</span>
+            <span class="hljs-comment">/*text-align: center;*/</span>
+            <span class="hljs-comment">/*盒子自身会居中*/</span>
+            <span class="hljs-attribute">margin</span>:<span class="hljs-number">0</span> auto;
+        }
+        <span class="hljs-selector-class">.son</span>{
+            <span class="hljs-attribute">width</span>: <span class="hljs-number">100px</span>;
+            <span class="hljs-attribute">height</span>: <span class="hljs-number">100px</span>;
+            <span class="hljs-attribute">background-color</span>: blue;
+        }
+    </span><span class="hljs-tag">&lt;/<span class="hljs-name">style</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"father"</span>&gt;</span>
+    我是文字<span class="hljs-tag">&lt;<span class="hljs-name">br</span>/&gt;</span>
+    ![](images/girl.jpg)
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"son"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span>
+`</pre>
+<h3 id="盒模型-2">盒模型</h3>
+</li>
+<li>
+<p>什么是CSS盒模型?</p>
+</li>
+<li>
+<p>CSS盒模型仅仅是一个形象的比喻, HTML中的标签都是盒模型</p>
+</li>
+<li>
+<p>CSS盒模型指那些可以设置宽度高度/内边距/边框/外边距的标签</p>
+</li>
+<li>
+<p>这些属性我们可以用日常生活中的常见事物——盒子作一个比喻来理解，所以HTML标签又叫做盒模型</p>
+<div class="image-package">
+<div class="image-container" style="max-width: 700px; max-height: 700px;">
+<div class="image-container-fill" style="padding-bottom: 100.0%;"></div>
+<div class="image-view" data-width="2362" data-height="2362">![](//upload-images.jianshu.io/upload_images/647982-0f85beb554ce2c98.jpg)</div>
+</div>
+<div class="image-caption"></div>
+</div>
+</li>
+<li>
+<p>示例代码</p>
+<pre class="hljs xml">`<span class="hljs-meta">&lt;!DOCTYPE html&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">html</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">"en"</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">charset</span>=<span class="hljs-string">"UTF-8"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>48-CSS盒子模型<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">style</span>&gt;</span><span class="css">
+        <span class="hljs-selector-tag">span</span>,<span class="hljs-selector-tag">a</span>,<span class="hljs-selector-tag">b</span>,<span class="hljs-selector-tag">strong</span>{
+            <span class="hljs-attribute">display</span>: inline-block;
+            <span class="hljs-attribute">width</span>: <span class="hljs-number">100px</span>;
+            <span class="hljs-attribute">height</span>: <span class="hljs-number">100px</span>;
+            <span class="hljs-attribute">border</span>: <span class="hljs-number">6px</span> solid <span class="hljs-number">#000</span>;
+            <span class="hljs-attribute">padding</span>: <span class="hljs-number">20px</span>;
+            <span class="hljs-attribute">margin</span>: <span class="hljs-number">20px</span>;
+        }
+<pre><code>&lt;/span&gt;&lt;span class=&quot;hljs-tag&quot;&gt;&amp;lt;/&lt;span class=&quot;hljs-name&quot;&gt;style&lt;/span&gt;&amp;gt;&lt;/span&gt;
+</code></pre>
+<p><span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span></p>
+<p><span class="hljs-tag">&lt;<span class="hljs-name">span</span>&gt;</span>我是span<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;#&quot;</span>&gt;</span>我是超链接<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">b</span>&gt;</span>我是加粗<span class="hljs-tag">&lt;/<span class="hljs-name">b</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">strong</span>&gt;</span>我是强调<span class="hljs-tag">&lt;/<span class="hljs-name">strong</span>&gt;</span></p>
+<p><span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span>
+`</pre></p>
+</li>
+<li>
+<p>盒模型宽度和高度</p>
+</li>
+<li>
+<p>内容的宽度和高度</p>
+</li>
+<li>
+<p>就是通过width/height属性设置的宽度和高度</p>
+</li>
+<li>
+<p>元素的宽度和高度</p>
+</li>
+<li>
+<p>宽度 = 左边框 + 左内边距 + width + 右内边距 + 右边框</p>
+</li>
+<li>
+<p>高度 同理可证</p>
+</li>
+<li>
+<p>规律</p>
+</li>
+<li>
+<p>增加了padding/border之后元素的宽高也会发生变化</p>
+<ul>
+<li>如果增加了padding/border之后还想保持元素的宽高, 那么就必须减去内容的宽高</li>
+</ul>
+</li>
+<li>
+<p>元素空间的宽度和高度</p>
+</li>
+<li>
+<p>宽度 = 左外边距 + 左边框 + 左内边距 + width + 右内边距 + 右边框 + 右外边距</p>
+</li>
+<li>
+<p>高度 同理可证</p>
+<h3 id="box-sizing属性">box-sizing属性</h3>
+</li>
+<li>
+<p>CSS3中新增了一个box-sizing属性, 这个属性可以保证我们给盒子新增padding和border之后, 盒子元素的宽度和高度不变</p>
+</li>
+<li>
+<p>box-sizing取值</p>
+</li>
+<li>
+<p>content-box</p>
+</li>
+<li>
+<p>元素的宽高 = 边框 + 内边距 + 内容宽高</p>
+</li>
+<li>
+<p>border-box</p>
+</li>
+<li>
+<p>元素的宽高 = width/height的宽高</p>
+</li>
+<li>
+<p>增加padding和border之后要想保证盒子元素的宽高不变, 系统会自动减去一部分内容的宽度和高度</p>
+</li>
+<li>
+<p>示例代码</p>
+<pre class="hljs xml">`<span class="hljs-comment">&lt;!--增加padding/border之后元素宽高会变大--&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">style</span>&gt;</span><span class="css">
+<span class="hljs-selector-class">.box1</span>{
+    <span class="hljs-attribute">width</span>: <span class="hljs-number">200px</span>;
+    <span class="hljs-attribute">height</span>: <span class="hljs-number">200px</span>;
+    <span class="hljs-attribute">background-color</span>: blue;
+    <span class="hljs-attribute">float</span>: right;
+    <span class="hljs-attribute">border</span>: <span class="hljs-number">20px</span> solid <span class="hljs-number">#000</span>;
+    <span class="hljs-attribute">padding</span>: <span class="hljs-number">20px</span>;
+}
+</span><span class="hljs-tag">&lt;/<span class="hljs-name">style</span>&gt;</span>
+<p><span class="hljs-comment">&lt;!--增加padding/border之后元素宽不会变大--&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">style</span>&gt;</span><span class="css">
+<span class="hljs-selector-class">.box1</span>{
+<span class="hljs-attribute">box-sizing</span>: border-box;
+<span class="hljs-attribute">width</span>: <span class="hljs-number">200px</span>;
+<span class="hljs-attribute">height</span>: <span class="hljs-number">200px</span>;
+<span class="hljs-attribute">background-color</span>: blue;
+<span class="hljs-attribute">float</span>: right;
+<span class="hljs-attribute">border</span>: <span class="hljs-number">20px</span> solid <span class="hljs-number">#000</span>;
+<span class="hljs-attribute">padding</span>: <span class="hljs-number">20px</span>;
+}
+</span><span class="hljs-tag">&lt;/<span class="hljs-name">style</span>&gt;</span></p>
+</li>
+</ul>
+<hr>
+<p><img src="https://demichung813.github.io/zhongniblog//post-images/1556889278925.png" alt="浮动流"></p>
+<h3 id="浮动">浮动</h3>
+<h3 id="网页的布局方式">网页的布局方式</h3>
+<ul>
+<li>
+<p>什么是网页的布局方式?</p>
+<pre><code>*   网页的布局方式其实就是指浏览器是如何对网页中的元素进行排版的
+</code></pre>
+</li>
+<li>
+<p>标准流(文档流/普通流)排版方式</p>
+<pre><code>*   其实浏览器默认的排版方式就是标准流的排版方式
+</code></pre>
+<ul>
+<li>
+<p>在CSS中将元素分为三类, 分别是块级元素/行内元素/行内块级元素</p>
+</li>
+<li>
+<p>在标准流中有两种排版方式, 一种是垂直排版, 一种是水平排版</p>
+<pre><code>*   垂直排版, 如果元素是块级元素, 那么就会垂直排版
+</code></pre>
+<ul>
+<li>水平排版, 如果元素是行内元素/行内块级元素, 那么就会水平排版</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>浮动流排版方式</p>
+<pre><code>*   浮动流是一种&quot;半脱离标准流&quot;的排版方式
+</code></pre>
+<ul>
+<li>浮动流只有一种排版方式, 就是水平排版. 它只能设置某个元素左对齐或者右对齐</li>
+</ul>
+</li>
+<li>
+<p>注意点:</p>
+<pre><code>*   浮动流中没有居中对齐, 也就是没有center这个取值
+</code></pre>
+<ul>
+<li>在浮动流中是不可以使用margin: 0 auto;</li>
+</ul>
+</li>
+<li>
+<p>特点:</p>
+<pre><code>*   在浮动流中是不区分块级元素/行内元素/行内块级元素的
+</code></pre>
+<ul>
+<li>无论是块级元素/行内元素/行内块级元素都可以水平排版</li>
+<li>在浮动流中无论是块级元素/行内元素/行内块级元素都可以设置宽高</li>
+<li>综上所述, 浮动流中的元素和标准流中的行内块级元素很像</li>
+</ul>
+</li>
+<li>
+<p>定位流排版方式</p>
+</li>
+</ul>
+<h3 id="浮动元素的脱标">浮动元素的脱标</h3>
+<ul>
+<li>
+<p>什么是浮动元素的脱标?</p>
+<ul>
+<li>脱标: 脱离标准流</li>
+<li>当某一个元素浮动之后, 那么这个元素看上去就像被从标准流中删除了一样, 这个就是浮动元素的脱标</li>
+</ul>
+</li>
+<li></li>
+<li>
+<p>浮动元素脱标之后会有什么影响?</p>
+<ul>
+<li>如果前面一个元素浮动了, 而后面一个元素没有浮动 , 那么这个时候前面一个元就会盖住后面一个元素</li>
+</ul>
+</li>
+</ul>
+<div class="image-package">
+<div class="image-container" style="max-width: 700px; max-height: 554px;">
+<div class="image-container-fill" style="padding-bottom: 73.67%;"></div>
+<div class="image-view" data-width="752" data-height="554">![](//upload-images.jianshu.io/upload_images/647982-b2e928fbc09be335.png)</div>
+</div>
+<div class="image-caption"></div>
+</div>
+<h3 id="浮动元素排序规则">浮动元素排序规则</h3>
+<ul>
+<li>
+<p>浮动元素排序规则</p>
+</li>
+<li>
+<p>相同方向上的浮动元素, 先浮动的元素会显示在前面, 后浮动的元素会显示在后面</p>
+<p><span class="hljs-tag">&lt;<span class="hljs-name">style</span>&gt;</span><span class="css">
+<span class="hljs-selector-class">.box1</span>{
+<span class="hljs-attribute">float</span>: left;
+<span class="hljs-attribute">width</span>: <span class="hljs-number">50px</span>;
+<span class="hljs-attribute">height</span>: <span class="hljs-number">50px</span>;
+<span class="hljs-attribute">background-color</span>: red;
+}
+<span class="hljs-selector-class">.box2</span>{
+<span class="hljs-attribute">float</span>: left;
+<span class="hljs-attribute">width</span>: <span class="hljs-number">100px</span>;
+<span class="hljs-attribute">height</span>: <span class="hljs-number">100px</span>;
+<span class="hljs-attribute">background-color</span>: pink;
+}
+<span class="hljs-selector-class">.box3</span>{
+<span class="hljs-attribute">float</span>: left;
+<span class="hljs-attribute">width</span>: <span class="hljs-number">150px</span>;
+<span class="hljs-attribute">height</span>: <span class="hljs-number">150px</span>;
+<span class="hljs-attribute">background-color</span>: yellow;
+}
+</span><span class="hljs-tag">&lt;/<span class="hljs-name">style</span>&gt;</span>
+`</pre></p>
+<div class="image-package">
+<div class="image-container" style="max-width: 700px; max-height: 544px;">
+<div class="image-container-fill" style="padding-bottom: 52.71%;"></div>
+<div class="image-view" data-width="1032" data-height="544">![](//upload-images.jianshu.io/upload_images/647982-ef9d3b757092788b.png)</div>
+</div>
+<div class="image-caption"></div>
+</div>
+</li>
+<li>
+<p>不同方向上的浮动元素, 左浮动会找左浮动, 右浮动会找右浮动</p>
+<pre class="hljs xml">`<span class="hljs-tag">&lt;<span class="hljs-name">style</span>&gt;</span><span class="css">
+        <span class="hljs-selector-class">.box1</span>{
+            <span class="hljs-attribute">float</span>: left;
+            <span class="hljs-attribute">width</span>: <span class="hljs-number">50px</span>;
+            <span class="hljs-attribute">height</span>: <span class="hljs-number">50px</span>;
+            <span class="hljs-attribute">background-color</span>: red;
+        }
+        <span class="hljs-selector-class">.box2</span>{
+            <span class="hljs-attribute">float</span>: right;
+            <span class="hljs-attribute">width</span>: <span class="hljs-number">100px</span>;
+            <span class="hljs-attribute">height</span>: <span class="hljs-number">100px</span>;
+            <span class="hljs-attribute">background-color</span>: pink;
+        }
+        <span class="hljs-selector-class">.box3</span>{
+            <span class="hljs-attribute">float</span>: left;
+            <span class="hljs-attribute">width</span>: <span class="hljs-number">150px</span>;
+            <span class="hljs-attribute">height</span>: <span class="hljs-number">150px</span>;
+            <span class="hljs-attribute">background-color</span>: yellow;
+        }
+        <span class="hljs-selector-class">.box4</span>{
+            <span class="hljs-attribute">float</span>: right;
+            <span class="hljs-attribute">width</span>: <span class="hljs-number">200px</span>;
+            <span class="hljs-attribute">height</span>: <span class="hljs-number">200px</span>;
+            <span class="hljs-attribute">background-color</span>: tomato;
+        }
+</span><span class="hljs-tag">&lt;/<span class="hljs-name">style</span>&gt;</span>
+`</pre>
+<div class="image-package">
+<div class="image-container" style="max-width: 700px; max-height: 516px;">
+<div class="image-container-fill" style="padding-bottom: 28.54%;"></div>
+<div class="image-view" data-width="1808" data-height="516">![](//upload-images.jianshu.io/upload_images/647982-8cdb759ea761e767.png)</div>
+</div>
+<div class="image-caption"></div>
+</div>
+</li>
+<li>
+<p>浮动元素浮动之后的位置, 由浮动元素浮动之前在标准流中的位置来确定</p>
+<pre class="hljs xml">`<span class="hljs-tag">&lt;<span class="hljs-name">style</span>&gt;</span><span class="css">
+        <span class="hljs-selector-class">.box1</span>{
+            <span class="hljs-attribute">float</span>: left;
+            <span class="hljs-attribute">width</span>: <span class="hljs-number">50px</span>;
+            <span class="hljs-attribute">height</span>: <span class="hljs-number">50px</span>;
+            <span class="hljs-attribute">background-color</span>: red;
+        }
+        <span class="hljs-selector-class">.box2</span>{
+            <span class="hljs-attribute">width</span>: <span class="hljs-number">100px</span>;
+            <span class="hljs-attribute">height</span>: <span class="hljs-number">100px</span>;
+            <span class="hljs-attribute">background-color</span>: pink;
+        }
+        <span class="hljs-selector-class">.box3</span>{
+            <span class="hljs-attribute">float</span>: left;
+            <span class="hljs-attribute">width</span>: <span class="hljs-number">150px</span>;
+            <span class="hljs-attribute">height</span>: <span class="hljs-number">150px</span>;
+            <span class="hljs-attribute">background-color</span>: yellow;
+        }
+        <span class="hljs-selector-class">.box4</span>{
+            <span class="hljs-attribute">float</span>: left;
+            <span class="hljs-attribute">width</span>: <span class="hljs-number">200px</span>;
+            <span class="hljs-attribute">height</span>: <span class="hljs-number">200px</span>;
+            <span class="hljs-attribute">background-color</span>: tomato;
+        }
+</span><span class="hljs-tag">&lt;/<span class="hljs-name">style</span>&gt;</span>
+`</pre>
+<div class="image-package">
+<div class="image-container" style="max-width: 700px; max-height: 576px;">
+<div class="image-container-fill" style="padding-bottom: 82.41000000000001%;"></div>
+<div class="image-view" data-width="864" data-height="712">![](//upload-images.jianshu.io/upload_images/647982-ff52bb474c03c73a.png)</div>
+</div>
+<div class="image-caption"></div>
+</div>
+<h3 id="浮动元素贴靠现象">浮动元素贴靠现象</h3>
+</li>
+<li>
+<p>什么是浮动元素贴靠现象?</p>
+<pre><code>*   如果父元素的宽度能够显示所有浮动元素, 那么浮动的元素会并排显示
+</code></pre>
+<ul>
+<li>
+<div class="image-package">
+</li>
+</ul>
+<div class="image-container" style="max-width: 700px; max-height: 533px;">
+<div class="image-container-fill" style="padding-bottom: 76.25%;"></div>
+<div class="image-view" data-width="1802" data-height="1374">![](//upload-images.jianshu.io/upload_images/647982-2524350d668c674b.png)</div>
+</div>
+<div class="image-caption"></div>
+</div>
+*   如果父元素的宽度不能显示所有浮动元素, 那么会从最后一个元开始往前贴靠
+</li>
+<li>
+  <div class="image-package">
+  <div class="image-container" style="max-width: 700px; max-height: 531px;">
+  <div class="image-container-fill" style="padding-bottom: 75.88000000000001%;"></div>
+  <div class="image-view" data-width="1808" data-height="1372">![](//upload-images.jianshu.io/upload_images/647982-696fc995e5ab5307.png)</div>
+  </div>
+  <div class="image-caption"></div>
+  </div>
+<ul>
+<li>
+<p>如果贴靠了前面所有浮动元素之后都不能显示, 最终会贴靠到父元素的左边或者右边</p>
+</li>
+<li>
+<div class="image-package">
+</li>
+</ul>
+  <div class="image-container" style="max-width: 700px; max-height: 530px;">
+  <div class="image-container-fill" style="padding-bottom: 75.72%;"></div>
+  <div class="image-view" data-width="1804" data-height="1366">![](//upload-images.jianshu.io/upload_images/647982-f846fd48417f831e.png)</div>
+  </div>
+  <div class="image-caption"></div>
+  </div>
+<h3 id="浮动元素字围现象">浮动元素字围现象</h3>
+</li>
+<li>
+<p>什么是浮动元素字围现象?</p>
+<pre><code>*   浮动元素不会挡住没有浮动元素中的文字, 没有浮动的文字会自动给浮动的元素让位置,这个就是浮动元素字围现象
+</code></pre>
+<pre class="hljs css">`        <span class="hljs-selector-tag">div</span>{
+            <span class="hljs-attribute">float</span>: left;
+            <span class="hljs-attribute">width</span>: <span class="hljs-number">100px</span>;
+            <span class="hljs-attribute">height</span>: <span class="hljs-number">100px</span>;
+            <span class="hljs-comment">/*background-color: red;*/</span>
+            <span class="hljs-attribute">border</span>: <span class="hljs-number">1px</span> solid <span class="hljs-number">#000</span>;
+        }
+        <span class="hljs-selector-tag">p</span>{
+            <span class="hljs-attribute">width</span>: <span class="hljs-number">500px</span>;
+            <span class="hljs-attribute">height</span>: <span class="hljs-number">500px</span>;
+            <span class="hljs-attribute">background-color</span>: yellow;
+        }
+</li>
+</ul>
+<div class="image-package">
+<div class="image-container" style="max-width: 700px; max-height: 522px;">
+<div class="image-container-fill" style="padding-bottom: 74.71%;"></div>
+<div class="image-view" data-width="1036" data-height="774">![](//upload-images.jianshu.io/upload_images/647982-6fc0b13527df1b5a.png)</div>
+</div>
+<div class="image-caption"></div>
+</div>
+<div class="image-package">
+<div class="image-container" style="max-width: 700px; max-height: 539px;">
+<div class="image-container-fill" style="padding-bottom: 77.06%;"></div>
+<div class="image-view" data-width="1020" data-height="786">![](//upload-images.jianshu.io/upload_images/647982-f8542cadfee43f0a.png)</div>
+</div>
+<div class="image-caption"></div>
+</div>
+<ul>
+<li>
+<p>应用场景</p>
+<ul>
+<li>图文混排</li>
+</ul>
+</li>
+</ul>
+<div class="image-package">
+<div class="image-container" style="max-width: 700px; max-height: 691px;">
+<div class="image-container-fill" style="padding-bottom: 98.77%;"></div>
+<div class="image-view" data-width="1296" data-height="1280">![](//upload-images.jianshu.io/upload_images/647982-bf2a55a2eef5f1bf.jpg)</div>
+</div>
+<div class="image-caption"></div>
+</div>
+<hr>
+<p><img src="https://demichung813.github.io/zhongniblog//post-images/1556889388569.png" alt="清除浮动"></p>
+<h2 id="清除浮动">清除浮动</h2>
+<h3 id="盒子高度问题">盒子高度问题</h3>
+<ul>
+<li>在标准流中内容的高度可以撑起盒子的高度</li>
+</ul>
+<div class="image-package">
+<div class="image-container" style="max-width: 700px; max-height: 258px; background-color: transparent;">
+<div class="image-container-fill" style="padding-bottom: 22.24%;"></div>
+<div class="image-view" data-width="1160" data-height="258">![](//upload-images.jianshu.io/upload_images/647982-759ab09b849f20fe.png)</div>
+</div>
+<div class="image-caption"></div>
+</div>
+<pre><code>&lt;span class=&quot;hljs-tag&quot;&gt;&amp;lt;&lt;span class=&quot;hljs-name&quot;&gt;style&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;css&quot;&gt;
+
+        &lt;span class=&quot;hljs-selector-tag&quot;&gt;div&lt;/span&gt;{
+            &lt;span class=&quot;hljs-attribute&quot;&gt;background-color&lt;/span&gt;: red;
+        }
+
+        &lt;span class=&quot;hljs-selector-tag&quot;&gt;p&lt;/span&gt;{
+            &lt;span class=&quot;hljs-attribute&quot;&gt;width&lt;/span&gt;: &lt;span class=&quot;hljs-number&quot;&gt;200px&lt;/span&gt;;
+            &lt;span class=&quot;hljs-attribute&quot;&gt;height&lt;/span&gt;: &lt;span class=&quot;hljs-number&quot;&gt;100px&lt;/span&gt;;
+            &lt;span class=&quot;hljs-attribute&quot;&gt;background-color&lt;/span&gt;: blue;
+        }
+
+&lt;/span&gt;&lt;span class=&quot;hljs-tag&quot;&gt;&amp;lt;/&lt;span class=&quot;hljs-name&quot;&gt;style&lt;/span&gt;&amp;gt;&lt;/span&gt;
+
+&lt;span class=&quot;hljs-tag&quot;&gt;&amp;lt;&lt;span class=&quot;hljs-name&quot;&gt;div&lt;/span&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;hljs-tag&quot;&gt;&amp;lt;&lt;span class=&quot;hljs-name&quot;&gt;p&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;hljs-tag&quot;&gt;&amp;lt;/&lt;span class=&quot;hljs-name&quot;&gt;p&lt;/span&gt;&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;hljs-tag&quot;&gt;&amp;lt;/&lt;span class=&quot;hljs-name&quot;&gt;div&lt;/span&gt;&amp;gt;&lt;/span&gt;
+`&lt;/pre&gt;
+</code></pre>
+<ul>
+<li>
+<p>在浮动流中浮动元素内容的高不可以撑起盒子的高</p>
+<div class="image-package">
+<div class="image-container" style="max-width: 700px; max-height: 294px; background-color: transparent;">
+<div class="image-container-fill" style="padding-bottom: 25.3%;"></div>
+<div class="image-view" data-width="1162" data-height="294">![](//upload-images.jianshu.io/upload_images/647982-6c57cc7e86f89f18.png)</div>
+</div>
+<div class="image-caption"></div>
+</div>
+<pre class="hljs xml">`<span class="hljs-tag">&lt;<span class="hljs-name">style</span>&gt;</span><span class="css">
+<pre><code>    &lt;span class=&quot;hljs-selector-tag&quot;&gt;div&lt;/span&gt;{
+        &lt;span class=&quot;hljs-attribute&quot;&gt;background-color&lt;/span&gt;: red;
+    }
+
+    &lt;span class=&quot;hljs-selector-tag&quot;&gt;p&lt;/span&gt;{
+        &lt;span class=&quot;hljs-attribute&quot;&gt;float&lt;/span&gt;: left;
+        &lt;span class=&quot;hljs-attribute&quot;&gt;width&lt;/span&gt;: &lt;span class=&quot;hljs-number&quot;&gt;200px&lt;/span&gt;;
+        &lt;span class=&quot;hljs-attribute&quot;&gt;height&lt;/span&gt;: &lt;span class=&quot;hljs-number&quot;&gt;100px&lt;/span&gt;;
+        &lt;span class=&quot;hljs-attribute&quot;&gt;background-color&lt;/span&gt;: blue;
+    }
+</code></pre>
+<p></span><span class="hljs-tag">&lt;/<span class="hljs-name">style</span>&gt;</span></p>
+<p><span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+`</pre></p>
+<h3 id="清除浮动方式一">清除浮动方式一</h3>
+</li>
+<li>
+<p>给前面的父盒子添加高度</p>
+</li>
+<li>
+<p>示例代码:</p>
+<pre class="hljs xml">`<span class="hljs-tag">&lt;<span class="hljs-name">style</span>&gt;</span><span class="css">
+    *{
+        <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span>;
+        <span class="hljs-attribute">padding</span>: <span class="hljs-number">0</span>;
+    }
+    <span class="hljs-selector-class">.box1</span>{
+        <span class="hljs-attribute">background-color</span>: red;
+        <span class="hljs-comment">/*这里*/</span>
+        <span class="hljs-attribute">height</span>: <span class="hljs-number">50px</span>;
+    }
+    <span class="hljs-selector-class">.box2</span>{
+        <span class="hljs-attribute">background-color</span>: purple;
+    }
+    <span class="hljs-selector-tag">ul</span>{
+        <span class="hljs-attribute">list-style</span>: none;
+    }
+    <span class="hljs-selector-class">.ul01</span> <span class="hljs-selector-tag">li</span>{
+        <span class="hljs-attribute">background-color</span>: blue;
+    }
+    <span class="hljs-selector-class">.ul02</span> <span class="hljs-selector-tag">li</span>{
+        <span class="hljs-attribute">background-color</span>: green;
+    }
+    <span class="hljs-selector-tag">ul</span> <span class="hljs-selector-tag">li</span>{
+        <span class="hljs-attribute">float</span>: left;
+    }
+</span><span class="hljs-tag">&lt;/<span class="hljs-name">style</span>&gt;</span>
+<p><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;box1&quot;</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">ul</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;ul01&quot;</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>大娃<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>二娃<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>三娃<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;box2&quot;</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">ul</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;ul02&quot;</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>李南江<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>极客江南<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>江哥<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+`</pre></p>
+</li>
+<li>
+<p>添加高度前:</p>
+<pre><code>*   &lt;div class=&quot;image-package&quot;&gt;
+</code></pre>
+<div class="image-container" style="max-width: 700px; max-height: 122px;">
+<div class="image-container-fill" style="padding-bottom: 10.48%;"></div>
+<div class="image-view" data-width="1164" data-height="122">![](//upload-images.jianshu.io/upload_images/647982-37c3591032b43be9.png)</div>
+</div>
+<div class="image-caption"></div>
+</div>
+</li>
+<li>
+<p>添加高度后</p>
+<pre><code>*   &lt;div class=&quot;image-package&quot;&gt;
+</code></pre>
+<div class="image-container" style="max-width: 700px; max-height: 290px;">
+<div class="image-container-fill" style="padding-bottom: 24.83%;"></div>
+<div class="image-view" data-width="1168" data-height="290">![](//upload-images.jianshu.io/upload_images/647982-fcb8f6fa15c6be76.png)</div>
+</div>
+<div class="image-caption"></div>
+</div>
+</li>
+<li>
+<p>注意点:</p>
+<pre><code>*   在企业开发中能不写高度就不写高度, 所以这种方式`不常用`
+</code></pre>
+<h3 id="清除浮动方式二">清除浮动方式二</h3>
+</li>
+<li>
+<p>利用clear:both;属性清除前面浮动元素对我的影响</p>
+</li>
+<li>
+<p>示例代码:</p>
+<pre class="hljs xml">`<span class="hljs-tag">&lt;<span class="hljs-name">style</span>&gt;</span><span class="css">
+        *{
+            <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span>;
+            <span class="hljs-attribute">padding</span>: <span class="hljs-number">0</span>;
+        }
+        <span class="hljs-selector-class">.box1</span>{
+            <span class="hljs-attribute">background-color</span>: red;
+        }
+        <span class="hljs-selector-class">.box2</span>{
+            <span class="hljs-attribute">background-color</span>: purple;
+            <span class="hljs-comment">/*这里*/</span>
+            <span class="hljs-attribute">clear</span>: both;
+            <span class="hljs-comment">/*margin无效*/</span>
+            <span class="hljs-attribute">margin-top</span>: <span class="hljs-number">30px</span>;
+        }
+        <span class="hljs-selector-tag">ul</span>{
+            <span class="hljs-attribute">list-style</span>: none;
+        }
+        <span class="hljs-selector-class">.ul01</span> <span class="hljs-selector-tag">li</span>{
+            <span class="hljs-attribute">background-color</span>: blue;
+        }
+        <span class="hljs-selector-class">.ul02</span> <span class="hljs-selector-tag">li</span>{
+            <span class="hljs-attribute">background-color</span>: green;
+        }
+        <span class="hljs-selector-tag">ul</span> <span class="hljs-selector-tag">li</span>{
+            <span class="hljs-attribute">float</span>: left;
+        }
+</span><span class="hljs-tag">&lt;/<span class="hljs-name">style</span>&gt;</span>
+<p><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;box1&quot;</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">ul</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;ul01&quot;</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>大娃<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>二娃<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>三娃<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;box2&quot;</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">ul</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;ul02&quot;</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>李南江<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>极客江南<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>江哥<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+`</pre></p>
+</li>
+<li>
+<p>添加clear: both;前:</p>
+<pre><code>*   &lt;div class=&quot;image-package&quot;&gt;
+</code></pre>
+<div class="image-container" style="max-width: 700px; max-height: 122px;">
+<div class="image-container-fill" style="padding-bottom: 10.48%;"></div>
+<div class="image-view" data-width="1164" data-height="122">![](//upload-images.jianshu.io/upload_images/647982-37c3591032b43be9.png)</div>
+</div>
+<div class="image-caption"></div>
+</div>
+</li>
+<li>
+<p>添加clear: both;后</p>
+<pre><code>*   &lt;div class=&quot;image-package&quot;&gt;
+</code></pre>
+<div class="image-container" style="max-width: 700px; max-height: 176px;">
+<div class="image-container-fill" style="padding-bottom: 15.17%;"></div>
+<div class="image-view" data-width="1160" data-height="176">![](//upload-images.jianshu.io/upload_images/647982-7b618617223102be.png)</div>
+</div>
+<div class="image-caption"></div>
+</div>
+</li>
+<li>
+<p>注意点:</p>
+<pre><code>*   使用clear:both之后margin属性会失效, 所以`不常用`
+</code></pre>
+<h3 id="清除浮动方式三">清除浮动方式三</h3>
+</li>
+<li>
+<p>在两个有浮动子元素的盒子之间添加一个额外的块级元素</p>
+</li>
+<li>
+<p>示例代码:</p>
+<pre class="hljs xml">`
+<span class="hljs-tag">&lt;<span class="hljs-name">style</span>&gt;</span><span class="css">
+        *{
+            <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span>;
+            <span class="hljs-attribute">padding</span>: <span class="hljs-number">0</span>;
+        }
+        <span class="hljs-selector-class">.box1</span>{
+            <span class="hljs-attribute">background-color</span>: red;
+        }
+        <span class="hljs-selector-class">.box2</span>{
+            <span class="hljs-attribute">background-color</span>: purple;
+        }
+        <span class="hljs-selector-tag">ul</span>{
+            <span class="hljs-attribute">list-style</span>: none;
+        }
+        <span class="hljs-selector-class">.ul01</span> <span class="hljs-selector-tag">li</span>{
+            <span class="hljs-attribute">background-color</span>: blue;
+        }
+        <span class="hljs-selector-class">.ul02</span> <span class="hljs-selector-tag">li</span>{
+            <span class="hljs-attribute">background-color</span>: green;
+        }
+        <span class="hljs-selector-tag">ul</span> <span class="hljs-selector-tag">li</span>{
+            <span class="hljs-attribute">float</span>: left;
+        }
+        <span class="hljs-comment">/*这里*/</span>
+        <span class="hljs-selector-class">.wall</span>{
+            <span class="hljs-attribute">clear</span>: both;
+        }
+        <span class="hljs-selector-class">.h20</span>{
+            <span class="hljs-comment">/*利用额外块级元素实现margin*/</span>
+            <span class="hljs-attribute">height</span>: <span class="hljs-number">20px</span>;
+            <span class="hljs-attribute">background-color</span>: deepskyblue;
+        }
+</span><span class="hljs-tag">&lt;/<span class="hljs-name">style</span>&gt;</span>
+<p><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;box1&quot;</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">ul</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;ul01&quot;</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>大娃<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>二娃<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>三娃<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></p>
+<p><span class="hljs-comment">&lt;!--这里--&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;wall h20&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></p>
+<p><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;box2&quot;</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">ul</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;ul02&quot;</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>李南江<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>极客江南<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>江哥<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+`</pre></p>
+</li>
+<li>
+<p>添加额外块级元素前</p>
+<pre><code>*   &lt;div class=&quot;image-package&quot;&gt;
+</code></pre>
+<div class="image-container" style="max-width: 700px; max-height: 122px;">
+<div class="image-container-fill" style="padding-bottom: 10.48%;"></div>
+<div class="image-view" data-width="1164" data-height="122">![](//upload-images.jianshu.io/upload_images/647982-37c3591032b43be9.png)</div>
+</div>
+<div class="image-caption"></div>
+</div>
+</li>
+<li>
+<p>添加额外块级元素后</p>
+<pre><code>*   &lt;div class=&quot;image-package&quot;&gt;
+</code></pre>
+<div class="image-container" style="max-width: 700px; max-height: 230px;">
+<div class="image-container-fill" style="padding-bottom: 19.73%;"></div>
+<div class="image-view" data-width="1166" data-height="230">![](//upload-images.jianshu.io/upload_images/647982-15566323325c738d.png)</div>
+</div>
+<div class="image-caption"></div>
+</div>
+</li>
+<li>
+<p>注意点</p>
+<pre><code>*   在外墙法中可以通过设置额外标签的高度来实现margin效果
+</code></pre>
+<ul>
+<li>搜狐中大量使用了这个技术, 但是由于需要添加大量无意义的标签, 所以<code>不常用</code></li>
+</ul>
+<h3 id="清除浮动方式四">清除浮动方式四</h3>
+</li>
+<li>
+<p>在前面一个盒子的最后添加一个额外的块级元素</p>
+</li>
+<li>
+<p>示例代码</p>
+<pre class="hljs xml">`<span class="hljs-tag">&lt;<span class="hljs-name">style</span>&gt;</span><span class="css">
+        *{
+            <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span>;
+            <span class="hljs-attribute">padding</span>: <span class="hljs-number">0</span>;
+        }
+        <span class="hljs-selector-class">.box1</span>{
+            <span class="hljs-attribute">background-color</span>: red;
+        }
+        <span class="hljs-selector-class">.box2</span>{
+            <span class="hljs-attribute">background-color</span>: purple;
+            <span class="hljs-comment">/*margin有效*/</span>
+            <span class="hljs-attribute">margin-top</span>: <span class="hljs-number">20px</span>;
+        }
+        <span class="hljs-selector-tag">ul</span>{
+            <span class="hljs-attribute">list-style</span>: none;
+        }
+        <span class="hljs-selector-class">.ul01</span> <span class="hljs-selector-tag">li</span>{
+            <span class="hljs-attribute">background-color</span>: blue;
+        }
+        <span class="hljs-selector-class">.ul02</span> <span class="hljs-selector-tag">li</span>{
+            <span class="hljs-attribute">background-color</span>: green;
+        }
+        <span class="hljs-selector-tag">ul</span> <span class="hljs-selector-tag">li</span>{
+            <span class="hljs-attribute">float</span>: left;
+        }
+        <span class="hljs-comment">/*这里*/</span>
+        <span class="hljs-selector-class">.wall</span>{
+            <span class="hljs-attribute">clear</span>: both;
+        }
+</span><span class="hljs-tag">&lt;/<span class="hljs-name">style</span>&gt;</span>
+<p><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;box1&quot;</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">ul</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;ul01&quot;</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>大娃<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>二娃<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>三娃<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span>
+<span class="hljs-comment">&lt;!--这里--&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;wall&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></p>
+<p><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;box2&quot;</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">ul</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;ul02&quot;</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>李南江<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>极客江南<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>江哥<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+`</pre></p>
+</li>
+<li>
+<p>添加额外块级元素前</p>
+<pre><code>*   &lt;div class=&quot;image-package&quot;&gt;
+</code></pre>
+<div class="image-container" style="max-width: 700px; max-height: 122px;">
+<div class="image-container-fill" style="padding-bottom: 10.48%;"></div>
+<div class="image-view" data-width="1164" data-height="122">![](//upload-images.jianshu.io/upload_images/647982-37c3591032b43be9.png)</div>
+</div>
+<div class="image-caption"></div>
+</div>
+</li>
+<li>
+<p>添加额外块级元素后</p>
+<pre><code>*   &lt;div class=&quot;image-package&quot;&gt;
+</code></pre>
+<div class="image-container" style="max-width: 700px; max-height: 232px;">
+<div class="image-container-fill" style="padding-bottom: 19.86%;"></div>
+<div class="image-view" data-width="1168" data-height="232">![](//upload-images.jianshu.io/upload_images/647982-7799130801c08c6b.png)</div>
+</div>
+<div class="image-caption"></div>
+</div>
+</li>
+<li>
+<p>注意点:</p>
+<pre><code>*   内墙法会自动撑起盒子的高度, 所以可以直接设置margin属性
+</code></pre>
+<ul>
+<li>和内墙法一样需要添加很多无意义的空标签，有违结构与表现的分离，在后期维护中将是噩梦</li>
+</ul>
+<h3 id="清除浮动方式五">清除浮动方式五</h3>
+</li>
+<li>
+<p>什么是overflow:hidden?</p>
+<pre><code>*   overflow:hidden的作用是清除溢出盒子边框外的内容
+</code></pre>
+</li>
+<li>
+<p>示例代码</p>
+<pre class="hljs bash">`.<span class="hljs-built_in">test</span>{
+            width: 100px;
+            height: 100px;
+            border: 1px solid <span class="hljs-comment">#000;</span>
+            background-color: red;
+            overflow: hidden;
+}
+<p>&lt;div class=<span class="hljs-string">&quot;test&quot;</span>&gt;我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字&lt;/div&gt;
+`</pre></p>
+</li>
+<li>
+<p>添加overflow:hidden前</p>
+<pre><code>*   &lt;div class=&quot;image-package&quot;&gt;
+</code></pre>
+<div class="image-container" style="max-width: 286px; max-height: 328px;">
+<div class="image-container-fill" style="padding-bottom: 114.69%;"></div>
+<div class="image-view" data-width="286" data-height="328">![](//upload-images.jianshu.io/upload_images/647982-48e7ca6f9f41706c.png)</div>
+</div>
+<div class="image-caption"></div>
+</div>
+</li>
+<li>
+<p>添加overflow:hidden后</p>
+<pre><code>*   &lt;div class=&quot;image-package&quot;&gt;
+</code></pre>
+<div class="image-container" style="max-width: 256px; max-height: 278px;">
+<div class="image-container-fill" style="padding-bottom: 108.59%;"></div>
+<div class="image-view" data-width="256" data-height="278">![](//upload-images.jianshu.io/upload_images/647982-ff3a27bbb6adb3b9.png)</div>
+</div>
+<div class="image-caption"></div>
+</div>
+<hr>
+</li>
+<li>
+<p>如何利用overflow:hidden;清除浮动</p>
+<pre><code>*   给前面一个盒子添加overflow:hidden属性
+</code></pre>
+</li>
+<li>
+<p>示例代码</p>
+<pre class="hljs xml">`<span class="hljs-tag">&lt;<span class="hljs-name">style</span>&gt;</span><span class="undefined">
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .box1{
+            background-color: red;
+            /*这里*/
+            overflow: hidden;
+            *zoom:1;
+        }
+        .box2{
+            background-color: purple;
+            /*margin有效*/
+            margin-top: 20px;
+        }
+        ul{
+            list-style: none;
+        }
+        .ul01 li{
+            background-color: blue;
+        }
+        .ul02 li{
+            background-color: green;
+        }
+        ul li{
+            float: left;
+        }
+</span><span class="hljs-tag">&lt;/<span class="hljs-name">style</span>&gt;</span>
+<p><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;box1&quot;</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">ul</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;ul01&quot;</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>大娃<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>二娃<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>三娃<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;box2&quot;</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">ul</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;ul02&quot;</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>李南江<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>极客江南<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>江哥<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+`</pre></p>
+</li>
+<li>
+<p>添加overflow:hidden;前</p>
+<pre><code>*   &lt;div class=&quot;image-package&quot;&gt;
+</code></pre>
+<div class="image-container" style="max-width: 700px; max-height: 122px;">
+<div class="image-container-fill" style="padding-bottom: 10.48%;"></div>
+<div class="image-view" data-width="1164" data-height="122">![](//upload-images.jianshu.io/upload_images/647982-37c3591032b43be9.png)</div>
+</div>
+<div class="image-caption"></div>
+</div>
+</li>
+<li>
+<p>添加overflow:hidden;后</p>
+<pre><code>*   &lt;div class=&quot;image-package&quot;&gt;
+</code></pre>
+<div class="image-container" style="max-width: 700px; max-height: 232px;">
+<div class="image-container-fill" style="padding-bottom: 19.86%;"></div>
+<div class="image-view" data-width="1168" data-height="232">![](//upload-images.jianshu.io/upload_images/647982-7799130801c08c6b.png)</div>
+</div>
+<div class="image-caption"></div>
+</div>
+</li>
+<li>
+<p>注意点:</p>
+<pre><code>*   由于overflow:hidden可以撑起盒子的高度, 所以可以直接设置margin属性
+</code></pre>
+<ul>
+<li>
+<p>IE8以前不支持利用overflow:hidden来清除浮动, 所以需要加上一个*zoom:1;</p>
+<pre><code>    *   实际上*zoom:1能够触发IE8之前IE浏览器的hasLayout机制
+</code></pre>
+</li>
+<li>
+<p>优点可以不用添加额外的标签又可以撑起父元素的高度, 缺点和定位结合在一起使用时会有冲突</p>
+</li>
+</ul>
+</li>
+<li>
+<p>*zoom:1;和_zoom:1的区别</p>
+<pre><code>*   这个是hack写法，用来识别不同版本的IE浏览器
+</code></pre>
+<ul>
+<li>_后面的属性只有IE6能识别</li>
+<li>*后面的属性 IE6 IE7能识别</li>
+</ul>
+<h3 id="清除浮动方式六">清除浮动方式六</h3>
+</li>
+<li>
+<p>给前面的盒子添加伪元素来清除浮动</p>
+</li>
+<li>
+<p>示例代码</p>
+<pre class="hljs xml">`<span class="hljs-tag">&lt;<span class="hljs-name">style</span>&gt;</span><span class="undefined">
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .box1{
+            background-color: red;
+        }
+        .box2{
+            background-color: purple;
+            /*margin有效*/
+            margin-top: 20px;
+        }
+        ul{
+            list-style: none;
+        }
+        .ul01 li{
+            background-color: blue;
+        }
+        .ul02 li{
+            background-color: green;
+        }
+        li{
+            float: left;
+        }
+<pre><code>    /*这里*/
+    .clearfix:after {
+        /*生成内容作为最后一个元素*/
+        content: &quot;&quot;;
+        /*使生成的元素以块级元素显示,占满剩余空间*/
+        display: block;
+        /*避免生成内容破坏原有布局的高度*/
+        height: 0;
+        /*使生成的内容不可见，并允许可能被生成内容盖住的内容可以进行点击和交互*/
+        visibility: hidden;
+        /*重点是这一句*/
+        clear: both;
+    }
+    .clearfix {
+        /*用于兼容IE, 触发IE hasLayout*/
+        *zoom:1;
+    }
+</code></pre>
+<p></span><span class="hljs-tag">&lt;/<span class="hljs-name">style</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;box1 clearfix&quot;</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">ul</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;ul01&quot;</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>大娃<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>二娃<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>三娃<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;box2&quot;</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">ul</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;ul02&quot;</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>李南江<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>极客江南<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>江哥<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+`</pre></p>
+</li>
+<li>
+<p>添加伪元素前</p>
+<pre><code>*   &lt;div class=&quot;image-package&quot;&gt;
+</code></pre>
+<div class="image-container" style="max-width: 700px; max-height: 122px;">
+<div class="image-container-fill" style="padding-bottom: 10.48%;"></div>
+<div class="image-view" data-width="1164" data-height="122">![](//upload-images.jianshu.io/upload_images/647982-37c3591032b43be9.png)</div>
+</div>
+<div class="image-caption"></div>
+</div>
+</li>
+<li>
+<p>添加伪元素后</p>
+<pre><code>*   &lt;div class=&quot;image-package&quot;&gt;
+</code></pre>
+<div class="image-container" style="max-width: 700px; max-height: 232px;">
+<div class="image-container-fill" style="padding-bottom: 19.86%;"></div>
+<div class="image-view" data-width="1168" data-height="232">![](//upload-images.jianshu.io/upload_images/647982-7799130801c08c6b.png)</div>
+</div>
+<div class="image-caption"></div>
+</div>
+</li>
+<li>
+<p>注意点:</p>
+<pre><code>*   本质上和内墙法一样, 都是在前面一个盒子的最后添加一个额外的块级元素
+</code></pre>
+<ul>
+<li>添加伪元素后可以撑起盒子的高度, 所以可以直接设置margin属性</li>
+<li>CSS中还有一个东西叫做伪类, 伪元素和伪类不是同一个东西</li>
+</ul>
+<h3 id="清除浮动方式七">清除浮动方式七</h3>
+</li>
+<li>
+<p>给前面的盒子添加双伪元素来清除浮动</p>
+</li>
+<li>
+<p>示例代码</p>
+<pre class="hljs xml">`<span class="hljs-tag">&lt;<span class="hljs-name">style</span>&gt;</span><span class="css">
+        *{
+            <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span>;
+            <span class="hljs-attribute">padding</span>: <span class="hljs-number">0</span>;
+        }
+        <span class="hljs-selector-class">.box1</span>{
+            <span class="hljs-attribute">background-color</span>: red;
+        }
+        <span class="hljs-selector-class">.box2</span>{
+            <span class="hljs-attribute">background-color</span>: purple;
+            <span class="hljs-comment">/*margin有效*/</span>
+            <span class="hljs-attribute">margin-top</span>: <span class="hljs-number">20px</span>;
+        }
+        <span class="hljs-selector-tag">ul</span>{
+            <span class="hljs-attribute">list-style</span>: none;
+        }
+        <span class="hljs-selector-class">.ul01</span> <span class="hljs-selector-tag">li</span>{
+            <span class="hljs-attribute">background-color</span>: blue;
+        }
+        <span class="hljs-selector-class">.ul02</span> <span class="hljs-selector-tag">li</span>{
+            <span class="hljs-attribute">background-color</span>: green;
+        }
+        <span class="hljs-selector-tag">li</span>{
+            <span class="hljs-attribute">float</span>: left;
+        }
+<pre><code>    &lt;span class=&quot;hljs-comment&quot;&gt;/*这里*/&lt;/span&gt;
+    &lt;span class=&quot;hljs-selector-class&quot;&gt;.cf&lt;/span&gt;&lt;span class=&quot;hljs-selector-pseudo&quot;&gt;:before&lt;/span&gt;,&lt;span class=&quot;hljs-selector-class&quot;&gt;.cf&lt;/span&gt;&lt;span class=&quot;hljs-selector-pseudo&quot;&gt;:after&lt;/span&gt; {
+        &lt;span class=&quot;hljs-attribute&quot;&gt;content&lt;/span&gt;:&lt;span class=&quot;hljs-string&quot;&gt;&quot;&quot;&lt;/span&gt;;
+        &lt;span class=&quot;hljs-attribute&quot;&gt;display&lt;/span&gt;:table;
+        &lt;span class=&quot;hljs-comment&quot;&gt;/*重点是这一句*/&lt;/span&gt;
+        &lt;span class=&quot;hljs-attribute&quot;&gt;clear&lt;/span&gt;:both;
+    }
+    &lt;span class=&quot;hljs-selector-class&quot;&gt;.cf&lt;/span&gt; {
+        &lt;span class=&quot;hljs-attribute&quot;&gt;zoom&lt;/span&gt;:&lt;span class=&quot;hljs-number&quot;&gt;1&lt;/span&gt;;
+    }
+</code></pre>
+<p></span><span class="hljs-tag">&lt;/<span class="hljs-name">style</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;box1 clearfix&quot;</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">ul</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;ul01&quot;</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>大娃<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>二娃<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>三娃<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;box2&quot;</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">ul</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;ul02&quot;</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>李南江<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>极客江南<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>江哥<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></p>
+</li>
+<li>
+<p>添加双伪元素前</p>
+<pre><code>*   &lt;div class=&quot;image-package&quot;&gt;
+</code></pre>
+</li>
+</ul>
+<div class="image-container" style="max-width: 700px; max-height: 122px;">
+<div class="image-container-fill" style="padding-bottom: 10.48%;"></div>
+<div class="image-view" data-width="1164" data-height="122">![](//upload-images.jianshu.io/upload_images/647982-37c3591032b43be9.png)</div>
+</div>
+<div class="image-caption"></div>
+</div>
+<ul>
+<li>
+<p>添加双伪元素后</p>
+<pre><code>*   &lt;div class=&quot;image-package&quot;&gt;
+</code></pre>
+</li>
+</ul>
+<div class="image-container" style="max-width: 700px; max-height: 232px;">
+<div class="image-container-fill" style="padding-bottom: 19.86%;"></div>
+<div class="image-view" data-width="1168" data-height="232">![](//upload-images.jianshu.io/upload_images/647982-7799130801c08c6b.png)</div>
+</div>
+<div class="image-caption"></div>
+</div>
+<ul>
+<li>
+<p>注意点:</p>
+<pre><code>*   添加伪元素后可以撑起盒子的高度, 所以可以直接设置margin属性
+</code></pre>
+<ul>
+<li>先知道有这些方式, 原理需要学习到BFC和hasLayout才能明白</li>
+<li>支持BFC的浏览器（IE8+，firefox，chrome，safari）通过创建新的BFC闭合浮动；</li>
+<li>不支持 BFC的浏览器 （IE5-7），通过触发 hasLayout 闭合浮动。</li>
+</ul>
+</li>
+</ul>
+<hr>
+<p><img src="https://demichung813.github.io/zhongniblog//post-images/1556889460038.png" alt="定位"></p>
+<h2 id="定位">定位</h2>
+<h3 id="相对定位">相对定位</h3>
+<ul>
+<li>
+<p>什么是相对定位?</p>
+<pre><code>*   对定位就是相对于自己以前在标准流中的位置来移动
+</code></pre>
+</li>
+<li>
+<p>格式:</p>
+<pre><code>*   `position: relative;`
+</code></pre>
+</li>
+<li>
+<p>示例程序</p>
+<p>&lt;style&gt;
+*{
+<span class="hljs-attr">margin</span>: <span class="hljs-number">0</span>;
+padding: <span class="hljs-number">0</span>;
+}
+div{
+<span class="hljs-attr">width</span>: <span class="hljs-number">100</span>px;
+height: <span class="hljs-number">100</span>px;
+}
+.box1{
+background-color: red;
+}
+.box2{
+background-color: green;
+position: relative;
+top: <span class="hljs-number">20</span>px;
+left: <span class="hljs-number">20</span>px;
+}
+.box3{
+background-color: blue;
+}
+&lt;style&gt;</p>
+<p><span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;box1&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span>
+&lt;div <span class="hljs-class"><span class="hljs-keyword">class</span></span>=<span class="hljs-string">&quot;box2&quot;</span>&gt;<span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span>
+&lt;div <span class="hljs-class"><span class="hljs-keyword">class</span></span>=<span class="hljs-string">&quot;box3&quot;</span>&gt;<span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span>
+`</pre></p>
+<div class="image-package">
+<div class="image-container" style="max-width: 700px; max-height: 610px; background-color: transparent;">
+<div class="image-container-fill" style="padding-bottom: 85.67%;"></div>
+<div class="image-view" data-width="712" data-height="610">![](//upload-images.jianshu.io/upload_images/647982-47980ccaaa124dde.png)</div>
+</div>
+<div class="image-caption"></div>
+</div>
+</li>
+<li>
+<p>相对定位注意点:</p>
+<pre><code>*   在相对定位中同一个方向上的定位属性只能使用一个
+
+        *   top/bottom 只能用一个
+*   left/right 只能用一个
+</code></pre>
+<ul>
+<li>相对定位是不脱离标准流的, 会继续在标准流中占用一份空间</li>
+<li>由于相对定位是不脱离标准流的, 所以在相对定位中区分块级元素/行内元素/行内块级元素</li>
+<li>由于相对定位是不脱离标准流的, 并且相对定位的元素会占用标准流中的位置, 所以当给相对定位的元素设置margin/padding等属性的时会影响到标准流的布局</li>
+<li>
+<div class="image-package">
+</li>
+</ul>
+<div class="image-container" style="max-width: 690px; max-height: 650px;">
+<div class="image-container-fill" style="padding-bottom: 94.19999999999999%;"></div>
+<div class="image-view" data-width="690" data-height="650">![](//upload-images.jianshu.io/upload_images/647982-56d509caaef234e7.png)</div>
+</div>
+<div class="image-caption"></div>
+</div>
+</li>
+<li>
+<p>相对定位应用场景:</p>
+<pre><code>*   用于对元素进行微调
+
+        *   &lt;pre class=&quot;hljs undefined&quot;&gt;&lt;/pre&gt;
+</code></pre>
+<p>input{
+width: 200px;
+height: 50px;
+}
+img{
+width: 100px;
+height: 50px;</p>
+<pre class="hljs undefined">`  position: relative;
+  top: 20px;
+`</pre>
+<p>}</p>
+<pre class="hljs cpp">`- ![](http:<span class="hljs-comment">//upload-images.jianshu.io/upload_images/647982-faf2a4c295488ed9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)</span>
+- ![](http:<span class="hljs-comment">//upload-images.jianshu.io/upload_images/647982-f9fc00e083f01cb8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)</span>
+`</pre>
+<ul>
+<li>配合后面学习的绝对定位来使用</li>
+</ul>
+<h3 id="绝对定位">绝对定位</h3>
+</li>
+<li>
+<p>什么是绝对定位?</p>
+<pre><code>*   绝对定位就是相对于body或者某个定位流中的祖先元素来定位
+</code></pre>
+</li>
+<li>
+<p>格式:</p>
+<pre><code>*   `position: absolute;`
+</code></pre>
+</li>
+<li>
+<p>示例代码</p>
+<pre class="hljs xml">`
+<span class="hljs-tag">&lt;<span class="hljs-name">style</span>&gt;</span><span class="css">
+        *{
+            <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span>;
+            <span class="hljs-attribute">padding</span>: <span class="hljs-number">0</span>;
+        }
+        <span class="hljs-selector-tag">div</span>{
+            <span class="hljs-attribute">width</span>: <span class="hljs-number">100px</span>;
+            <span class="hljs-attribute">height</span>: <span class="hljs-number">100px</span>;
+        }
+        <span class="hljs-selector-class">.box1</span>{
+            <span class="hljs-attribute">background-color</span>: red;
+        }
+        <span class="hljs-selector-class">.box2</span>{
+            <span class="hljs-attribute">background-color</span>: green;
+            <span class="hljs-attribute">position</span>: absolute;
+            <span class="hljs-attribute">left</span>: <span class="hljs-number">0</span>;
+            <span class="hljs-attribute">top</span>: <span class="hljs-number">0</span>;
+        }
+        <span class="hljs-selector-class">.box3</span>{
+            <span class="hljs-attribute">background-color</span>: blue;
+        }
+</span><span class="hljs-tag">&lt;/<span class="hljs-name">style</span>&gt;</span>
+<p><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;box1&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;box2&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;box3&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+`</pre></p>
+<div class="image-package">
+<div class="image-container" style="max-width: 464px; max-height: 616px;">
+<div class="image-container-fill" style="padding-bottom: 132.76%;"></div>
+<div class="image-view" data-width="464" data-height="616">![](//upload-images.jianshu.io/upload_images/647982-e6e893062a9c0554.png)</div>
+</div>
+<div class="image-caption"></div>
+</div>
+<div class="image-package">
+<div class="image-container" style="max-width: 614px; max-height: 412px;">
+<div class="image-container-fill" style="padding-bottom: 67.10000000000001%;"></div>
+<div class="image-view" data-width="614" data-height="412">![](//upload-images.jianshu.io/upload_images/647982-3cf618f2cedbfe0d.png)</div>
+</div>
+<div class="image-caption"></div>
+</div>
+</li>
+<li>
+<p>绝对定位注意点:</p>
+<pre><code>*   绝对定位的元素是脱离标准流的, 不会占用标准流中的位置
+</code></pre>
+<ul>
+<li>
+<p>由于绝对定位的元素是脱离标准流的, 所以绝对定位的元素不区分块级元素/行内元素/行内块级元素</p>
+</li>
+<li>
+<p>如果一个绝对定位的元素是以body作为参考点, 那么其实是以网页首屏的宽度和高度作为参考点, 而不是以整个网页的宽度和高度作为参考点</p>
+<pre><code>    *   相对于body定位会随着页面的滚动而滚动
+</code></pre>
+</li>
+<li>
+<p>一个绝对定位的元素会忽略祖先元素的padding</p>
+</li>
+</ul>
+<pre class="hljs xml">`<span class="hljs-tag">&lt;<span class="hljs-name">style</span>&gt;</span><span class="css">
+        *{
+            <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span>;
+            <span class="hljs-attribute">padding</span>: <span class="hljs-number">0</span>;
+        }
+        <span class="hljs-selector-class">.box1</span>{
+            <span class="hljs-attribute">width</span>: <span class="hljs-number">300px</span>;
+            <span class="hljs-attribute">height</span>: <span class="hljs-number">300px</span>;
+            <span class="hljs-attribute">background-color</span>: red;
+            <span class="hljs-attribute">border</span>: <span class="hljs-number">10px</span> solid <span class="hljs-number">#000</span>;
+            <span class="hljs-attribute">padding</span>: <span class="hljs-number">30px</span>;
+            <span class="hljs-attribute">position</span>: relative;
+            <span class="hljs-attribute">box-sizing</span>: border-box;
+        }
+        <span class="hljs-selector-class">.box2</span>{
+            <span class="hljs-attribute">width</span>: <span class="hljs-number">100px</span>;
+            <span class="hljs-attribute">height</span>: <span class="hljs-number">100px</span>;
+            <span class="hljs-attribute">background-color</span>: green;
+            <span class="hljs-attribute">position</span>: absolute;
+            <span class="hljs-attribute">left</span>: <span class="hljs-number">0</span>;
+            <span class="hljs-attribute">top</span>: <span class="hljs-number">0</span>;
+        }
+</span><span class="hljs-tag">&lt;/<span class="hljs-name">style</span>&gt;</span>
+<p><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;box1&quot;</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;box2&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+`</pre></p>
+<div class="image-package">
+<div class="image-container" style="max-width: 700px; max-height: 598px;">
+<div class="image-container-fill" style="padding-bottom: 50.42%;"></div>
+<div class="image-view" data-width="1186" data-height="598">![](//upload-images.jianshu.io/upload_images/647982-4cdaedc68caa4635.png)</div>
+</div>
+<div class="image-caption"></div>
+</div>
+<div class="image-package">
+<div class="image-container" style="max-width: 700px; max-height: 596px;">
+<div class="image-container-fill" style="padding-bottom: 56.76%;"></div>
+<div class="image-view" data-width="1050" data-height="596">![](//upload-images.jianshu.io/upload_images/647982-6e0034f9234bc504.png)</div>
+</div>
+<div class="image-caption"></div>
+</div>
+</li>
+<li>
+<p>绝对定位参考点:</p>
+<pre><code>*   默认情况下所有的绝对定位的元素, 无论有没有祖先元素, 都会以body作为参考点
+</code></pre>
+<ul>
+<li>如果一个绝对定位的元素有祖先元素, 并且祖先元素中有一个是定位流中的元素, 那么这个绝对定位的元素就会以定位流的那个祖先元素作为参考点</li>
+<li>如果一个绝对定位的元素有祖先元素, 并且祖先元素中有多个是定位流中的元素, 那么这个绝对定位的元素会以离它最近的那个定位流的祖先元素为参考点</li>
+</ul>
+<pre class="hljs xml">`<span class="hljs-tag">&lt;<span class="hljs-name">style</span>&gt;</span><span class="css">
+        *{
+            <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span>;
+            <span class="hljs-attribute">padding</span>: <span class="hljs-number">0</span>;
+        }
+        <span class="hljs-selector-class">.box1</span>{
+            <span class="hljs-attribute">width</span>: <span class="hljs-number">300px</span>;
+            <span class="hljs-attribute">height</span>: <span class="hljs-number">300px</span>;
+            <span class="hljs-attribute">background-color</span>: red;
+            <span class="hljs-attribute">position</span>: relative;
+        }
+        <span class="hljs-selector-class">.box2</span>{
+            <span class="hljs-attribute">width</span>: <span class="hljs-number">200px</span>;
+            <span class="hljs-attribute">height</span>: <span class="hljs-number">200px</span>;
+            <span class="hljs-attribute">background-color</span>: green;
+        }
+        <span class="hljs-selector-class">.box3</span>{
+            <span class="hljs-attribute">width</span>: <span class="hljs-number">100px</span>;
+            <span class="hljs-attribute">height</span>: <span class="hljs-number">100px</span>;
+            <span class="hljs-attribute">background-color</span>: blue;
+            <span class="hljs-attribute">position</span>: absolute;
+            <span class="hljs-attribute">left</span>: <span class="hljs-number">0</span>;
+            <span class="hljs-attribute">bottom</span>: <span class="hljs-number">0</span>;
+          }
+</span><span class="hljs-tag">&lt;/<span class="hljs-name">style</span>&gt;</span>
+<p><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;box1&quot;</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;box2&quot;</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;box3&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+`</pre></p>
+<div class="image-package">
+<div class="image-container" style="max-width: 600px; max-height: 596px;">
+<div class="image-container-fill" style="padding-bottom: 99.33%;"></div>
+<div class="image-view" data-width="600" data-height="596">![](//upload-images.jianshu.io/upload_images/647982-d648fccadfa59153.png)</div>
+</div>
+<div class="image-caption"></div>
+</div>
+<pre class="hljs xml">`<span class="hljs-tag">&lt;<span class="hljs-name">style</span>&gt;</span><span class="css">
+        *{
+            <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span>;
+            <span class="hljs-attribute">padding</span>: <span class="hljs-number">0</span>;
+        }
+        <span class="hljs-selector-class">.box1</span>{
+            <span class="hljs-attribute">width</span>: <span class="hljs-number">300px</span>;
+            <span class="hljs-attribute">height</span>: <span class="hljs-number">300px</span>;
+            <span class="hljs-attribute">background-color</span>: red;
+            <span class="hljs-attribute">position</span>: relative;
+        }
+        <span class="hljs-selector-class">.box2</span>{
+            <span class="hljs-attribute">width</span>: <span class="hljs-number">200px</span>;
+            <span class="hljs-attribute">height</span>: <span class="hljs-number">200px</span>;
+            <span class="hljs-attribute">background-color</span>: green;
+            <span class="hljs-attribute">position</span>: relative;
+        }
+        <span class="hljs-selector-class">.box3</span>{
+            <span class="hljs-attribute">width</span>: <span class="hljs-number">100px</span>;
+            <span class="hljs-attribute">height</span>: <span class="hljs-number">100px</span>;
+            <span class="hljs-attribute">background-color</span>: blue;
+            <span class="hljs-attribute">position</span>: absolute;
+            <span class="hljs-attribute">left</span>: <span class="hljs-number">0</span>;
+            <span class="hljs-attribute">bottom</span>: <span class="hljs-number">0</span>;
+          }
+</span><span class="hljs-tag">&lt;/<span class="hljs-name">style</span>&gt;</span>
+<p><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;box1&quot;</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;box2&quot;</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;box3&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+`</pre></p>
+<div class="image-package">
+<div class="image-container" style="max-width: 596px; max-height: 596px;">
+<div class="image-container-fill" style="padding-bottom: 100.0%;"></div>
+<div class="image-view" data-width="596" data-height="596">![](//upload-images.jianshu.io/upload_images/647982-11f55e5472fe5557.png)</div>
+</div>
+<div class="image-caption"></div>
+</div>
+</li>
+<li>
+<p>绝对定位水平居中</p>
+<pre><code>*   1.注意当一个盒子绝对定位之后不能使用margin: 0 auto;让盒子自身居中
+</code></pre>
+<ul>
+<li>2.如果想让过一个绝对定位的盒子自身居中, 可以使用left: 50%; margin-left:-元素宽度一半px;</li>
+</ul>
+<pre class="hljs xml">`<span class="hljs-meta">&lt;!DOCTYPE html&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">html</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">"en"</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">charset</span>=<span class="hljs-string">"UTF-8"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>74-绝对定位水平居中<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">style</span>&gt;</span><span class="css">
+        *{
+            <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span>;
+            <span class="hljs-attribute">padding</span>: <span class="hljs-number">0</span>;
+        }
+        <span class="hljs-selector-tag">div</span>{
+            <span class="hljs-attribute">width</span>: <span class="hljs-number">400px</span>;
+            <span class="hljs-attribute">height</span>: <span class="hljs-number">50px</span>;
+            <span class="hljs-attribute">background-color</span>: red;
+            <span class="hljs-attribute">position</span>: absolute;
+            <span class="hljs-comment">/*无效*/</span>
+            <span class="hljs-comment">/*margin: 0 auto;*/</span>
+            <span class="hljs-comment">/*有效*/</span>
+            <span class="hljs-attribute">left</span>: <span class="hljs-number">50%</span>;
+            <span class="hljs-attribute">margin-left</span>:-<span class="hljs-number">200px</span>;
+        }
+    </span><span class="hljs-tag">&lt;/<span class="hljs-name">style</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span>
+`</pre>
+</li>
+<li>
+<p>绝对定位应用场景:</p>
+<pre><code>*   用于对元素进行微调
+</code></pre>
+<ul>
+<li>配合后面学习的绝对定位来使用</li>
+</ul>
+<h3 id="子绝父相">子绝父相</h3>
+</li>
+<li>
+<p>企业开发中一般相对定位和绝对定位都是一起出现, 很少单独使用</p>
+</li>
+<li>
+<p>为什么要子绝父相?</p>
+<pre class="hljs xml">`<span class="hljs-meta">&lt;!DOCTYPE html&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">html</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">"en"</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">charset</span>=<span class="hljs-string">"UTF-8"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>71-子绝父相<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">style</span>&gt;</span><span class="css">
+        *{
+            <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span>;
+            <span class="hljs-attribute">padding</span>: <span class="hljs-number">0</span>;
+        }
+        <span class="hljs-selector-tag">ul</span>{
+            <span class="hljs-attribute">width</span>: <span class="hljs-number">800px</span>;
+            <span class="hljs-attribute">height</span>: <span class="hljs-number">50px</span>;
+            <span class="hljs-attribute">background-color</span>: red;
+            <span class="hljs-attribute">list-style</span>: none;
+            <span class="hljs-attribute">margin</span>: <span class="hljs-number">0px</span> auto;
+            <span class="hljs-attribute">margin-top</span>: <span class="hljs-number">100px</span>;
+        }
+        <span class="hljs-selector-tag">li</span>{
+            <span class="hljs-attribute">width</span>: <span class="hljs-number">100px</span>;
+            <span class="hljs-comment">/*height: 50px;*/</span>
+            <span class="hljs-attribute">line-height</span>: <span class="hljs-number">50px</span>;
+            <span class="hljs-attribute">float</span>: left;
+            <span class="hljs-attribute">background-color</span>: gray;
+            <span class="hljs-attribute">text-align</span>: center;
+        }
+        <span class="hljs-selector-class">.li03</span>{
+            <span class="hljs-attribute">background-color</span>: darkgray;
+            <span class="hljs-attribute">position</span>: relative;
+        }
+        <span class="hljs-selector-tag">ul</span> <span class="hljs-selector-tag">li</span> <span class="hljs-selector-tag">img</span>{
+            <span class="hljs-comment">/*
+            缺点以前的位置仍然被占用, 不能让文字居中对齐
+            */</span>
+<pre><code>        &lt;span class=&quot;hljs-comment&quot;&gt;/*position: relative;
+        left: -35px;
+        top: -15px;*/&lt;/span&gt;
+
+        &lt;span class=&quot;hljs-comment&quot;&gt;/* 浏览器调整之后位置会发生变化*/&lt;/span&gt;
+
+       &lt;span class=&quot;hljs-comment&quot;&gt;/* position: absolute;
+        top: 95px;
+        left: 535px;*/&lt;/span&gt;
+
+        &lt;span class=&quot;hljs-attribute&quot;&gt;position&lt;/span&gt;: absolute;
+        &lt;span class=&quot;hljs-attribute&quot;&gt;left&lt;/span&gt;: &lt;span class=&quot;hljs-number&quot;&gt;37px&lt;/span&gt;;
+        &lt;span class=&quot;hljs-attribute&quot;&gt;top&lt;/span&gt;: -&lt;span class=&quot;hljs-number&quot;&gt;5px&lt;/span&gt;;
+
+    }
+&lt;/span&gt;&lt;span class=&quot;hljs-tag&quot;&gt;&amp;lt;/&lt;span class=&quot;hljs-name&quot;&gt;style&lt;/span&gt;&amp;gt;&lt;/span&gt;
+</code></pre>
+<p><span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">ul</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>服装城<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>美妆馆<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>京东超市<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;li03&quot;</span>&gt;</span>全球购<img src="hot.png" alt=""><span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>闪购<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>团购<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>拍卖<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>江哥<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span>
+`</pre></p>
+<div class="image-package">
+<div class="image-container" style="max-width: 700px; max-height: 236px;">
+<div class="image-container-fill" style="padding-bottom: 14.75%;"></div>
+<div class="image-view" data-width="1600" data-height="236">![](//upload-images.jianshu.io/upload_images/647982-5c6f2a7acd065e6c.png)</div>
+</div>
+<div class="image-caption"></div>
+</div>
+<div class="image-package">
+<div class="image-container" style="max-width: 700px; max-height: 292px;">
+<div class="image-container-fill" style="padding-bottom: 18.0%;"></div>
+<div class="image-view" data-width="1622" data-height="292">![](//upload-images.jianshu.io/upload_images/647982-93b186dcaa53cdc6.png)</div>
+</div>
+<div class="image-caption"></div>
+</div>
+<div class="image-package">
+<div class="image-container" style="max-width: 700px; max-height: 256px;">
+<div class="image-container-fill" style="padding-bottom: 15.939999999999998%;"></div>
+<div class="image-view" data-width="1606" data-height="256">![](//upload-images.jianshu.io/upload_images/647982-761dd81edd14e8bb.png)</div>
+</div>
+<div class="image-caption"></div>
+</div>
+</li>
+<li>
+<p>相对定位和绝对定位一般都是用来做覆盖效果的, 当看到某个元素覆盖在另外一个元素上时, 第一时间就要想到定位流</p>
+<div class="image-package">
+<div class="image-container" style="max-width: 502px; max-height: 648px;">
+<div class="image-container-fill" style="padding-bottom: 129.07999999999998%;"></div>
+<div class="image-view" data-width="502" data-height="648">![](//upload-images.jianshu.io/upload_images/647982-b7b148010e500ffd.png)</div>
+</div>
+<div class="image-caption"></div>
+</div>
+<div class="image-package">
+<div class="image-container" style="max-width: 700px; max-height: 604px;">
+<div class="image-container-fill" style="padding-bottom: 56.03%;"></div>
+<div class="image-view" data-width="1078" data-height="604">![](//upload-images.jianshu.io/upload_images/647982-eba0b0f77d4bc862.png)</div>
+</div>
+<div class="image-caption"></div>
+</div>
+<h3 id="固定定位">固定定位</h3>
+</li>
+<li>
+<p>什么是固定定位?</p>
+<pre><code>*   固定定位和前面学习的背景关联方式很像, 背景关联方式可以让某个图片不随着滚动条的滚动而滚动, 而固定定位可以让某个盒子不随着滚动条的滚动而滚动
+</code></pre>
+</li>
+<li>
+<p>格式:</p>
+<pre><code>*   `position: fixed;`
+</code></pre>
+</li>
+<li>
+<p>示例代码</p>
+<pre class="hljs xml">`<span class="hljs-meta">&lt;!DOCTYPE html&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">html</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">"en"</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">charset</span>=<span class="hljs-string">"UTF-8"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>74-固定定位<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">style</span>&gt;</span><span class="css">
+        *{
+            <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span>;
+            <span class="hljs-attribute">padding</span>: <span class="hljs-number">0</span>;
+        }
+        <span class="hljs-selector-tag">p</span>{
+            <span class="hljs-attribute">width</span>: <span class="hljs-number">100px</span>;
+        }
+        <span class="hljs-selector-tag">a</span>{
+<pre><code>        &lt;span class=&quot;hljs-attribute&quot;&gt;width&lt;/span&gt;: &lt;span class=&quot;hljs-number&quot;&gt;50px&lt;/span&gt;;
+        &lt;span class=&quot;hljs-attribute&quot;&gt;height&lt;/span&gt;: &lt;span class=&quot;hljs-number&quot;&gt;50px&lt;/span&gt;;
+        &lt;span class=&quot;hljs-attribute&quot;&gt;background-color&lt;/span&gt;: &lt;span class=&quot;hljs-built_in&quot;&gt;rgba&lt;/span&gt;(0, 0, 0, 0.3);
+        &lt;span class=&quot;hljs-attribute&quot;&gt;border-radius&lt;/span&gt;: &lt;span class=&quot;hljs-number&quot;&gt;25px&lt;/span&gt;;
+        &lt;span class=&quot;hljs-attribute&quot;&gt;text-decoration&lt;/span&gt;: none;
+        &lt;span class=&quot;hljs-attribute&quot;&gt;text-align&lt;/span&gt;: center;
+        &lt;span class=&quot;hljs-attribute&quot;&gt;color&lt;/span&gt;: &lt;span class=&quot;hljs-number&quot;&gt;#000&lt;/span&gt;;
+
+        &lt;span class=&quot;hljs-attribute&quot;&gt;position&lt;/span&gt;: fixed;
+        &lt;span class=&quot;hljs-attribute&quot;&gt;right&lt;/span&gt;: &lt;span class=&quot;hljs-number&quot;&gt;10px&lt;/span&gt;;
+        &lt;span class=&quot;hljs-attribute&quot;&gt;bottom&lt;/span&gt;: &lt;span class=&quot;hljs-number&quot;&gt;10px&lt;/span&gt;;
+    }
+
+&lt;/span&gt;&lt;span class=&quot;hljs-tag&quot;&gt;&amp;lt;/&lt;span class=&quot;hljs-name&quot;&gt;style&lt;/span&gt;&amp;gt;&lt;/span&gt;
+</code></pre>
+<p><span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字我是文字<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span></p>
+<p><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;#&quot;</span>&gt;</span>^<span class="hljs-tag">&lt;<span class="hljs-name">br</span>&gt;</span>顶部<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span></p>
+<p><span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span></p>
+</li>
+</ul>
+<div class="image-package">
+<div class="image-container" style="max-width: 700px; max-height: 488px;">
+<div class="image-container-fill" style="padding-bottom: 61.0%;"></div>
+<div class="image-view" data-width="800" data-height="488">![](//upload-images.jianshu.io/upload_images/647982-af5dbbfbc3497201.png)</div>
+</div>
+<div class="image-caption"></div>
+</div>
+<ul>
+<li>
+<p>固定定位注意点:</p>
+<pre><code>*   固定定位的元素是脱离标准流的, 不会占用标准流中的位置
+</code></pre>
+<ul>
+<li>由于固定定位的元素是脱离标准流的, 所以绝对定位的元素不区分块级元素/行内元素/行内块级元素</li>
+<li>IE6不支持固定定位</li>
+</ul>
+</li>
+<li>
+<p>固定定位应用场景:</p>
+<pre><code>*   网页对联广告
+</code></pre>
+<ul>
+<li>网页头部通栏(穿透效果)</li>
+</ul>
+</li>
+</ul>
+<div class="image-package">
+<div class="image-container" style="max-width: 700px; max-height: 205px;">
+<div class="image-container-fill" style="padding-bottom: 29.409999999999997%;"></div>
+<div class="image-view" data-width="2496" data-height="734">![](//upload-images.jianshu.io/upload_images/647982-121d0d14e128e352.png)</div>
+</div>
+<div class="image-caption"></div>
+</div>
+<h3 id="静态定位">静态定位</h3>
+<ul>
+<li>
+<p>什么是静态定位?</p>
+<pre><code>*   默认情况下标准流中的元素position属性就等于static, 所以静态定位其实就是默认的标准流
+</code></pre>
+</li>
+<li>
+<p>静态定位应用场景:</p>
+<pre><code>*   一般用于配合JS清除定位属性
+</code></pre>
+</li>
+</ul>
+<h3 id="z-index属性">z-index属性</h3>
+<ul>
+<li>
+<p>什么是z-index值?</p>
+<pre><code>*   用于指定定位的元素的覆盖关系
+</code></pre>
+</li>
+<li>
+<p>定位元素的覆盖关系:</p>
+<pre><code>*   默认情况下定位的元素一定会盖住没有定位的元素
+</code></pre>
+<ul>
+<li>
+<p>默认情况下写在后面的定位元素会盖住前面的定位元素</p>
+</li>
+<li>
+<p>默认情况下所有元素的z-index值都是0, 如果设置了元素的z-index值, 那么谁比较大谁就显示在前面</p>
+</li>
+<li>
+<p>定位元素的从父现象</p>
+<pre><code>*   父元素没有z-index值, 那么子元素谁的z-index大谁盖住谁
+</code></pre>
+<ul>
+<li>父元素z-index值不一样, 那么父元素谁的z-index大谁盖住谁</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<div class="image-package">
+<div class="image-container" style="max-width: 700px; max-height: 402px;">
+<div class="image-container-fill" style="padding-bottom: 47.52%;"></div>
+<div class="image-view" data-width="846" data-height="402">![](//upload-images.jianshu.io/upload_images/647982-e383ad4c7cd282bc.png)</div>
+</div>
+<div class="image-caption"></div>
+</div>
+<div class="image-package">
+<div class="image-container" style="max-width: 700px; max-height: 404px;">
+<div class="image-container-fill" style="padding-bottom: 49.63%;"></div>
+<div class="image-view" data-width="814" data-height="404">![](//upload-images.jianshu.io/upload_images/647982-c675d8d96dce4fc9.png)</div>
+</div>
+<div class="image-caption"></div>
+</div>
+<div class="image-package">
+<div class="image-container" style="max-width: 700px; max-height: 450px;">
+<div class="image-container-fill" style="padding-bottom: 42.13%;"></div>
+<div class="image-view" data-width="1068" data-height="450">![](//upload-images.jianshu.io/upload_images/647982-36354235451cf2c0.png)</div>
+</div>
+<div class="image-caption"></div>
+</div>
+<div class="image-package">
+<div class="image-container" style="max-width: 700px; max-height: 500px;">
+<div class="image-container-fill" style="padding-bottom: 46.129999999999995%;"></div>
+<div class="image-view" data-width="1084" data-height="500">![](//upload-images.jianshu.io/upload_images/647982-ff23ed179cb3191a.png)</div>
+</div>
+<div class="image-caption"></div>
+</div>
+<div class="image-package">
+<div class="image-container" style="max-width: 700px; max-height: 500px;">
+<div class="image-container-fill" style="padding-bottom: 44.800000000000004%;"></div>
+<div class="image-view" data-width="1116" data-height="500">![](//upload-images.jianshu.io/upload_images/647982-f8b3f0b4885f4f3d.png)</div>
+</div>
+<div class="image-caption"></div>
+</div>
+<ul>
+<li>
+<p>z-index应用场景</p>
+<ul>
+<li>控制界面上的定位元素的覆盖关系, 例如网页中后面的定位元素不能覆盖前面的导航条通栏</li>
+</ul>
+</li>
+</ul>
+<hr>
+
+            </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="https://demichung813.github.io/zhongniblog//post/css-ji-chu-ti-yan-cssshu-xing-xuan-ze-qi-san-da-te-xing-xian-shi-mo-shi-bei-jing-he-jing-ling-tu">
+                  <h3 class="post-title">
+                    CSS基础--体验CSS,属性,选择器,三大特性,显示模式,背景和精灵图
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+
+<script type="application/javascript">
+
+AOS.init();
+
+hljs.initHighlightingOnLoad()
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+
+
+  </body>
+</html>

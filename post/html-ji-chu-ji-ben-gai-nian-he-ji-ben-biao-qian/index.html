@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>HTML基础--基本概念和基本标签 | ZhongNi Gridea</title>
+<meta name="description" content="温故而知新">
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="https://demichung813.github.io/zhongniblog//favicon.ico?v=1556893715247">
+<link rel="stylesheet" href="https://demichung813.github.io/zhongniblog//styles/main.css">
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
+
+
+  </head>
+  <body>
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="https://demichung813.github.io/zhongniblog/">
+        <img src="https://demichung813.github.io/zhongniblog//images/avatar.png?v=1556893715247" class="site-logo">
+        <h1 class="site-title">ZhongNi Gridea</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
+      
+        
+          <a href="/" class="site-nav">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="site-nav">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="site-nav">
+            标签
+          </a>
+        
+      
+        
+          <a href="/post/about" class="site-nav">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+    <div class="site-description">
+      温故而知新
+    </div>
+    <div class="site-footer">
+      Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">HTML基础--基本概念和基本标签</h2>
+            <div class="post-date">2019-05-03</div>
+            
+            <div class="post-content">
+              <p><img src="https://demichung813.github.io/zhongniblog//post-images/1556872749876.png" alt="HTML基本概念"></p>
+<h2 id="什么是浏览器">什么是浏览器</h2>
+<p>浏览器是安装在电脑里面的一个软件， 能够将网页内容呈现给用户查看，并让用户与网页交互的一种软件。 就好比QQ一样都是安装在电脑里面的一个软件， 只不过功能不同而已</p>
+<h2 id="常见主流浏览器">常见主流浏览器</h2>
+<p>不同的浏览器有不同的浏览器内核， 浏览器内核也就是浏览器所采用的渲染引擎，渲染引擎决定了浏览器如何显示网页的内容，从而导致了浏览器兼容性问题出现</p>
+<ul>
+<li>IE内核 Trident</li>
+<li>谷歌内核 WebKit / Blink</li>
+<li>火狐内核 Gecko</li>
+<li>Safarri内核 WebKit</li>
+<li>欧朋内核 Presto</li>
+</ul>
+<h2 id="什么是http协议">什么是HTTP协议</h2>
+<p>1.HTTP是Hypertext Transfer Protocol的缩写, 超文本传输协议</p>
+<p>2.什么是协议?</p>
+<ul>
+<li>
+<p>在现实生活中有很多的协议, 例如租房协议/买卖协议/离婚协议</p>
+</li>
+<li>
+<p>无论是什么协议他们都是一个共同点, 就是用来规范/约束某一类事物</p>
+</li>
+</ul>
+<p>3.HTTP协议是用来规范/约束哪一类事物?</p>
+<ul>
+<li>
+<p>浏览器访问网页其实就是去服务器请求数据, 所以浏览器需要和服务器沟通, 所以也会存在沟通问题</p>
+</li>
+<li>
+<p>HTTP协议就相当于我们让两个人都说中文或者都说英文一样, 就是提前规范两个人之间如何沟通, 也就是规范/约束浏览器和服务器之间如何沟通</p>
+</li>
+</ul>
+<p><img src="https://demichung813.github.io/zhongniblog//post-images/1556873490645.png" alt="HTML基础--基本标签"></p>
+<h2 id="基础标签学习">基础标签学习</h2>
+<h3 id="h系列标签header-1~header-6">H系列标签(Header 1~Header 6)</h3>
+<p>作用:  用于给文本添加标题语义</p>
+<p>格式:  <code>&lt;h1&gt;xxxxxx&lt;/h1&gt;</code></p>
+<p>注意点:</p>
+<ol>
+<li>H标签是用来给文本添加标题语义的, 而不是用来修改文本的样式的</li>
+<li>H标签一共有6个, 从H1~H6, 最多就只能到6, 超过6则无效</li>
+<li>被H系列标签包裹的内容会独占一行</li>
+<li>在H系列的标签中, H1最大, H6最小</li>
+<li>在企业开发中, 一定要慎用H系列的标签, 特别是H1标签. 在企业开发中一般情况下一个界面中只能出现一个H1标签(和SEO有关)</li>
+</ol>
+<h3 id="p标签paragraph">P标签(Paragraph)</h3>
+<p>作用:告诉浏览器哪些文字是一个段落</p>
+<p>格式:<code>&lt;p&gt;xxxxxxxx&lt;/p&gt;</code></p>
+<p>注意点:在浏览器中会单独占一行</p>
+<h3 id="hr标签horizontal-rule">Hr标签(Horizontal Rule)</h3>
+<p>作用:在浏览器上显示一条分割线</p>
+<p>格式:<code>&lt;hr /&gt;</code></p>
+<p>注意点:</p>
+<p>1.在浏览器中会单独占一行</p>
+<p>2.通过我的观察发现HR标签可以写/也可以不写/, 如果不写/那么就是按照HTML的规范来编写, 如果写上/那么就是按照XHTML的规范来编写.但是在HTML5中, 由于HTML5兼容HTML和XHTML所有写不写都可以.那么以后我们在做前端开发时到底写还是不写呢? 按照高级开发工具的提示来写即可</p>
+<p>3.由于hr标签是用来修改样式的, 所以不推荐使用. 今后开发中添加水平线一般都使用CSS盒子来做</p>
+<h3 id="html注释annotation">HTML注释(Annotation)</h3>
+<p>什么是注释?</p>
+<p>1.注释是在所有计算机语言中都非常重要的一个概念，从字面上看，就是注解、解释的意思<br>
+3.注释可以用来解释某一段程序或者某一行代码是什么意思，方便直接或程序员之间的交流</p>
+<p>为什么要使用注释?</p>
+<p>适当的注释，能够让我们的程序更加可读，所以用中文提示自己，这里的程序是干什么的</p>
+<p>注释格式: <code>&lt;!--被注释的内容--&gt;</code></p>
+<p>注意点:</p>
+<p>1.被注释的内容不会在浏览器中显示, 注释是写给我们自己看的
+2.注释不能嵌套使用</p>
+<p>快捷键: <code>ctrl + /</code></p>
+<h3 id="img标签image">img标签(image)</h3>
+<p>作用: 在网页上插入一张图片</p>
+<p>格式: [图片上传失败...(image-fd0503-1522164219949)]</p>
+<p>标签的属性:写在标签中K=&quot;V&quot;这种格式的文本我们称之为标签属性</p>
+<p>注意点:</p>
+<p>1.img标签添加的图片默认不是占一整行空间
+2.如果想让图片等比拉伸, 只写高度或者宽度即可</p>
+<h3 id="br标签break">br标签(Break)</h3>
+<p>作用:让内容换行</p>
+<p>格式:<code>&lt;br/&gt;</code></p>
+<p>注意点:</p>
+<p>br的意思是不另起一个段落进行换行, 而网页中99.99%需要换行时都是因为另起了一个段落, 所以应该用p来做</p>
+<h3 id="a标签anchor">a标签(anchor)</h3>
+<p>格式: <code>&lt;a href=&quot;http://www.baidu.com&quot;&gt;百度&lt;/a&gt;</code></p>
+<p>作用: 用于从一个页面链接到另一个页面</p>
+<p>注意事项:</p>
+<p>1.在a标签之间一定要写上文字, 如果没有, 那么在页面上找不到这个标签
+2.a标签也叫做超级链接或超链接</p>
+<h4 id="base标签和a标签结合使用">base标签和a标签结合使用</h4>
+<p>如果每个a标签都想在新页面中打开,那么逐个设置a标签的target属性比较麻烦, 这时我们可以使用base和a标签结合的方式,一次性设置有a标签都在新页面中打开</p>
+<p>格式: <code>&lt;base target=&quot;_blank&quot; /&gt;</code></p>
+<p>注意事项:</p>
+<p>1.base必须嵌套在head标签里面
+2.如果标签上指定了target,base中也指定了target,那么会按照标签上指定的来执行</p>
+<h4 id="a标签其它用法">a标签其它用法</h4>
+<p>假链接(本质是跳转到当前页面)</p>
+<p>格式<code>&lt;a href=&quot;#&quot;&gt;博客&lt;/a&gt;</code></p>
+<p>格式<code>&lt;a href=&quot;javascript:&quot;&gt;博客&lt;/a&gt;</code></p>
+<h4 id="跳转到当前页面指定位置锚点链接">跳转到当前页面指定位置(锚点链接)</h4>
+<p>格式<code>&lt;a href=&quot;#location&quot;&gt;跳转到指定位置&lt;/a&gt;</code></p>
+<p>在页面的指定位置给任意标签添加一个id属性</p>
+<p>例如 <code>&lt;p id=&quot;location&quot;&gt;这个是目标&lt;/p&gt;</code></p>
+<h4 id="跳转到指定页面的指定位置">跳转到指定页面的指定位置</h4>
+<p>格式: <code>&lt;a href=&quot;01-锚点链接.html#location&quot;&gt;跳转到指定位置&lt;/a&gt;</code></p>
+<p>只需要在01-锚点链接.html页面添加一个id位置即可</p>
+<h4 id="下载极力不推荐使用">下载(极力不推荐使用)</h4>
+<p>例如<code>&lt;a href=&quot;图片.zip&quot;&gt;下载&lt;a/&gt;</code></p>
+
+            </div>
+            
+              <div class="tag-container">
+                
+                  <a href="https://demichung813.github.io/zhongniblog//tag/7hm_Obt6G" class="tag">
+                    Html
+                  </a>
+                
+              </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="https://demichung813.github.io/zhongniblog//post/markdown-yu-fa-jian-dan-jiao-cheng">
+                  <h3 class="post-title">
+                    Markdown 语法简单教程
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+
+<script type="application/javascript">
+
+AOS.init();
+
+hljs.initHighlightingOnLoad()
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+
+
+  </body>
+</html>

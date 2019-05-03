@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>JavaScript基础--函数,对象中使用函数 | ZhongNi Gridea</title>
+<meta name="description" content="温故而知新">
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="https://demichung813.github.io/zhongniblog//favicon.ico?v=1556893715247">
+<link rel="stylesheet" href="https://demichung813.github.io/zhongniblog//styles/main.css">
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
+
+
+  </head>
+  <body>
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="https://demichung813.github.io/zhongniblog/">
+        <img src="https://demichung813.github.io/zhongniblog//images/avatar.png?v=1556893715247" class="site-logo">
+        <h1 class="site-title">ZhongNi Gridea</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
+      
+        
+          <a href="/" class="site-nav">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="site-nav">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="site-nav">
+            标签
+          </a>
+        
+      
+        
+          <a href="/post/about" class="site-nav">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+    <div class="site-description">
+      温故而知新
+    </div>
+    <div class="site-footer">
+      Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">JavaScript基础--函数,对象中使用函数</h2>
+            <div class="post-date">2019-05-03</div>
+            
+            <div class="post-content">
+              <h3 id="对象的定义">对象的定义</h3>
+<pre><code>函数也是一个对象
+函数就是可以重复执行的代码块
+函数就是完成特定功能的一段代码
+使用&lt;span class=&quot;hljs-keyword&quot;&gt;typeof&lt;/span&gt;检查一个函数对象时，会返回&lt;span class=&quot;hljs-function&quot;&gt;&lt;span class=&quot;hljs-keyword&quot;&gt;function&lt;/span&gt;
+&lt;/span&gt;`&lt;/pre&gt;
+
+### 作用
+
+&lt;pre class=&quot;hljs undefined&quot;&gt;`因为一部分代码使用次数可能会很多，所以封装起来，需要的时候调用就可以了。
+1)将复杂的事情简单化
+2)将重复使用的代码进行统一封装
+
+特点:
+1)封装到函数中的代码不会立即执行
+2)函数中的代码会在函数调用的时候执行
+3)调用函数 语法：函数对象()
+4)调用函数时，函数中封装的代码会按照顺序执行
+`&lt;/pre&gt;
+
+### 基本使用
+
+&lt;pre class=&quot;hljs php&quot;&gt;`不常用:
+&lt;span class=&quot;hljs-keyword&quot;&gt;var&lt;/span&gt; fun = &lt;span class=&quot;hljs-keyword&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;hljs-function&quot;&gt;&lt;span class=&quot;hljs-keyword&quot;&gt;Function&lt;/span&gt;&lt;span class=&quot;hljs-params&quot;&gt;(&lt;span class=&quot;hljs-string&quot;&gt;&quot;console.log('大家好, 我是函数!');&quot;&lt;/span&gt;)&lt;/span&gt;&lt;/span&gt;;
+
+常用
+函数定义:
+&lt;span class=&quot;hljs-function&quot;&gt;&lt;span class=&quot;hljs-keyword&quot;&gt;function&lt;/span&gt; 函数名&lt;span class=&quot;hljs-params&quot;&gt;([形参&lt;span class=&quot;hljs-number&quot;&gt;1&lt;/span&gt;,形参&lt;span class=&quot;hljs-number&quot;&gt;2&lt;/span&gt;, ...,形参N])&lt;/span&gt;&lt;/span&gt;{
+    函数体
+}
+
+函数调用
+函数名();
+`&lt;/pre&gt;
+
+### 常见的声明方式
+
+&lt;pre class=&quot;hljs javascript&quot;&gt;`&lt;span class=&quot;hljs-number&quot;&gt;1&lt;/span&gt;) 函数声明方式
+&lt;span class=&quot;hljs-function&quot;&gt;&lt;span class=&quot;hljs-keyword&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;hljs-title&quot;&gt;add&lt;/span&gt;(&lt;span class=&quot;hljs-params&quot;&gt;num1,num2&lt;/span&gt;)&lt;/span&gt;{
+      &lt;span class=&quot;hljs-keyword&quot;&gt;return&lt;/span&gt; num1+num2;
+  }
+
+&lt;span class=&quot;hljs-number&quot;&gt;2&lt;/span&gt;) 函数表达式声明方式
+ &lt;span class=&quot;hljs-keyword&quot;&gt;var&lt;/span&gt; add= &lt;span class=&quot;hljs-function&quot;&gt;&lt;span class=&quot;hljs-keyword&quot;&gt;function&lt;/span&gt;(&lt;span class=&quot;hljs-params&quot;&gt;num1,num2&lt;/span&gt;)&lt;/span&gt;{
+                  &lt;span class=&quot;hljs-keyword&quot;&gt;return&lt;/span&gt; num1+num2;
+  };　
+
+&lt;span class=&quot;hljs-number&quot;&gt;3&lt;/span&gt;) 使用&lt;span class=&quot;hljs-built_in&quot;&gt;Function&lt;/span&gt;构造函数
+&lt;span class=&quot;hljs-keyword&quot;&gt;var&lt;/span&gt; add = &lt;span class=&quot;hljs-keyword&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;hljs-built_in&quot;&gt;Function&lt;/span&gt;(&lt;span class=&quot;hljs-string&quot;&gt;'num1'&lt;/span&gt;,&lt;span class=&quot;hljs-string&quot;&gt;'num2'&lt;/span&gt;,&lt;span class=&quot;hljs-string&quot;&gt;'return num1+num2'&lt;/span&gt;);
+不推荐使用,  主要用于面向对象时理解&lt;span class=&quot;hljs-string&quot;&gt;&quot;函数就是对象,  函数名就是指针&quot;&lt;/span&gt;这一概念
+`&lt;/pre&gt;
+
+### 快速入门
+
+&gt; 计算1+3
+
+### 函数的参数
+
+&lt;pre class=&quot;hljs javascript&quot;&gt;`为什么要设置参数？
+为了增强函数的功能性和函数的可拓展性，便于交互。
+
+形参:
+&lt;span class=&quot;hljs-number&quot;&gt;1&lt;/span&gt;)形式上参与运算的变量，无实际值，为实参占位置，就像一个躯壳一样。
+&lt;span class=&quot;hljs-number&quot;&gt;2&lt;/span&gt;)&lt;span class=&quot;hljs-function&quot;&gt;&lt;span class=&quot;hljs-keyword&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;hljs-title&quot;&gt;f&lt;/span&gt;(&lt;span class=&quot;hljs-params&quot;&gt;a,b&lt;/span&gt;)&lt;/span&gt;{}  &lt;span class=&quot;hljs-comment&quot;&gt;//a,b是形参，占位用，函数定义时形参无值&lt;/span&gt;
+
+实参:
+&lt;span class=&quot;hljs-number&quot;&gt;1&lt;/span&gt;)实际参与运算的变量。形参为他占位置，真实参与运算的变量。
+&lt;span class=&quot;hljs-number&quot;&gt;2&lt;/span&gt;)f(x, y); &lt;span class=&quot;hljs-comment&quot;&gt;//x, y实参，有具体的值，会把x,  y复制一份给函数内部的a和b，函数内部的值是复制的新值，无法修改外部的x,y&lt;/span&gt;
+
+注意:在其它语言中实参个数必须和形参个数一致，
+但是JavaScript中没有函数签名的概念，实参个数和形参个数可以不相等
+
+      &lt;/div&gt;
+</code></pre>
+</hr>
+<h3 id="函数使用注意">函数使用注意</h3>
+<pre><code>&lt;span class=&quot;hljs-number&quot;&gt;1.&lt;/span&gt; 在调用函数时，可以在()中指定实参,  实参将会赋值给函数中对应的形参
+
+&lt;span class=&quot;hljs-number&quot;&gt;2.&lt;/span&gt; 调用函数时解析器不会检查实参的类型,   所以开发中一般需要对参数进行类型的检查
+
+&lt;span class=&quot;hljs-number&quot;&gt;3.&lt;/span&gt; 函数的实参可以是任意的数据类型
+
+&lt;span class=&quot;hljs-number&quot;&gt;4.&lt;/span&gt; 调用函数时，解析器不会检查实参的数量, 多余实参不会被赋值, 
+
+   如果实参的数量少于形参的数量，则没有对应实参的形参将是&lt;span class=&quot;hljs-literal&quot;&gt;undefined&lt;/span&gt;
+`&lt;/pre&gt;
+
+### arguments对象
+
+&lt;pre class=&quot;hljs javascript&quot;&gt;`包含了传入函数中的所有参数,  &lt;span class=&quot;hljs-built_in&quot;&gt;arguments&lt;/span&gt;并不是一个数组，
+
+只是与数组相似,  除了拥有length属性，
+
+数组的所有属性和方法都不具备。
+
+&lt;span class=&quot;hljs-built_in&quot;&gt;arguments&lt;/span&gt;对象还有一个名叫callee的属性, 
+该属性是一个指针,  指向拥有这个&lt;span class=&quot;hljs-built_in&quot;&gt;arguments&lt;/span&gt;对象的函数;
+`&lt;/pre&gt;
+
+### length属性
+
+&lt;pre class=&quot;hljs undefined&quot;&gt;`函数形参的个数
+`&lt;/pre&gt;
+
+### 函数返回值（return）
+
+&lt;pre class=&quot;hljs javascript&quot;&gt;`&lt;span class=&quot;hljs-number&quot;&gt;1&lt;/span&gt;)当一个函数被调用，通常会从函数的开始执行到结束。
+
+&lt;span class=&quot;hljs-number&quot;&gt;2&lt;/span&gt;)如果想提前结束该函数的执行可以使用&lt;span class=&quot;hljs-keyword&quot;&gt;return&lt;/span&gt;语句，&lt;span class=&quot;hljs-keyword&quot;&gt;return&lt;/span&gt;语句后面的所有语句将永远不会执行。
+
+&lt;span class=&quot;hljs-number&quot;&gt;3&lt;/span&gt;)一般&lt;span class=&quot;hljs-keyword&quot;&gt;return&lt;/span&gt;用于返回结果。
+
+&lt;span class=&quot;hljs-number&quot;&gt;4&lt;/span&gt;)注意
+  如果函数没有显示的使用 &lt;span class=&quot;hljs-keyword&quot;&gt;return&lt;/span&gt;语句 ，那么函数有默认的返回值：&lt;span class=&quot;hljs-literal&quot;&gt;undefined&lt;/span&gt;
+
+  如果函数使用 &lt;span class=&quot;hljs-keyword&quot;&gt;return&lt;/span&gt;语句，那么跟再&lt;span class=&quot;hljs-keyword&quot;&gt;return&lt;/span&gt;后面的值，就成了函数的返回值
+
+  如果函数使用 &lt;span class=&quot;hljs-keyword&quot;&gt;return&lt;/span&gt;语句，但是&lt;span class=&quot;hljs-keyword&quot;&gt;return&lt;/span&gt;后面没有任何值，那么函数的返回值也是：&lt;span class=&quot;hljs-literal&quot;&gt;undefined&lt;/span&gt;
+
+  推荐的做法是要么让函数始终都返回一个值，要么永远都不要返回值。
+`&lt;/pre&gt;
+
+### 函数直接声明和函数表达式声明的区别
+
+&lt;pre class=&quot;hljs javascript&quot;&gt;`JavaScript解析器首先会把当前作用域的函数声明提前到整个作用域的最前面
+
+&lt;span class=&quot;hljs-comment&quot;&gt;//  代码没问题  &lt;/span&gt;
+&lt;span class=&quot;hljs-built_in&quot;&gt;console&lt;/span&gt;.log(f(&lt;span class=&quot;hljs-number&quot;&gt;5&lt;/span&gt;,&lt;span class=&quot;hljs-number&quot;&gt;6&lt;/span&gt;));
+&lt;span class=&quot;hljs-function&quot;&gt;&lt;span class=&quot;hljs-keyword&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;hljs-title&quot;&gt;f&lt;/span&gt;(&lt;span class=&quot;hljs-params&quot;&gt;a, b&lt;/span&gt;) &lt;/span&gt;{
+     &lt;span class=&quot;hljs-keyword&quot;&gt;return&lt;/span&gt; a + b;
+}
+
+&lt;span class=&quot;hljs-comment&quot;&gt;// 报错&lt;/span&gt;
+myFun(&lt;span class=&quot;hljs-number&quot;&gt;6&lt;/span&gt;,&lt;span class=&quot;hljs-number&quot;&gt;7&lt;/span&gt;);
+&lt;span class=&quot;hljs-keyword&quot;&gt;var&lt;/span&gt; myFun = &lt;span class=&quot;hljs-function&quot;&gt;&lt;span class=&quot;hljs-keyword&quot;&gt;function&lt;/span&gt; (&lt;span class=&quot;hljs-params&quot;&gt;a,b&lt;/span&gt;)&lt;/span&gt;{
+   &lt;span class=&quot;hljs-keyword&quot;&gt;return&lt;/span&gt; a + b;
+}
+
+`&lt;/pre&gt;
+
+### 匿名函数
+
+&gt; 没有命名的函数:function () {}
+&lt;pre class=&quot;hljs javascript&quot;&gt;`作用:
+用在绑定事件的时候
+&lt;span class=&quot;hljs-built_in&quot;&gt;document&lt;/span&gt;.onclick = &lt;span class=&quot;hljs-function&quot;&gt;&lt;span class=&quot;hljs-keyword&quot;&gt;function&lt;/span&gt; (&lt;span class=&quot;hljs-params&quot;&gt;&lt;/span&gt;) &lt;/span&gt;{
+        alert(&lt;span class=&quot;hljs-number&quot;&gt;1&lt;/span&gt;);
+ }
+
+定时器
+setInterval(&lt;span class=&quot;hljs-function&quot;&gt;&lt;span class=&quot;hljs-keyword&quot;&gt;function&lt;/span&gt; (&lt;span class=&quot;hljs-params&quot;&gt;&lt;/span&gt;) &lt;/span&gt;{
+        &lt;span class=&quot;hljs-built_in&quot;&gt;console&lt;/span&gt;.log(&lt;span class=&quot;hljs-number&quot;&gt;444&lt;/span&gt;);
+},&lt;span class=&quot;hljs-number&quot;&gt;1000&lt;/span&gt;);
+
+立即执行函数
+&lt;span class=&quot;hljs-number&quot;&gt;1&lt;/span&gt;)函数定义完，立即被调用，这种函数叫做立即执行函数
+
+&lt;span class=&quot;hljs-number&quot;&gt;2&lt;/span&gt;)立即执行函数往往只会执行一次
+
+&lt;span class=&quot;hljs-number&quot;&gt;3&lt;/span&gt;)(&lt;span class=&quot;hljs-function&quot;&gt;&lt;span class=&quot;hljs-keyword&quot;&gt;function&lt;/span&gt;(&lt;span class=&quot;hljs-params&quot;&gt;&lt;/span&gt;)&lt;/span&gt;{alert(&lt;span class=&quot;hljs-string&quot;&gt;&quot;hello&quot;&lt;/span&gt;)})();
+
+&lt;span class=&quot;hljs-number&quot;&gt;4&lt;/span&gt;)(&lt;span class=&quot;hljs-function&quot;&gt;&lt;span class=&quot;hljs-keyword&quot;&gt;function&lt;/span&gt;(&lt;span class=&quot;hljs-params&quot;&gt;num1,  num2&lt;/span&gt;)&lt;/span&gt;{
+    &lt;span class=&quot;hljs-built_in&quot;&gt;console&lt;/span&gt;.log(&lt;span class=&quot;hljs-string&quot;&gt;&quot;mum1 = &quot;&lt;/span&gt;+ num1);
+    &lt;span class=&quot;hljs-built_in&quot;&gt;console&lt;/span&gt;.log(&lt;span class=&quot;hljs-string&quot;&gt;&quot;num2 = &quot;&lt;/span&gt;+ num2);
+})(&lt;span class=&quot;hljs-number&quot;&gt;100&lt;/span&gt;, &lt;span class=&quot;hljs-number&quot;&gt;101&lt;/span&gt;);
+`&lt;/pre&gt;
+
+### 函数是一种数据类型
+
+&lt;pre class=&quot;hljs javascript&quot;&gt;`&lt;span class=&quot;hljs-built_in&quot;&gt;console&lt;/span&gt;.log(&lt;span class=&quot;hljs-keyword&quot;&gt;typeof&lt;/span&gt; fn);
+&lt;span class=&quot;hljs-built_in&quot;&gt;console&lt;/span&gt;.log(&lt;span class=&quot;hljs-keyword&quot;&gt;typeof&lt;/span&gt; fn());
+
+归根结底，它还是属于object
+`&lt;/pre&gt;
+
+### 回调函数
+
+&lt;pre class=&quot;hljs php&quot;&gt;`&lt;span class=&quot;hljs-number&quot;&gt;1&lt;/span&gt;)回调函数就是一个通过函数调用的函数。
+&lt;span class=&quot;hljs-number&quot;&gt;2&lt;/span&gt;)如果你把函数的指针（地址）作为参数传递给另一个函数，
+当这个指针被用来调用其所指向的函数时，我们就说这是回调函数。
+&lt;span class=&quot;hljs-number&quot;&gt;3&lt;/span&gt;)一般用于递归
+&lt;span class=&quot;hljs-number&quot;&gt;4&lt;/span&gt;)经典案例
+    求Fibonacci的第n个数
+    &lt;span class=&quot;hljs-number&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;hljs-number&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;hljs-number&quot;&gt;2&lt;/span&gt; &lt;span class=&quot;hljs-number&quot;&gt;3&lt;/span&gt; &lt;span class=&quot;hljs-number&quot;&gt;5&lt;/span&gt; &lt;span class=&quot;hljs-number&quot;&gt;8&lt;/span&gt; &lt;span class=&quot;hljs-number&quot;&gt;13&lt;/span&gt; &lt;span class=&quot;hljs-number&quot;&gt;21.&lt;/span&gt;..
+        &lt;span class=&quot;hljs-function&quot;&gt;&lt;span class=&quot;hljs-keyword&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;hljs-title&quot;&gt;f1&lt;/span&gt; &lt;span class=&quot;hljs-params&quot;&gt;(n)&lt;/span&gt; &lt;/span&gt;{
+              &lt;span class=&quot;hljs-keyword&quot;&gt;if&lt;/span&gt; (n == &lt;span class=&quot;hljs-number&quot;&gt;1&lt;/span&gt;) &lt;span class=&quot;hljs-keyword&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;hljs-number&quot;&gt;1&lt;/span&gt;;
+              &lt;span class=&quot;hljs-keyword&quot;&gt;if&lt;/span&gt; (n == &lt;span class=&quot;hljs-number&quot;&gt;2&lt;/span&gt;) &lt;span class=&quot;hljs-keyword&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;hljs-number&quot;&gt;1&lt;/span&gt;;
+
+              &lt;span class=&quot;hljs-keyword&quot;&gt;return&lt;/span&gt; f1(n&lt;span class=&quot;hljs-number&quot;&gt;-1&lt;/span&gt;) + f1(n&lt;span class=&quot;hljs-number&quot;&gt;-2&lt;/span&gt;);
+          }
+
+          console.log(f1(&lt;span class=&quot;hljs-number&quot;&gt;7&lt;/span&gt;));
+
+求n个数的累加
+
+        &lt;span class=&quot;hljs-function&quot;&gt;&lt;span class=&quot;hljs-keyword&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;hljs-title&quot;&gt;getSum&lt;/span&gt; &lt;span class=&quot;hljs-params&quot;&gt;(n)&lt;/span&gt; &lt;/span&gt;{
+            &lt;span class=&quot;hljs-keyword&quot;&gt;if&lt;/span&gt; (n == &lt;span class=&quot;hljs-number&quot;&gt;1&lt;/span&gt;) { &lt;span class=&quot;hljs-keyword&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;hljs-number&quot;&gt;1&lt;/span&gt;;}
+            &lt;span class=&quot;hljs-keyword&quot;&gt;return&lt;/span&gt; n + getSum(n - &lt;span class=&quot;hljs-number&quot;&gt;1&lt;/span&gt;);
+        }
+
+        console.log(getSum(&lt;span class=&quot;hljs-number&quot;&gt;100&lt;/span&gt;));
+
+从前有座山，山里有座庙, .....
+        &lt;span class=&quot;hljs-keyword&quot;&gt;var&lt;/span&gt; i = &lt;span class=&quot;hljs-number&quot;&gt;100&lt;/span&gt;;
+
+        &lt;span class=&quot;hljs-function&quot;&gt;&lt;span class=&quot;hljs-keyword&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;hljs-title&quot;&gt;f1&lt;/span&gt; &lt;span class=&quot;hljs-params&quot;&gt;()&lt;/span&gt; &lt;/span&gt;{
+            i--;
+            &lt;span class=&quot;hljs-comment&quot;&gt;//递归的结束条件&lt;/span&gt;
+            &lt;span class=&quot;hljs-keyword&quot;&gt;if&lt;/span&gt; (i &amp;gt;= &lt;span class=&quot;hljs-number&quot;&gt;0&lt;/span&gt;) {
+                console.log(&lt;span class=&quot;hljs-string&quot;&gt;&quot;从前有座山，山上有座庙&quot;&lt;/span&gt; + i);
+                &lt;span class=&quot;hljs-comment&quot;&gt;//递归调用&lt;/span&gt;
+                f1();
+            }
+
+        }
+        f1();
+
+`&lt;/pre&gt;
+
+### 变量的作用域
+
+块级作用域
+
+&lt;pre class=&quot;hljs undefined&quot;&gt;`在其它语言中，任何一对花括号中的语句都属于一个块，在这之中定义的所有变量在代码块外都是不可见的
+`&lt;/pre&gt;
+
+全局变量
+
+&lt;pre class=&quot;hljs undefined&quot;&gt;`定义在script或者不属于某个函数的变量
+`&lt;/pre&gt;
+
+局部变量
+
+&lt;pre class=&quot;hljs undefined&quot;&gt;`定义在函数内部的变量
+`&lt;/pre&gt;
+&gt; 注意:
+</code></pre>
+<blockquote>
+<pre><code>函数内部可以访问到该函数所属的外部作用域的变量(作用域链)
+
+不使用var声明的变量是全局变量，不推荐使用(XXXX)
+
+变量退出作用域之后会销毁，全局变量关闭网页或浏览器才会销毁
+</code></pre>
+</blockquote>
+<pre><code>**作用域链相关**
+
+&lt;pre class=&quot;hljs php&quot;&gt;`
+题目&lt;span class=&quot;hljs-number&quot;&gt;1&lt;/span&gt;:
+       {
+            &lt;span class=&quot;hljs-keyword&quot;&gt;var&lt;/span&gt; num = &lt;span class=&quot;hljs-number&quot;&gt;5&lt;/span&gt;;
+       }
+        console.log(num);
+
+题目&lt;span class=&quot;hljs-number&quot;&gt;2&lt;/span&gt;:
+       &lt;span class=&quot;hljs-keyword&quot;&gt;var&lt;/span&gt; num = &lt;span class=&quot;hljs-number&quot;&gt;5&lt;/span&gt;;
+       &lt;span class=&quot;hljs-keyword&quot;&gt;if&lt;/span&gt; (num &amp;gt; &lt;span class=&quot;hljs-number&quot;&gt;3&lt;/span&gt;) {
+            &lt;span class=&quot;hljs-keyword&quot;&gt;var&lt;/span&gt; sum = &lt;span class=&quot;hljs-number&quot;&gt;7&lt;/span&gt;;       
+        }
+        console.log(sum);
+
+其它语言中变量i只能在&lt;span class=&quot;hljs-keyword&quot;&gt;for&lt;/span&gt;循环内部访问（局部变量）
+        &lt;span class=&quot;hljs-keyword&quot;&gt;for&lt;/span&gt; (&lt;span class=&quot;hljs-keyword&quot;&gt;var&lt;/span&gt; i = &lt;span class=&quot;hljs-number&quot;&gt;0&lt;/span&gt;; i &amp;lt; &lt;span class=&quot;hljs-number&quot;&gt;10&lt;/span&gt;; i++) {
+
+        }
+        console.log(i);
+
+全局变量:
+        &lt;span class=&quot;hljs-keyword&quot;&gt;var&lt;/span&gt; name = &lt;span class=&quot;hljs-string&quot;&gt;&quot;旋之华&quot;&lt;/span&gt;;
+        &lt;span class=&quot;hljs-function&quot;&gt;&lt;span class=&quot;hljs-keyword&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;hljs-title&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;hljs-params&quot;&gt;()&lt;/span&gt; &lt;/span&gt;{
+            name = &lt;span class=&quot;hljs-string&quot;&gt;&quot;刘德华&quot;&lt;/span&gt;;
+        }
+       f();
+       console.log(name);
+
+局部变量, 先在函数内部的作用域找变量name，如果找到则使用，如果找不到去父级作用域找name变量
+        &lt;span class=&quot;hljs-function&quot;&gt;&lt;span class=&quot;hljs-keyword&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;hljs-title&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;hljs-params&quot;&gt;()&lt;/span&gt; &lt;/span&gt;{
+            &lt;span class=&quot;hljs-keyword&quot;&gt;var&lt;/span&gt; name = &lt;span class=&quot;hljs-string&quot;&gt;&quot;撩课学院&quot;&lt;/span&gt;;
+        }
+        f();
+        console.log(name);
+
+作用域链:
+        &lt;span class=&quot;hljs-keyword&quot;&gt;var&lt;/span&gt; color = &lt;span class=&quot;hljs-string&quot;&gt;&quot;yellow&quot;&lt;/span&gt;;
+        &lt;span class=&quot;hljs-function&quot;&gt;&lt;span class=&quot;hljs-keyword&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;hljs-title&quot;&gt;getColor&lt;/span&gt;&lt;span class=&quot;hljs-params&quot;&gt;()&lt;/span&gt; &lt;/span&gt;{
+            &lt;span class=&quot;hljs-keyword&quot;&gt;var&lt;/span&gt; anotherColor = red&lt;span class=&quot;hljs-string&quot;&gt;&quot;;
+
+            function swapColor() {
+                var tmpColor = color;
+                color = anotherColor;
+                anotherColor = tmpColor;
+            }
+            swapColor();
+        }
+
+        getColor();
+        console.log(color);
+&lt;/span&gt;`&lt;/pre&gt;
+
+**变量提升**
+
+&gt; 变量提升:
+</code></pre>
+<blockquote>
+<pre><code>定义变量的时候，变量的声明会被提升到作用域的最上面，变量的赋值不会提升。
+
+函数提升:
+
+JavaScript解析器首先会把当前作用域的函数声明提前到整个作用域的最前面
+</code></pre>
+</blockquote>
+<pre><code>**面试相关**
+
+&lt;pre class=&quot;hljs javascript&quot;&gt;`     &lt;span class=&quot;hljs-keyword&quot;&gt;var&lt;/span&gt; num = &lt;span class=&quot;hljs-number&quot;&gt;10&lt;/span&gt;;
+        fun();
+        &lt;span class=&quot;hljs-function&quot;&gt;&lt;span class=&quot;hljs-keyword&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;hljs-title&quot;&gt;fun&lt;/span&gt;(&lt;span class=&quot;hljs-params&quot;&gt;&lt;/span&gt;)&lt;/span&gt;{
+            &lt;span class=&quot;hljs-built_in&quot;&gt;console&lt;/span&gt;.log(num);
+            &lt;span class=&quot;hljs-keyword&quot;&gt;var&lt;/span&gt; num = &lt;span class=&quot;hljs-number&quot;&gt;20&lt;/span&gt;;
+        }
+
+      &lt;span class=&quot;hljs-keyword&quot;&gt;var&lt;/span&gt; a = &lt;span class=&quot;hljs-number&quot;&gt;18&lt;/span&gt;;
+        f1();
+        &lt;span class=&quot;hljs-function&quot;&gt;&lt;span class=&quot;hljs-keyword&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;hljs-title&quot;&gt;f1&lt;/span&gt;(&lt;span class=&quot;hljs-params&quot;&gt;&lt;/span&gt;)&lt;/span&gt;{
+            &lt;span class=&quot;hljs-keyword&quot;&gt;var&lt;/span&gt; b=&lt;span class=&quot;hljs-number&quot;&gt;9&lt;/span&gt;;
+            &lt;span class=&quot;hljs-built_in&quot;&gt;console&lt;/span&gt;.log(a);
+            &lt;span class=&quot;hljs-built_in&quot;&gt;console&lt;/span&gt;.log(b);
+            &lt;span class=&quot;hljs-keyword&quot;&gt;var&lt;/span&gt; a = &lt;span class=&quot;hljs-string&quot;&gt;'123'&lt;/span&gt;;
+        }
+
+            f1();
+            &lt;span class=&quot;hljs-built_in&quot;&gt;console&lt;/span&gt;.log(c);
+            &lt;span class=&quot;hljs-built_in&quot;&gt;console&lt;/span&gt;.log(b);
+            &lt;span class=&quot;hljs-built_in&quot;&gt;console&lt;/span&gt;.log(a);
+            &lt;span class=&quot;hljs-function&quot;&gt;&lt;span class=&quot;hljs-keyword&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;hljs-title&quot;&gt;f1&lt;/span&gt;(&lt;span class=&quot;hljs-params&quot;&gt;&lt;/span&gt;)&lt;/span&gt;{
+                &lt;span class=&quot;hljs-keyword&quot;&gt;var&lt;/span&gt; a = b = c = &lt;span class=&quot;hljs-number&quot;&gt;9&lt;/span&gt;;
+                &lt;span class=&quot;hljs-built_in&quot;&gt;console&lt;/span&gt;.log(a);
+                &lt;span class=&quot;hljs-built_in&quot;&gt;console&lt;/span&gt;.log(b);
+                &lt;span class=&quot;hljs-built_in&quot;&gt;console&lt;/span&gt;.log(c);
+            }
+
+      &lt;/div&gt;
+</code></pre>
+</hr>
+<h3 id="对象使用函数">对象使用函数</h3>
+<blockquote>
+<p>对象的属性值可以是任何的数据类型，也可以是个函数</p>
+<p>一般用函数描述对象的行为</p>
+<p>如果一个函数作为一个对象的属性保存，那么我们称这个函数时这个对象的方法, 调用这个函数就说调用对象的方法（method）</p>
+</blockquote>
+<p><code>定义一个人 : 1)常用定义方式; 2)字面量</code></p>
+<h3 id="遍历对象所有属性">遍历对象所有属性</h3>
+<pre><code>&lt;span class=&quot;hljs-keyword&quot;&gt;for&lt;/span&gt; ... &lt;span class=&quot;hljs-keyword&quot;&gt;in&lt;/span&gt; 语句
+
+语法：&lt;span class=&quot;hljs-keyword&quot;&gt;for&lt;/span&gt;(var 变量 &lt;span class=&quot;hljs-keyword&quot;&gt;in&lt;/span&gt; 对象){ }
+
+对象中有几个属性，循环体就会执行几次
+
+      &lt;/div&gt;</code></pre>
+
+            </div>
+            
+              <div class="tag-container">
+                
+                  <a href="https://demichung813.github.io/zhongniblog//tag/WUwSdvSqE" class="tag">
+                    JavaScript
+                  </a>
+                
+              </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="https://demichung813.github.io/zhongniblog//post/javascript-ji-chu-bian-liang-guan-jian-zi-biao-shi-fu-shu-ju-lei-xing-yun-suan-fu-cao-zuo-liu-cheng-kong-zhi-yu-ju-dui-xiang">
+                  <h3 class="post-title">
+                    JavaScript基础--变量、关键字、标识符,数据类型,运算符操作,流程控制语句,对象
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+
+<script type="application/javascript">
+
+AOS.init();
+
+hljs.initHighlightingOnLoad()
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+
+
+  </body>
+</html>
