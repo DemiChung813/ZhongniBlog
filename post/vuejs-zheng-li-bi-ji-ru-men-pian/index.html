@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>Vue.js整理笔记--入门篇 | ZhongNi Blog</title>
+<meta name="description" content="记录生活">
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="https://demichung813.github.io/zhongniblog//favicon.ico?v=1557121103741">
+<link rel="stylesheet" href="https://demichung813.github.io/zhongniblog//styles/main.css">
+
+
+  
+    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css" />
+  
+
+  
+
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
+
+
+  </head>
+  <body>
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="https://demichung813.github.io/zhongniblog/">
+        <img src="https://demichung813.github.io/zhongniblog//images/avatar.png?v=1557121103741" class="site-logo">
+        <h1 class="site-title">ZhongNi Blog</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
+      
+        
+          <a href="/" class="site-nav">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="site-nav">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="site-nav">
+            标签
+          </a>
+        
+      
+        
+          <a href="/post/about" class="site-nav">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+    <div class="site-description">
+      记录生活
+    </div>
+    <div class="site-footer">
+      <a href="https://tva1.sinaimg.cn/large/007rAy9hgy1g2rhgwzo84j30m813g10k.jpg" target="_blank"> I am Iron man!</a>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">Vue.js整理笔记--入门篇</h2>
+            <div class="post-date">2019-05-06</div>
+            
+              <div class="feature-container" style="background-image: url('https://upload-images.jianshu.io/upload_images/2032666-4f352806ff0b61ae.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/900/format/webp')">
+              </div>
+            
+            <div class="post-content">
+              <h4 id="目录">目录</h4>
+<ol>
+<li>引入Vue.js</li>
+<li>Vue.js是什么</li>
+<li>声明式渲染Hello World</li>
+<li>条件与循环</li>
+<li>处理用户点击</li>
+</ol>
+<h2 id="1-引入vuejs">1. 引入Vue.js</h2>
+<p>安装Vue可以通过查看官方安装教程来了解其他安装 Vue 的选项。但对webpack Node.js等打包构建工具不了解的同学不推荐直接使用vue-cli搭建项目脚手架。
+最简单的方式是在本地创建的 .html 文件中通过如下方式引入 Vue：</p>
+<pre><code>&lt;script src=&quot;https://unpkg.com/vue/dist/vue.js&quot;&gt;&lt;/script&gt;
+</code></pre>
+<h2 id="2-vuejs是什么">2. Vue.js是什么？</h2>
+<blockquote>
+<p>Vue.js（读音 /vjuː/, 类似于 view） 是一套构建用户界面的 渐进式框架。与其他重量级框架不同的是，Vue 采用自底向上增量开发的设计。Vue 的核心库只关注视图层。不仅易于上手(对比其它框架)，还便于与第三方库或既有项目整合。另一方面，当与单文件组件和 Vue 生态系统支持的库结合使用时，Vue 也完全能够为复杂的单页应用程序提供驱动。</p>
+</blockquote>
+<p>学习Vue.js时要抛开jQuery手动操作DOM的思维，因为Vue.js是数据驱动的，你无需手动操作DOM。它通过一些特殊的HTML语法，将DOM和数据绑定起来。一旦你创建了绑定，DOM将和数据保持同步，每当变更了数据，DOM也会相应地更新。</p>
+<ul>
+<li>Vue.js是一种MVVM框架（Model-View-ViewModel），其中html是view层，js是model层，ViewModel是Vue.js的核心，</li>
+<li>它是一个Vue实例。Vue实例是作用于某一个HTML元素上的。Vue.js 的目标是通过尽可能简单的 API 实现响应的数据绑定和组合的视图组件。</li>
+</ul>
+<p>当创建了ViewModel实例后，双向绑定的过程分为以下几步：</p>
+<blockquote>
+<p>1、DOM Listeners和Data Bindings是实现双向绑定的关键。
+2、从View侧看，ViewModel中的DOM Listeners工具会帮我们监测页面上DOM元素的变化，如果有变化，则更改Model中的数据；
+3、从Model侧看，当我们更新Model中的数据时，Data Bindings工具会帮我们更新页面中的DOM元素。</p>
+</blockquote>
+<h2 id="3-hello-world">3. Hello World</h2>
+<blockquote>
+<p>Vue.js 的核心是一个允许采用简洁的模板语法来声明式的将数据渲染进 DOM</p>
+</blockquote>
+<h4 id="31文本插值实现数据绑定">3.1文本插值实现数据绑定</h4>
+<p>Vue.js有多种数据绑定的语法，最基础的形式是文本插值，使用mustache语法，在运行时{{ message }}会被数据对象的{{message}}属性替换，所以页面上会输出&quot;Hello World!&quot;。</p>
+<pre><code>&lt;div id=&quot;app&quot;&gt;
+  {{ message }}
+&lt;/div&gt;
+//这是定义视图View
+</code></pre>
+<pre><code>new Vue({
+     el: '#app', //指向view 将Vue实例挂载
+     data: {
+       message: 'Hello World!';
+      } //指向model
+ })
+// 用来连接 View 与 Model
+</code></pre>
+<h4 id="32-输出纯html">3.2 输出纯HTML</h4>
+<p>使用{{message}}的mustache语法只能将数据解释为纯文本，为了输出HTML，可以使用v-html指令:</p>
+<pre><code>&lt;div id = &quot;app&quot;&gt;
+    &lt;div v-html=&quot;text&quot;&gt;&lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+<pre><code>new Vue({
+     el: '#app', 
+     data: {
+       text:'&lt;h1&gt;hello&lt;/h1&gt;'
+      } 
+ })
+</code></pre>
+<p>关于指令：</p>
+<blockquote>
+<p>Vue.js的指令是以v-开头的，它们作用于HTML元素，指令提供了一些特殊的特性，将指令绑定在元素上时，指令会为绑定的目标元素添加一些特殊的行为，我们可以将指令看作特殊的HTML特性（attribute）。</p>
+</blockquote>
+<h4 id="33双向数据绑定">3.3双向数据绑定</h4>
+<p>MVVM模式本身支持双向绑定，在Vue.js中可以使用v-model指令在表单元素上创建双向数据绑定。</p>
+<pre><code>&lt;div id=&quot;app&quot;&gt;
+    &lt;p&gt;{{ message }}&lt;/p&gt;
+    &lt;input type=&quot;text&quot; v-model=&quot;message&quot;/&gt;
+&lt;/div&gt;
+</code></pre>
+<p>这样无论是改变输入框的内容还是通过控制台修改message的值，另一个值都会同时被改变。</p>
+<h4 id="33-给元素的属性绑定数据">3.3 给元素的属性绑定数据</h4>
+<p>定义在Vue实例的data接口上的数据的绑定很灵活，既可以绑定在DOM节点内部，也可以绑在属性上</p>
+<pre><code> &lt;div id=&quot;app&quot; v-bind:title='message' v-bind:style='color' v-once&gt;
+     &lt;a :href='url'&gt;{{message}}&lt;/a&gt;
+  &lt;/div&gt;
+</code></pre>
+<p>v-once指令能够让你执行一次性的插值，当数据改变时，插值处的内容不会更新。但请留心这会影响到该节点上所有的数据绑定。</p>
+<pre><code>var vm = new Vue({
+  el: '#app',
+  data:{
+    message: 'Google',
+    color: 'color:green',
+    url:'https://google.com'
+  }
+})
+</code></pre>
+<p>Mustache 不能在 HTML 属性中使用，绑定数据到节点属性上时，需要使用v-bind指令。利用这个指令将元素节点div的 title属性和 Vue 实例的 message属性绑定到一起，从而建立数据与该属性值的绑定。v-bind指令可以缩写为一个冒号，如a标签中的v-bind:href=&quot;url&quot;的缩写方式:href=&quot;url&quot;。</p>
+<pre><code>&lt;button v-bind:disabled=&quot;someDynamicCondition&quot;&gt;Button&lt;/button&gt;
+</code></pre>
+<p>v-bind指令对布尔值的属性也有效 —— 如果条件被求值为 false 的话该属性会被移除。</p>
+<h2 id="4条件与循环">4.条件与循环</h2>
+<h4 id="41-根据条件表达式的值来执行元素的插入或者删除行为的是v-if指令">4.1 根据条件表达式的值来执行元素的插入或者删除行为的是v-if指令：</h4>
+<pre><code>&lt;div id=&quot;app&quot;&gt;
+  &lt;h1 v-if=&quot;num &gt; 0&quot;&gt;Num: {{ num }}&lt;/h1&gt;
+  &lt;p v-if=&quot;seen&quot;&gt;now you see me&lt;/p&gt;
+&lt;/div&gt;
+</code></pre>
+<pre><code>var app = new Vue({
+  el: '#app',
+  data: {
+    num:12,
+    seen: true,
+    name:'WannaCry'
+  }
+})
+</code></pre>
+<p>v-if指令可以绑定一个属性值为布尔型的属性，当值为真时，元素将显示，反之则消失。如果在控制台设置app.seen = false，你会发现页面上的“now you see me ”消失了。</p>
+<blockquote>
+<p>这个例子演示了我们不仅可以绑定 DOM 文本到数据，也可以绑定 DOM 结构到数据。而且，Vue 也提供一个强大的过渡效果系统，可以在 Vue 插入/更新/删除元素时自动应用过渡效果。</p>
+</blockquote>
+<h4 id="42-v-show也是条件渲染指令和v-if指令不同的是使用v-show指令的元素始终会被渲染到html它只是简单地为元素设置css的style属性">4.2 v-show也是条件渲染指令，和v-if指令不同的是，使用v-show指令的元素始终会被渲染到HTML，它只是简单地为元素设置CSS的style属性。</h4>
+<pre><code>&lt;h1 v-show=&quot;name.indexOf('Walker') &gt;= 0&quot;&gt;Name: {{ name }}&lt;/h1&gt;
+</code></pre>
+<p>在控制台打开，可以看到<h1>Name:WannaCry</h1>元素被设置了style=&quot;display:none&quot;样式。</p>
+<h4 id="43-可以用v-else指令为v-if或v-show添加一个else块">4.3 可以用v-else指令为v-if或v-show添加一个“else块”。</h4>
+<pre><code>&lt;div id=&quot;app&quot;&gt;
+   &lt;h1 v-if=&quot;age &gt;= 25&quot;&gt;Age: {{ age }}&lt;/h1&gt;
+   &lt;h1 v-else&gt;Name: {{ name }}&lt;/h1&gt;
+&lt;/div&gt;
+</code></pre>
+<p>v-else元素必须立即跟在v-if,v-else-if或v-show元素的后面——否则它不能被识别。</p>
+<pre><code>var vm = new Vue({
+            el: '#app',
+            data: {
+                age:20,
+                name: 'Alan Walker',
+                sex: 'Man'
+            }
+        })
+</code></pre>
+<p>v-else元素是否渲染在HTML中，取决于前面v-if的值true还是false。
+如果v-if的值为false，则后面v-else的内容不会渲染到HTML。</p>
+<h4 id="44-数组数据循环渲染列表使用v-for指令">4.4 数组数据循环渲染列表使用v-for指令：</h4>
+<pre><code>&lt;div class=&quot;title&quot;&gt;
+    &lt;ul&gt;
+       &lt;li v-for=&quot;todo in todos&quot;&gt;
+        {{ todo.text }}
+       &lt;/li&gt;
+   &lt;/ul&gt;
+ &lt;/div&gt;
+</code></pre>
+<p>v-for指令基于一个数组渲染一个列表，它和JavaScript的遍历语法相似：
+v-for=&quot;todo in todos&quot;
+todos是一个数组，todo是当前被遍历的数组元素。</p>
+<pre><code>var app = new Vue({
+  el: '.title',
+   data: {
+     //定义todos数组
+     todos: [
+       { text: 'study hard' },
+       { text: 'find a girlfriend' },
+        { text: 'around the world' }
+     ]
+  }
+})
+</code></pre>
+<p>页面显示如下：</p>
+<blockquote>
+<p>study hard
+find a girlfriend
+around the world</p>
+</blockquote>
+<p>控制台里，输入 app.todos.push({ text: 'coding' })，你会发现列表中新添加了一项。</p>
+<h2 id="5-处理用户点击">5. 处理用户点击</h2>
+<p>当用户点击页面，我们可以用 v-on指令绑定一个事件监听器，通过它调用我们在Vue 实例中定义的方法：</p>
+<pre><code> &lt;div class=&quot;title&quot;&gt;
+  &lt;p&gt;{{ message }}&lt;/p&gt;
+  &lt;button v-on:click=&quot;reverseMessage&quot;&gt;反转消息&lt;/button&gt;
+&lt;/div&gt;
+</code></pre>
+<p>v-on指令用于给监听DOM事件，它的用语法和v-bind是类似的。v-on指令可以缩写为@符号。</p>
+<pre><code>new Vue({
+   el: '.title',
+   data: {
+       message: 'Hello Vue.js!'
+      },
+    methods: {
+       reverseMessage: function () {
+         this.message = this.message.split('').reverse().join('')
+         //split()用于将字符串转化为数组
+         //reverse()用于颠倒数组中元素顺序
+         //join()用于将数组转化为字符串
+      }
+    }
+ })
+</code></pre>
+
+            </div>
+            
+              <div class="tag-container">
+                
+                  <a href="https://demichung813.github.io/zhongniblog//tag/b69_HWaX5" class="tag">
+                    Vue.js
+                  </a>
+                
+              </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="https://demichung813.github.io/zhongniblog//post/vuebootstrap-shi-xian-todolist-de-xiao-demo">
+                  <h3 class="post-title">
+                    Vue+Bootstrap实现todolist的小Demo
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+              
+                <div id="gitalk-container" data-aos="fade-in"></div>
+              
+
+              
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+
+<script type="application/javascript">
+
+AOS.init();
+
+hljs.initHighlightingOnLoad()
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+  
+  
+    <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+    <script>
+
+      var gitalk = new Gitalk({
+        clientID: 'b2c81f05406133a31bab',
+        clientSecret: '8530c9d460689d0c443a4938111303dbe6036c62',
+        repo: 'https://demichung813.github.io/zhongniblog/',
+        owner: 'DemiChung',
+        admin: ['DemiChung'],
+        id: location.pathname,      // Ensure uniqueness and length less than 50
+        distractionFreeMode: false  // Facebook-like distraction free mode
+      })
+
+      gitalk.render('gitalk-container')
+
+    </script>
+  
+
+  
+
+
+
+
+  </body>
+</html>

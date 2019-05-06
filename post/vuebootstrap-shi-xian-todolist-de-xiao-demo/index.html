@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>Vue+Bootstrap实现todolist的小Demo | ZhongNi Blog</title>
+<meta name="description" content="记录生活">
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="https://demichung813.github.io/zhongniblog//favicon.ico?v=1557121103741">
+<link rel="stylesheet" href="https://demichung813.github.io/zhongniblog//styles/main.css">
+
+
+  
+    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css" />
+  
+
+  
+
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
+
+
+  </head>
+  <body>
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="https://demichung813.github.io/zhongniblog/">
+        <img src="https://demichung813.github.io/zhongniblog//images/avatar.png?v=1557121103741" class="site-logo">
+        <h1 class="site-title">ZhongNi Blog</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
+      
+        
+          <a href="/" class="site-nav">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="site-nav">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="site-nav">
+            标签
+          </a>
+        
+      
+        
+          <a href="/post/about" class="site-nav">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+    <div class="site-description">
+      记录生活
+    </div>
+    <div class="site-footer">
+      <a href="https://tva1.sinaimg.cn/large/007rAy9hgy1g2rhgwzo84j30m813g10k.jpg" target="_blank"> I am Iron man!</a>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">Vue+Bootstrap实现todolist的小Demo</h2>
+            <div class="post-date">2019-05-06</div>
+            
+            <div class="post-content">
+              <h2 id="一-html样式">一、Html样式</h2>
+<pre><code>&lt;div class=&quot;container&quot; id=&quot;box&quot;&gt;
+    &lt;form role=&quot;form&quot;&gt;
+      &lt;div class=&quot;form-group&quot;&gt;
+        &lt;label for=&quot;username&quot;&gt;username：&lt;/label&gt;
+        &lt;!-- 用v-model指令将input内的值与实例data内的值绑定在一起 --&gt;
+        &lt;input type=&quot;text&quot; class=&quot;form-control&quot; id=&quot;username&quot; v-model=&quot;username&quot; placeholder=&quot;Please enter your username&quot;&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;form-group&quot;&gt;
+        &lt;label for=&quot;password&quot;&gt;password:&lt;/label&gt;
+        &lt;input type=&quot;password&quot; class=&quot;form-control&quot; id=&quot;password&quot; v-model=&quot;password&quot; placeholder=&quot;please enter your password&quot;&gt;
+      &lt;/div&gt;
+      &lt;!-- 用v-on指令绑定点击click事件 --&gt;
+      &lt;button type=&quot;button&quot; class=&quot;btn btn-primary&quot; v-on:click=&quot;add&quot;&gt;submit&lt;/button&gt;
+      &lt;button type=&quot;reset&quot; class=&quot;btn btn-danger&quot;&gt;reset&lt;/button&gt;
+    &lt;/form&gt;
+    &lt;hr&gt;
+    &lt;table class=&quot;table table-bordered table-hover&quot;&gt;
+      &lt;caption class=&quot;h3 text-center text-muted&quot;&gt;用户信息表&lt;/caption&gt;
+      &lt;tr class=&quot;text-danger&quot;&gt;
+        &lt;th class=&quot;text-center&quot;&gt;id&lt;/th&gt;
+        &lt;th class=&quot;text-center&quot;&gt;username&lt;/th&gt;
+        &lt;th class=&quot;text-center&quot;&gt;password&lt;/th&gt;
+        &lt;th class=&quot;text-center&quot;&gt;option&lt;/th&gt;
+      &lt;/tr&gt;
+      &lt;tr class=&quot;text-center&quot; v-for=&quot;(item,index) in myData&quot;&gt;
+        &lt;!-- 用v-for指令循环渲染列表 index为索引值 --&gt;
+        &lt;td&gt;{{index+1}}&lt;/td&gt;
+        &lt;td&gt;{{item.name}}&lt;/td&gt;
+        &lt;td&gt;{{item.pwd}}&lt;/td&gt;
+        &lt;td&gt;
+          &lt;button class=&quot;btn btn-info btn-sm&quot; data-toggle=&quot;modal&quot; data-target=&quot;#myModal&quot; v-on:click=&quot;nowIndex = index&quot;&gt;delete&lt;/button&gt;
+        &lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;!--用v-show指令 根据条件返回的布尔值决定是否渲染  --&gt;
+      &lt;tr v-show=&quot;myData.length != 0&quot;&gt;
+        &lt;td colspan=&quot;4&quot; class=&quot;text-right&quot;&gt;
+          &lt;button class=&quot;btn btn-danger btn-sm&quot; data-toggle=&quot;modal&quot; data-target=&quot;#myModal&quot; v-on:click=&quot;{nowIndex = all,modalTitle = 'confirm delete all?'}&quot;&gt; delete all&lt;/button&gt;
+        &lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr v-show=&quot;myData.length == 0&quot;&gt;
+        &lt;td colspan=&quot;4&quot; class=&quot;text-center text-muted&quot;&gt;
+          &lt;p&gt;暂无数据...&lt;/p&gt;
+        &lt;/td&gt;
+      &lt;/tr&gt;
+    &lt;/table&gt;
+
+    &lt;!-- 模态框 --&gt;
+    &lt;div role=&quot;dialog&quot; class=&quot;modal fade bs-example-modal-sm&quot; id=&quot;myModal&quot;&gt;
+      &lt;div class=&quot;modal-dialog&quot;&gt;
+        &lt;div class=&quot;modal-content&quot;&gt;
+          &lt;div class=&quot;modal-header&quot;&gt;
+            &lt;button type=&quot;button&quot; class=&quot;close&quot; data-dismiss=&quot;modal&quot;&gt;&lt;span&gt;&amp;times;&lt;/span&gt;&lt;/button&gt;
+            &lt;h4 class=&quot;modal-title&quot;&gt;{{modalTitle}}&lt;/h4&gt;
+          &lt;/div&gt;
+          &lt;div class=&quot;modal-body text-right&quot;&gt;
+            &lt;button class=&quot;btn btn-primary btn-sm&quot; data-dismiss=&quot;modal&quot; v-on:click=&quot;remove(nowIndex)&quot;&gt;yes&lt;/button&gt;
+            &lt;button class=&quot;btn btn-danger btn-sm&quot; data-dismiss=&quot;modal&quot;&gt;no&lt;/button&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+</code></pre>
+<h2 id="二-js部分">二、JS部分</h2>
+<pre><code>&lt;link rel=&quot;stylesheet&quot; href=&quot;./bootstrap/css/bootstrap.min.css&quot;&gt;
+&lt;script src=&quot;./libs/jquery-3.2.1.min.js&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;./bootstrap/js/bootstrap.min.js&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;./libs/vue.js&quot;&gt;&lt;/script&gt;
+</code></pre>
+<pre><code>&lt;script&gt;
+    window.onload = function(){
+      new Vue({
+        el:&quot;#box&quot;,
+        data:{
+          myData:[],
+          username:'',
+          password:'',
+          nowIndex:'',//当前用户的索引
+          modalTitle:'confirm delete?'//模态框的title
+        },
+        methods:{
+          add:function(){
+            var name = this.username.trim();
+            var pwd = this.password.trim();
+            this.myData.push({
+              name:name,
+              pwd:pwd
+            });
+            this.username = '';
+            this.password = '';
+          },
+          remove:function(index){
+            if(index == 'all'){
+              //删除所有
+              this.myData = [];
+            }else{
+              //删除索引为index的那条信息
+              this.myData.splice(index,1);
+            }
+          }
+        }
+      })
+    };
+  &lt;/script&gt;
+</code></pre>
+
+            </div>
+            
+              <div class="tag-container">
+                
+                  <a href="https://demichung813.github.io/zhongniblog//tag/b69_HWaX5" class="tag">
+                    Vue.js
+                  </a>
+                
+              </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="https://demichung813.github.io/zhongniblog//post/jquery-bi-ji">
+                  <h3 class="post-title">
+                    jQuery笔记
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+              
+                <div id="gitalk-container" data-aos="fade-in"></div>
+              
+
+              
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+
+<script type="application/javascript">
+
+AOS.init();
+
+hljs.initHighlightingOnLoad()
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+  
+  
+    <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+    <script>
+
+      var gitalk = new Gitalk({
+        clientID: 'b2c81f05406133a31bab',
+        clientSecret: '8530c9d460689d0c443a4938111303dbe6036c62',
+        repo: 'https://demichung813.github.io/zhongniblog/',
+        owner: 'DemiChung',
+        admin: ['DemiChung'],
+        id: location.pathname,      // Ensure uniqueness and length less than 50
+        distractionFreeMode: false  // Facebook-like distraction free mode
+      })
+
+      gitalk.render('gitalk-container')
+
+    </script>
+  
+
+  
+
+
+
+
+  </body>
+</html>
