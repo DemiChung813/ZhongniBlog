@@ -4,14 +4,20 @@
     <meta charset="utf-8" >
 
 <title>JavaScript基础--数组(Array),面向对象,数组高级API,Math | ZhongNi Gridea</title>
-<meta name="description" content="温故而知新">
+<meta name="description" content="あなたが言っている運命は、一度でも勝てると思います。">
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-<link rel="shortcut icon" href="https://demichung813.github.io/zhongniblog//favicon.ico?v=1556893715247">
+<link rel="shortcut icon" href="https://demichung813.github.io/zhongniblog//favicon.ico?v=1557112952720">
 <link rel="stylesheet" href="https://demichung813.github.io/zhongniblog//styles/main.css">
 
+
+  
+    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css" />
+  
+
+  
 
 
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
@@ -29,7 +35,7 @@
   <div class="top-container" data-aos="fade-right">
     <div class="top-header-container">
       <a class="site-title-container" href="https://demichung813.github.io/zhongniblog/">
-        <img src="https://demichung813.github.io/zhongniblog//images/avatar.png?v=1556893715247" class="site-logo">
+        <img src="https://demichung813.github.io/zhongniblog//images/avatar.png?v=1557112952720" class="site-logo">
         <h1 class="site-title">ZhongNi Gridea</h1>
       </a>
       <div class="menu-btn" @click="menuVisible = !menuVisible">
@@ -68,6 +74,10 @@
     <div class="social-container">
       
         
+          <a class="social-link" href="https://github.com/DemiChung813/zhongniblog" target="_blank">
+            <i class="fab fa-github"></i>
+          </a>
+        
       
         
       
@@ -79,7 +89,7 @@
       
     </div>
     <div class="site-description">
-      温故而知新
+      あなたが言っている運命は、一度でも勝てると思います。
     </div>
     <div class="site-footer">
       Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
@@ -518,6 +528,12 @@ slice()方法可以接受一或两个参数，即要返回项的起始和结束�
             
 
             
+              
+                <div id="gitalk-container" data-aos="fade-in"></div>
+              
+
+              
+            
 
           </div>
 
@@ -541,6 +557,29 @@ var app = new Vue({
 })
 
 </script>
+
+
+  
+  
+    <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+    <script>
+
+      var gitalk = new Gitalk({
+        clientID: 'b2c81f05406133a31bab',
+        clientSecret: '8530c9d460689d0c443a4938111303dbe6036c62',
+        repo: 'https://demichung813.github.io/zhongniblog/',
+        owner: 'DemiChung',
+        admin: ['DemiChung'],
+        id: location.pathname,      // Ensure uniqueness and length less than 50
+        distractionFreeMode: false  // Facebook-like distraction free mode
+      })
+
+      gitalk.render('gitalk-container')
+
+    </script>
+  
+
+  
 
 
 
